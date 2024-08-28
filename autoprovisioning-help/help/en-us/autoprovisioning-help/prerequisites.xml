@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<concept id="AP-Prerequisites">
+    <title>Prerequisites</title>
+    <conbody>
+            <p>The following prerequisites are required for Auto Provisioning activities:</p>
+            <section>
+                <p>
+                    <xref href="#RequiredUserRoles">Required User Roles</xref>
+                </p>
+                <p>
+                    <xref href="#NodeIntegrationPreq">Integrate Node</xref>
+                </p>
+                <p>
+                    <xref href="#NodeExpansionPreq">Expand Node</xref>
+                </p>
+                <p>
+                    <xref href="#HardwareReplacePreq">Replace Node</xref>
+                </p>
+                 <p>
+                    <xref href="#MigrationPreq">Migrate Node</xref>
+                </p>
+                <p>
+                    <xref href="#DHCPConfigurationPreq">DHCP Configuration</xref>
+                </p>
+                <p>
+                    <xref href="#EmailPreq">Email Setup</xref>
+                </p>
+                <p>
+                    <xref href="#LoggingPreq">Logging</xref>
+                </p>
+            </section>
+        <section id="RequiredUserRoles">
+        <title>Required User Roles</title>
+            <p>To execute AP ENM CLI commands or Auto Provisioning GUI Actions, you must have a user account with one of the following roles: </p>
+            <ul>
+                <li>Autoprovisioning_Administrator</li>
+                <li>Autoprovisioning_Operator</li>
+                <li>
+                    The Autoprovisioning_Limited_Remote_Access role can also be assigned to users with the FIELD_TECHNICIAN role to allow access to the following:
+                    <ul>
+                        <li><xref href="/overview/apoperations.xml#Bind" type="concept">Operations, Bind</xref></li>
+                        <li><xref href="/overview/apoperations.xml#View" type="concept">Operations, View</xref></li>
+                        <li><xref href="/overview/apoperations.xml#Status" type="concept">Operations, Status</xref></li>
+                    </ul>
+                </li>
+            </ul>
+            <p>
+                For Local Maintenance Terminal (LMT) Integration, Migration or Hardware Replace see
+                <xref href="/overview/apconcepts.xml#IntegrationProcedure">Concepts, Integration
+                Procedure</xref>, it is mandatory to have a user with FIELD_TECHNICIAN role created which allows the
+                node to access configuration files stored in ENM.
+                When this user account is created, log in at least to reset the temporary user
+                password to a permanent password.
+                The username and permanent password are then given to the Field Technician.
+            </p>
+            <p>
+                For custom role with AP capabilities, refer to Role Based Authorization for AP in ENM Security System Administration Guide, 2/1543-AOM 901 151.
+                See <xref href="#help/app/usermanagement" scope="external">User Management User Guide</xref>
+                for instructions on creating a user/role and setting a password.</p>
+        </section>
+        <section id="NodeIntegrationPreq">
+        <title>Integrate Node</title>
+            <sectiondiv id="NodeIntegrationPreqCommon">
+                <p>
+                    <ul>
+                        <li>The node type is supported by Auto Provisioning for Node Integration see
+                            <xref href="/overview/supportednodetypes.xml">Supported Node Types</xref>.
+                        </li>
+                        <li>You have Autoprovisioning_Operator role or higher.</li>
+                        <li>Be familiar with
+                            <xref href="/overview/autoprovisioningflow.xml">Auto Integrate a Physical Node Overview</xref>.
+                        </li>
+                        <li>For LMT Integration, user with FIELD_TECHNICIAN role created in ENM, see
+                            <xref href="/overview/apconcepts.xml#IntegrationProcedure">Concepts, Integration Procedure</xref>.
+                        </li>
+                        <li>Define SNMP security configuration options if required, see
+                            <xref href="/prerequisites/definesnmpsecurityconfigurationoption.xml">
+                            Define SNMP Security configuration options</xref>.
+                        </li>
+                        <li>The required Upgrade and Basic Packages are uploaded to SHM,
+                            see <xref href="#help/app/shm/topic/tutorials/softwareadmin/managePackages" scope="external">Manage Software Packages</xref>.
+                        </li>
+                        <li>The required License Key Files (LKF) are uploaded to SHM *,
+                            see <xref href="#help/app/shm/topic/tutorials/licenseadmin/installLKFs~1" scope="external">Import Key Files</xref>
+                            or the LKF can be included as part of the AP project.
+                            For Baseband RadioNode AP can automatically request the LKF via Instantaneous License (IL) feature,
+                            see <xref href="/overview/apconcepts.xml#RequestLicense">Concepts, Request License Key Files</xref>.
+                        </li>
+                        <li>Auto Provisioning project is created, see:
+                            <ul>
+                                <li>
+                                    <xref href="/prerequisites/standard_project_file_tutorial.xml" type="concept">Prepare a
+                                        Standard Project
+                                    </xref>
+                                </li>
+                                <li>
+                                    <xref href="/prerequisites/batch_project_file_tutorial.xml" type="concept">Prepare a
+                                        Batch Project
+                                    </xref>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <b>Additional pre-requisites are applicable for Virtual Network Function (VNF) node(s).</b>
+                    <ul>
+                        <li>Be familiar with <xref href="/overview/vnfautoprovisioningflow.xml">Auto Integrate a Virtual Network Function (VNF) Node Overview</xref>.
+                        </li>
+                        <li>The RAN Virtual Network Function Manager (RVNFM) is instantiated within the Cloud Infrastructure
+                            Domain.
+                        </li>
+                        <li>The RNVFM is added as a Network Element to ENM.</li>
+                        <li>The RVNFM is enrolled towards ENM thereby allowing trusted communication.</li>
+                        <li>The VirtualNetworkFunctionManager and HttpConnectivityInformation MOs are added to ENM thereby
+                            allowing AP to subscribe for VNF lifecycle notifications.
+                        </li>
+                    </ul>
+                    * Not applicable for Pico Radio Node
+                </p>
+                <b>Integration Node Health Check (NHC)</b>
+                <p>
+                    If a Health Check Profile is referenced as part of an Integration Project a Health Check Profile must be created before Node Integration,
+                    see <xref href="#help/app/nhc/topic/tutorials/createHealthCheckProfile" scope="external">Create Health Check Profile for eNodeB Baseband Radio Node Type</xref>.
+                    For more information on Health Check see <xref href="/overview/apconcepts.xml#HealthCheck">Concepts, HealthCheck</xref>.
+                </p>
+                <p>
+                    Additional NHC privileges are required to view the health check reports.
+                    See <xref href="#help/app/nhc/topic/prerequisites" scope="external">NHC Online Help</xref> for more information.
+                </p>
+                <p><b>Integration Target Based Access Control (TBAC)</b></p>
+                <p>
+                    To add a node to a Target Group a Target Group must be created before Node Integration, see <xref href="#help/app/targetmanagement/topic/tutorials/CreateTargetGroup" scope="external">Create a Target Group</xref>.
+                </p>
+                <b>Common Baseline</b>
+                <p>
+                    If common baseline files are referenced as part of the Auto Provisioning project the baseline files must be stored in the shared Auto Provisioning directory on the
+                    scripting cluster before Node Integration, see <xref href="/overview/apconcepts.xml#Baseline">Concepts, Baseline</xref>.
+                </p>
+                <b>Remote Node Configurations</b>
+                <p>
+                    If using Remote Node Configurations referenced nodes need to be created see <xref href="/overview/apconcepts.xml#RemoteNodeConfiguration">Concepts, RemoteNodeConfiguration</xref>.
+                </p>
+            </sectiondiv>
+        </section>
+        <section id="NodeExpansionPreq">
+        <title>Expand Node</title>
+        <sectiondiv id="ExpansionPreqCommon">
+            <p>
+                <ul>
+                    <li>
+                        The node type is supported by Auto Provisioning for Node Expansion see
+                        <xref href="/overview/supportednodetypes.xml">Supported Node Types</xref>.
+                    </li>
+                    <li>You have Autoprovisioning_Operator role or higher.</li>
+                    <li>Be familiar with <xref href="/overview/expansion_flow.xml">Expand a Node Overview</xref>.</li>
+                    <li>The node that is being expanded is synchronized with ENM.</li>
+                    <li>Auto Provisioning expansion project is created, see:
+                        <ul>
+                            <li>
+                                <xref href="/prerequisites/standard_project_file_tutorial.xml" type="concept">Prepare a Standard Project</xref>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>The required Upgrade Package for the version of software installed on the node is available in SHM
+                        see <xref href="#help/app/shm/topic/tutorials/softwareadmin/managePackages" scope="external">Manage Software Packages</xref>.
+                    </li>
+                </ul>
+            </p>
+            <b>Expansion Node Health Check (NHC)</b>
+            <p>
+                If a Health Check Profile is referenced as part of an Expansion Project a Health Check Profile must be created before Node Expansion,
+                 see <xref href="#help/app/nhc/topic/tutorials/createHealthCheckProfile" scope="external">Create Health Check Profile for eNodeB Baseband Radio Node Type</xref>.
+                For more information on Health Check see <xref href="/overview/apconcepts.xml#HealthCheck">Concepts, HealthCheck</xref>.
+            </p>
+            <p>
+                Additional NHC privileges are required to view the health check reports.
+                 See <xref href="#help/app/nhc/topic/prerequisites" scope="external">NHC Online Help</xref> for more information.
+            </p>
+            <b>Common Baseline</b>
+            <p>
+                If common baseline files are referenced as part of the Auto Provisioning project the baseline files must be stored in the shared Auto Provisioning directory on the
+                 scripting cluster before Node Expansion, see <xref href="/overview/apconcepts.xml#Baseline">Concepts, Baseline</xref>.
+            </p>
+            <b>Remote Node Configurations</b>
+            <p>
+                If using Remote Node Configurations referenced nodes need to be created see <xref href="/overview/apconcepts.xml#RemoteNodeConfiguration">Concepts, RemoteNodeConfiguration</xref>.
+            </p>
+        </sectiondiv>
+        </section>
+        <section id="HardwareReplacePreq">
+        <title>Replace Node</title>
+             <p id="HardwareReplacePreqCommon">
+                <ul>
+                    <li>The node type is supported by Auto Provisioning for Replace Node. See
+                        <xref href="/overview/supportednodetypes.xml">Supported Node Types</xref>.
+                    </li>
+                    <li>You have Autoprovisioning_Operator role or higher.</li>
+                    <li>Be familiar with <xref href="/overview/hardwarereplaceflow.xml">Replace a Node Overview</xref>.
+                    </li>
+                    <li>The original node configuration data has previously been synchronized in ENM.</li>
+                    <li>Auto Provisioning hardware replace project is created, see:
+                        <ul>
+                            <li>
+                                <xref href="/prerequisites/standard_project_file_tutorial.xml" type="concept">Prepare a
+                                    Standard Project
+                                </xref>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>For LMT Hardware Replace for Baseband Radio Node and Controller 6610, user with FIELD_TECHNICIAN role created in ENM
+                        see <xref href="/overview/apconcepts.xml#IntegrationProcedure">Concepts, Integration Procedure</xref>.
+                    </li>
+                    <li>For LMT Hardware Replace for Baseband Radio Node and Controller 6610, only a subset of Node Configurations are supported
+                        see <xref href="/overview/apconcepts.xml#SupportedConfigurationforHardwareReplace">Concepts, Supported Configuration for Hardware Replace</xref>.
+                    </li>
+                    <li>Any node Auto Provisioning data for the Network Element that hardware replace is to be executed against
+                        has been removed before execution see  <xref href="/overview/apoperations.xml#Delete" type="concept">Operations, Delete</xref>.
+                    </li>
+                    <li>A backup has been created in ENM of the node that hardware replace is to be executed against.*</li>
+                    <li>The required Upgrade Package for the version of backup being created on the node is available in SHM
+                        see <xref href="#help/app/shm/topic/tutorials/softwareadmin/managePackages" scope="external">Manage Software Packages</xref>*.
+                    </li>
+                </ul>
+                * Not applicable for Pico Radio Node
+            </p>
+        </section>
+        <section id="MigrationPreq">
+        <title>Migrate Node</title>
+              <sectiondiv id="MigrationPreqCommon">
+                <p>
+                   <ul>
+                    <li>The node type is supported by Auto Provisioning for Migration. See
+                        <xref href="/overview/supportednodetypes.xml">Supported Node Types</xref>.
+                    </li>
+                    <li>You have Autoprovisioning_Operator role or higher.</li>
+                    <li>Be familiar with <xref href="/overview/migration_flow.xml">Migrate a Node Overview</xref>.
+                    </li>
+                    <li>For LMT Migration, user with FIELD_TECHNICIAN role created in ENM,
+                        see <xref href="/overview/apconcepts.xml#IntegrationProcedure">Concepts, Integration Procedure</xref>.
+                    </li>
+                    <li>Define SNMP security configuration options if required, see:
+                        <ul>
+                        <li>
+                            <xref href="/prerequisites/definesnmpsecurityconfigurationoption.xml">
+                            Define SNMP Security configuration options</xref>.
+                        </li>
+                        </ul>
+                     <b>Warning: </b> When executing migration the node will be updated to the SNMP settings set in SNMP Security configurations above. The updated SNMP settings will still be set on the node after rollback.
+                    </li>
+                    <li>The required Upgrade Package is uploaded to SHM,
+                        see <xref href="#help/app/shm/topic/tutorials/softwareadmin/managePackages" scope="external">Manage Software Packages</xref>.
+                    </li>
+                     <li>The required License Key Files (LKF) are uploaded to SHM,
+                            see <xref href="#help/app/shm/topic/tutorials/licenseadmin/installLKFs~1" scope="external">Import Key Files</xref>
+                    </li>
+                    <li>Auto Provisioning project is created, see:
+                        <ul>
+                            <li>
+                                <xref href="/prerequisites/standard_project_file_tutorial.xml" type="concept">Prepare a
+                                    Standard Project
+                                </xref>
+                            </li>
+                        </ul>
+                        To automatically generate a Migration project it is recommended to follow the procedure outline in Migrate Baseband Unit Using NETCONF-Based Procedure. See <i>Migrate Baseband Unit Using NETCONF-Based Procedure in Ericsson Radio System Software CPI LZN 793 1020(21.Q4 onwards)</i>.
+                    </li>
+                    <li>Migration can only be done between the same quarterly software release of an old and a new Baseband unit. It is important that the same type of UP/SW is used for both the old and the new Baseband.
+                    </li>
+                    <li>
+                       For PM, If a user-defined measurement has been defined, these should be removed before migration and will need to be reconfigured after migration.
+                    </li>
+                    <li>
+                       If updating the node credentials original node credentials should be noted as they have to be manually reset in the event of rollback.
+                    </li>
+                    <li>
+                       The node that is being migrated should be configured in adherence with the structure defined in the OSSNodeProtocol file, for an example of the OSSNodeProtocolFile structure refer to <i>Baseband Radio Node: LZN 793 1020 Initial Configuration / Configuration Files</i>.
+                    </li>
+                    <li>
+                       If using ENM PKI the node being migrated must adhere to the recommend End Entity naming convention (nodename)-oam / (nodename)-ipsec.
+                    </li>
+                </ul>
+                </p>
+           <b>Node Health Check (NHC)</b>
+            <p>
+                If a Health Check Profile is referenced as part of an Migration Project a Health Check Profile must be created before Node Migration,
+                 see <xref href="#help/app/nhc/topic/tutorials/createHealthCheckProfile" scope="external">Create Health Check Profile for eNodeB Baseband Radio Node Type</xref>.
+                For more information on Health Check see <xref href="/overview/apconcepts.xml#HealthCheck">Concepts, HealthCheck</xref>.
+            </p>
+            <p>
+                Additional NHC privileges are required to view the health check reports.
+                 See <xref href="#help/app/nhc/topic/prerequisites" scope="external">NHC Online Help</xref> for more information.
+            </p>
+            <b>Common Baseline</b>
+            <p>
+                If common baseline files are referenced as part of the Auto Provisioning project the baseline files must be stored in the shared Auto Provisioning directory on the
+                 scripting cluster before Node Migration, see <xref href="/overview/apconcepts.xml#Baseline">Concepts, Baseline</xref>.
+            </p>
+            <b>Remote Node Configurations</b>
+            <p>
+                If using Remote Node Configurations referenced nodes need to be created see <xref href="/overview/apconcepts.xml#RemoteNodeConfiguration">Concepts, RemoteNodeConfiguration</xref>.
+            </p>
+            </sectiondiv>
+        </section>
+        <section id="DHCPConfigurationPreq">
+        <title>DHCP Configuration</title>
+             <p>
+                For Zero Touch Integration, Migration or Hardware Replace ENM DHCP is automatically configured using <xref href="/overview/apoperations.xml#Bind">Operations, Bind</xref>.
+                If additional DHCP configuration or troubleshooting activities around DHCP is required see <xref href="#help/app/cliapp/topic/dhcp" scope="external">DHCP</xref>.
+            </p>
+        </section>
+        <section id="EmailPreq">
+        <title>Email Setup</title>
+             <p>
+                If a user specifies their email in their projects nodeInfo.xml, email service must be configured.
+                 For more information about email relay service, refer to the ENM CPI Guide: 1/1551-AOM 901 151 (ENM Product Description -> System -> ENM Email Relay Service)
+            </p>
+        </section>
+        <section id="LoggingPreq">
+        <title>Logging</title>
+             <p>
+                For troubleshooting additional access to the Log Viewer application may be required,
+                 see <xref href="#help/app/logviewer/topic/prerequisites" scope="external">Log Viewer Prerequisites</xref>
+            </p>
+            <p>
+                The following table outlines the syntax required to filter AP logs in Log Viewer.
+            </p>
+            <p>
+                <simpletable>
+                      <sthead>
+                           <stentry>Search Criteria</stentry>
+                           <stentry>Result</stentry>
+                      </sthead>
+                      <strow>
+                           <stentry>host:"*apserv" AND
+                                message:*AUTO_PROVISIONING*</stentry>
+                           <stentry>All Auto Provisioning related
+                                command logger entries on any host
+                                with name ending in "apserv"
+                           </stentry>
+                      </strow>
+                      <strow>
+                           <stentry>host:"*apserv" AND
+                                message:*Node01*</stentry>
+                           <stentry>All log entries containing the
+                                node name Node01 on any host with
+                                name ending in "apserv"</stentry>
+                      </strow>
+                      <strow>
+                           <stentry>host:"*apserv" AND program:JBOSS
+                                AND severity:"err"</stentry>
+                           <stentry>All JBOSS log entries on host
+                                with name ending in "apserv" with
+                                severity of "err"</stentry>
+                      </strow>
+                      <strow>
+                           <stentry>host:"*apserv" AND message:AUTO_PROVISIONING.TASK_OUTPUT
+                                AND message:"NODE\=Node01"</stentry>
+                           <stentry>All Auto Provisioning node status end tasks for node name equal to Node01</stentry>
+                      </strow>
+                </simpletable>
+            </p>
+        </section>
+    </conbody>
+</concept>

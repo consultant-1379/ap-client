@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<concept id="AP-CLI-Commands">
+    <title>CLI Commands</title>
+    <conbody>
+        <section id="AP_CLI">
+            <title>AP CLI Commands</title>
+            <p>These are the ap commands that are currently supported:</p>
+            <p><image href="/resources/images/commands/CLI_Icon.svg" /><xref href="commands/bind.xml" type="concept">  ap bind</xref></p>
+            <p><image href="/resources/images/commands/CLI_Icon.svg" /><xref href="commands/cancel.xml" type="concept">  ap cancel</xref></p>
+            <p><image href="/resources/images/commands/CLI_Icon.svg" /><xref href="commands/delete.xml" type="concept">  ap delete</xref></p>
+            <p><image href="/resources/images/commands/CLI_Icon.svg" /><xref href="commands/download.xml"  type="concept">  ap download</xref></p>
+            <p><image href="/resources/images/commands/CLI_Icon.svg" /><xref href="commands/order.xml"  type="concept">  ap order</xref></p>
+            <p><image href="/resources/images/commands/CLI_Icon.svg" /><xref href="commands/resume.xml"  type="concept">  ap resume</xref></p>
+            <p><image href="/resources/images/commands/CLI_Icon.svg" /><xref href="commands/skip.xml"  type="concept">  ap skip</xref></p>
+            <p><image href="/resources/images/commands/CLI_Icon.svg" /><xref href="commands/status.xml"  type="concept">  ap status</xref></p>
+            <p><image href="/resources/images/commands/CLI_Icon.svg" /><xref href="commands/upload.xml" type="concept">  ap upload</xref></p>
+            <p><image href="/resources/images/commands/CLI_Icon.svg" /><xref href="commands/view.xml" type="concept">  ap view</xref></p>
+        </section>
+    </conbody>
+</concept>

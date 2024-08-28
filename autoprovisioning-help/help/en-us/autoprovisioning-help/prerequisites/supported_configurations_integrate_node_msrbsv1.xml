@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<concept id="AP-SupportedNodeConfiguration-PicoRadioNode-NodeIntegration">
+    <title>Supported Configurations for Node Integration of type Pico Radio Node</title>
+    <conbody>
+        <section>
+               <p>The following lists the configurations supported for Node Integration of a Pico Radio Node.</p>
+        </section>
+        <section id="PicoRadioNode">
+        <title>Pico Radio Node</title>
+           <simpletable frame="all" relcolwidth="1* 1* 1* 1* 1* 1*">
+                <sthead>
+                <stentry>
+                    <b>Configuration Files</b>
+                </stentry>
+                <stentry>
+                    <b>Tag</b>
+                </stentry>
+                <stentry>
+                    <b>Mandatory</b>
+                </stentry>
+                <stentry>
+                    <b>FileType</b>
+                    </stentry>
+                <stentry>
+                        <b>Supported Format(s)</b>
+                </stentry>
+                </sthead>
+                <strow>
+                    <stentry>Initial Configuration File</stentry>
+                    <stentry>icf</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>XML</stentry>
+                    <stentry>NETCONF</stentry>
+                </strow>
+                <strow>
+                    <stentry>Site Installation</stentry>
+                    <stentry>siteInstallation</stentry>
+                    <stentry>No</stentry>
+                    <stentry>XML</stentry>
+                    <stentry>XML</stentry>
+                </strow>
+                <strow>
+                    <stentry>Remote Node Configuration</stentry>
+                    <stentry>remoteNodeConfiguration</stentry>
+                    <stentry>No</stentry>
+                    <stentry>XML</stentry>
+                    <stentry>Bulk3gpp</stentry>
+                </strow>
+            </simpletable>
+            <p>For samples files refer to <i>RBS 6402: LZN 733 0056 Initial Configuration / Configuration Files</i></p>
+        </section>
+    </conbody>
+</concept>

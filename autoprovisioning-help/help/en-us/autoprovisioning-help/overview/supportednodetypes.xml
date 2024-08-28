@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<concept id="AP-SupportedNodeTypes">
+    <title>Supported Node Types</title>
+    <conbody>
+        <section id="NodeIntegrationSupportedNodeTypeTable">
+            <title id="NodeIntegrationSupportedNodeTypeTitle">Integrate Node</title>
+            <p>
+                <simpletable>
+                    <sthead>
+                        <stentry>Supported Node</stentry>
+                        <stentry>Radio Access Technology (RAT)</stentry>
+                        <stentry>Node Type</stentry>
+                    </sthead>
+                    <strow>
+                        <stentry>DU Radio Node</stentry>
+                        <stentry>LTE</stentry>
+                        <stentry>ERBS</stentry>
+                    </strow>
+                    <strow>
+                        <stentry>Baseband Radio Node *</stentry>
+                        <stentry>LTE / WCDMA / GSM / NR</stentry>
+                        <stentry>RadioNode</stentry>
+                    </strow>
+                    <strow>
+                        <stentry>Controller 6610</stentry>
+                        <stentry>N/A</stentry>
+                        <stentry>Controller6610</stentry>
+                    </strow>
+                    <strow>
+                        <stentry>Pico Radio Node *</stentry>
+                        <stentry>LTE / WCDMA</stentry>
+                        <stentry>MSRBS_V1</stentry>
+                    </strow>
+                    <strow>
+                        <stentry>VNF of type: Virtual Service Discovery</stentry>
+                        <stentry>N/A</stentry>
+                        <stentry>vSD</stentry>
+                    </strow>
+                    <strow>
+                        <stentry>VNF of type: Virtual Packet Processing</stentry>
+                        <stentry>LTE</stentry>
+                        <stentry>vPP</stentry>
+                    </strow>
+                    <strow>
+                        <stentry>VNF of type: Virtual Transport Intelligent Function</stentry>
+                        <stentry>LTE</stentry>
+                        <stentry>vTIF</stentry>
+                    </strow>
+                    <strow>
+                        <stentry>Router of type: Router 6672 Node</stentry>
+                        <stentry>N/A</stentry>
+                        <stentry>Router6672</stentry>
+                    </strow>
+                    <strow>
+                        <stentry>Router of type: Router 6673 Node</stentry>
+                        <stentry>N/A</stentry>
+                        <stentry>Router6673</stentry>
+                    </strow>
+                    <strow>
+                        <stentry>Router of type: Router 6675 Node</stentry>
+                        <stentry>N/A</stentry>
+                        <stentry>Router6675</stentry>
+                    </strow>
+                    <strow>
+                        <stentry>Router of type: Router 6x71 Node</stentry>
+                        <stentry>N/A</stentry>
+                        <stentry>Router6x71</stentry>
+                    </strow>
+                    <strow>
+                        <stentry>Router of type: Router6000-2 Node</stentry>
+                        <stentry>N/A</stentry>
+                        <stentry>Router6000-2</stentry>
+                    </strow>
+                    <strow>
+                        <stentry>Fronthaul-6000 Node</stentry>
+                        <stentry>N/A</stentry>
+                        <stentry>Fronthaul-6000</stentry>
+                    </strow>
+                </simpletable>
+            </p>
+        </section>
+      <section>
+            <title id="2">Replace Node</title>
+            <p>
+                <simpletable>
+                    <sthead>
+                        <stentry>Supported Node</stentry>
+                        <stentry>Radio Access Technology (RAT)</stentry>
+                        <stentry>Node Type</stentry>
+                    </sthead>
+                    <strow>
+                        <stentry>Baseband Radio Node *</stentry>
+                        <stentry>LTE / WCDMA / GSM / NR</stentry>
+                        <stentry>RadioNode</stentry>
+                    </strow>
+                    <strow>
+                        <stentry>Controller 6610</stentry>
+                        <stentry>N/A</stentry>
+                        <stentry>Controller6610</stentry>
+                    </strow>
+                    <strow>
+                        <stentry>Pico Radio Node</stentry>
+                        <stentry>LTE</stentry>
+                        <stentry>MSRBS_V1</stentry>
+                    </strow>
+                </simpletable>
+            </p>
+        </section>
+        <section>
+            <title id="3">Expand Node</title>
+            <p>
+                <simpletable>
+                    <sthead>
+                        <stentry>Supported Node</stentry>
+                        <stentry>Radio Access Technology (RAT)</stentry>
+                        <stentry>Node Type</stentry>
+                    </sthead>
+                    <strow>
+                        <stentry>Baseband Radio Node *</stentry>
+                        <stentry>LTE / WCDMA / GSM / NR</stentry>
+                        <stentry>RadioNode</stentry>
+                    </strow>
+                    <strow>
+                        <stentry>Controller 6610</stentry>
+                        <stentry>N/A</stentry>
+                        <stentry>Controller6610</stentry>
+                    </strow>
+                </simpletable>
+            </p>
+        </section>
+        <section>
+            <title id="4">Migrate Node</title>
+            <p>
+                <simpletable>
+                    <sthead>
+                        <stentry>Supported Node</stentry>
+                        <stentry>Radio Access Technology (RAT)</stentry>
+                        <stentry>Node Type</stentry>
+                    </sthead>
+                    <strow>
+                        <stentry>Baseband Radio Node *</stentry>
+                        <stentry>LTE / WCDMA / GSM / NR</stentry>
+                        <stentry>RadioNode</stentry>
+                    </strow>
+                </simpletable>
+             </p>
+            <p>
+                * Supports Multi Standard Mixed Mode.
+            </p>
+            <p><b>Note:</b> All Nodes of type VNF are referenced as VNF and nodes of type Router are referenced as Router throughout the online help.</p>
+    </section>
+    </conbody>
+</concept>

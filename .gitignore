@@ -1,0 +1,26 @@
+# Global .gitignore #
+
+# Eclipse related files
+.settings
+.classpath
+.project
+
+# InteliJ files #
+worskpace.xml
+.idea/
+*.iml
+
+#package.json
+
+# Build Folders
+target/
+tmp/
+
+# We should not commit node_modules for applications
+node_modules/
+
+# We should not commit npm debug logs
+npm-debug.log
+
+# lockfile is specific to your local env
+package-lock.json

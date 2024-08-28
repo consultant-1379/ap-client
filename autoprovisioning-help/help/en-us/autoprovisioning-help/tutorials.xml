@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<concept id="AP-Tutorials">
+    <title>Tutorials</title>
+    <conbody>
+        <section>
+            <title>Auto Provisioning Workflows</title>
+
+            <p>Build Configuration and execute Auto Provisioning Workflow</p>
+            <p><image href="/resources/images/common/Tutorial.svg" alt="Tutorial" align="left"/>
+                <xref href="tutorials/addnode_radionode_node_centric.xml"
+                      type="concept"> Configure and Auto Integrate Baseband Radio Node(s) with a node centric CIQ</xref></p>
+            <p><image href="/resources/images/common/Tutorial.svg" alt="Tutorial" align="left"/>
+                <xref href="tutorials/addnode_radionode_cell_centric.xml"
+                      type="concept"> Configure and Auto Integrate Baseband Radio Node(s) with a cell centric CIQ</xref></p>
+            <p><image href="/resources/images/common/Tutorial.svg" alt="Tutorial" align="left"/>
+                <xref href="tutorials/addnode_controller6610_node_centric.xml"
+                      type="concept"> Configure and Auto Integrate Controller 6610 Node(s) with a node centric CIQ</xref></p>
+            <p><image href="/resources/images/common/Tutorial.svg" alt="Tutorial" align="left"/>
+                <xref href="tutorials/expandnode_radionode.xml"
+                      type="concept">Configure and perform Baseband Radio Node(s) Expansion</xref></p>
+
+            <p>Execute Auto Provisioning Workflow with Auto Provisioning GUI</p>
+            <p><image href="/resources/images/common/Tutorial.svg" alt="Tutorial" align="left"/>
+                <xref href="tutorials/autointegratenodeGUI.xml"
+                      type="concept"> Auto Integrate Node(s) using Auto Provisioning GUI</xref></p>
+            <p><image href="/resources/images/common/Tutorial.svg" alt="Tutorial" align="left"/>
+                <xref href="tutorials/expansionGUI.xml"
+                      type="concept"> Perform Node Expansion using Auto Provisioning GUI</xref></p>
+            <p><image href="/resources/images/common/Tutorial.svg" alt="Tutorial" align="left"/>
+                <xref href="tutorials/hardwarereplaceGUI.xml"
+                      type="concept"> Perform Hardware Replace using Auto Provisioning GUI</xref></p>
+            <p><image href="/resources/images/common/Tutorial.svg" alt="Tutorial" align="left"/>
+                <xref href="tutorials/migrationGUI.xml"
+                      type="concept">Perform Node Migration using Auto Provisioning GUI</xref></p>
+
+            <p>Execute Auto Provisioning Workflow with Auto Provisioning CLI</p>
+            <p><image href="/resources/images/common/Tutorial.svg" alt="Tutorial" align="left"/>
+                <xref href="tutorials/autointegratenodeCLI.xml"
+                      type="concept"> Auto Integrate Node(s) using Auto Provisioning CLI</xref></p>
+            <p><image href="/resources/images/common/Tutorial.svg" alt="Tutorial" align="left"/>
+                <xref href="tutorials/expansionCLI.xml"
+                      type="concept"> Perform Node Expansion using Auto Provisioning CLI</xref></p>
+            <p><image href="/resources/images/common/Tutorial.svg" alt="Tutorial" align="left"/>
+                <xref href="tutorials/hardwarereplaceCLI.xml"
+                      type="concept"> Perform Hardware Replace using Auto Provisioning CLI</xref></p>
+            <p><image href="/resources/images/common/Tutorial.svg" alt="Tutorial" align="left"/>
+                <xref href="tutorials/migrationCLI.xml"
+                      type="concept">Perform Node Migration using Auto Provisioning CLI</xref></p>
+        </section>
+    </conbody>
+</concept>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<concept id="AP-CLI-Command-Order">
+    <title>ap order</title>
+    <conbody>
+        <section>
+            <title>Syntax</title>
+            <p>
+                <image href="/resources/images/commands/cli.png"/>
+                <b>Syntax to order a project file</b>
+            </p>
+            <codeblock>
+                ap order file:&lt;fileName&gt;
+            </codeblock>
+            <p>
+                <image href="/resources/images/commands/cli.png"/>
+                <b>Syntax to order a project file for no validation</b>
+            </p>
+            <codeblock>
+                ap order -nv file:&lt;fileName&gt;
+            </codeblock>
+            <p>
+                <image href="/resources/images/commands/cli.png"/>
+                <b>Syntax to order an existing project</b>
+            </p>
+            <codeblock>
+                ap order -p &lt;projectName&gt;
+            </codeblock>
+            <p>
+                <image href="/resources/images/commands/cli.png"/>
+                <b>Syntax to order an existing node</b>
+            </p>
+            <codeblock>
+                ap order -n &lt;nodeName&gt;
+            </codeblock>
+        </section>
+
+        <section>
+            <title>Description</title>
+            <p>
+                The <i>ap order</i> command is used to start or restart an Auto Provisioning Node Integration, Migration, Hardware Replace or Expansion.
+            </p>
+            <p>
+                The <i>ap order</i> command can be used with the <i>-nv</i> parameter to disable validation of the project file (excluding Bulk CM Validation).
+                Using the <i>-nv</i> command disables validation of NETCONF files for Baseband Radio Node.
+                If there are any issues with the integrity of the project, or it has invalid data, using the <i>-nv</i> can cause unexpected or unhandled failures for the project.
+            </p>
+            <p>For more information on order see <xref href="/overview/apoperations.xml#Order" type="concept">Operations, Order</xref></p>
+        </section>
+        <section>
+            <title>Examples</title>
+            <sectiondiv>
+                <p>
+                    <image href="/resources/images/commands/cli.png"/>
+                    <b>Order a project file for integration, expansion or hardware replace</b>
+                </p>
+                <codeblock>
+                    ap order file:Project01.zip
+                </codeblock>
+                <p>
+                    <b>Response</b>
+                </p>
+                <p><pre>Initiated. Run the command <i>'ap status -p Project01'</i> for progress</pre></p>
+            </sectiondiv>
+        </section>
+    </conbody>
+</concept>

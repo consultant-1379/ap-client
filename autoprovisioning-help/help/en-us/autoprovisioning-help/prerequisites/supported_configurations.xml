@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<concept id="AP-SupportedNodeConfigurations">
+     <title>Supported Configurations for Auto Provisioning</title>
+     <conbody>
+     <section>
+        <title>Description</title>
+         <p>
+             Configuration files are required to configure a node during Node Integration, Hardware Replace and Expansion,
+              see <xref href="/overview/apconcepts.xml#ConfigurationFiles" type="concept">Concepts, ConfigurationFiles</xref>.
+         </p>
+     </section>
+     <section>
+        <title>Supported Configurations</title>
+        <p>
+            The following defines the configurations supported for each supported Auto Provisioning node type and use-cases:
+        </p>
+        <ul>
+            <li>Node Integration
+                <ul>
+                    <li><xref href="/prerequisites/supported_configurations_integrate_node_erbs.xml" type="concept">DU Radio Node</xref></li>
+                    <li><xref href="/prerequisites/supported_configurations_integrate_node_radionode.xml" type="concept">Baseband Radio Node</xref></li>
+                    <li><xref href="/prerequisites/supported_configurations_integrate_node_router.xml" type="concept">Router Node</xref></li>
+                    <li><xref href="/prerequisites/supported_configurations_integrate_node_fronthaul6000.xml" type="concept">Fronthaul-6000 Node</xref></li>
+                    <li><xref href="/prerequisites/supported_configurations_integrate_node_msrbsv1.xml" type="concept">Pico Radio Node</xref></li>
+                    <li><xref href="/prerequisites/supported_configurations_integrate_node_vnf.xml" type="concept">VNF Node</xref></li>
+                    <li><xref href="/prerequisites/supported_configurations_integrate_node_controller6610.xml" type="concept">Controller 6610</xref></li>
+                </ul>
+            </li>
+            <li>Expansion
+                <ul>
+                    <li><xref href="/prerequisites/supported_configurations_expansion_radionode.xml" type="concept">Baseband Radio Node</xref></li>
+                    <li><xref href="/prerequisites/supported_configurations_expansion_controller6610.xml" type="concept">Controller 6610</xref></li>
+                </ul>
+            </li>
+            <li>Hardware Replace
+                <ul>
+                    <li><xref href="/prerequisites/supported_configurations_hardware_replace_radionode.xml" type="concept">Baseband Radio Node</xref></li>
+                    <li><xref href="/prerequisites/supported_configurations_hardware_replace_controller6610.xml" type="concept">Controller 6610</xref></li>
+                </ul>
+            </li>
+            <li>Migration
+                <ul>
+                    <li><xref href="/prerequisites/supported_configurations_Migration_radionode.xml" type="concept">Baseband Radio Node</xref>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <p>
+            <b>Note:</b> Batch Projects are not supported for expansion, migration or hardware replace.
+        </p>
+         <p>
+             Some script generation tools may generate a diagram of a node deployment layout in node folder(s) of the project for reference. It must be named "diagram.svg" and it will be ignored by the Auto Provisioning application.
+         </p>
+        </section>
+     </conbody>
+</concept>

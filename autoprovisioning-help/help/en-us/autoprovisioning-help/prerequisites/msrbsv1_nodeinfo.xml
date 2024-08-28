@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="utf-8"?>
+<concept id="AP-NodeInfo-PicoRadioNode-NodeIntegration">
+    <title>Node Information File (Pico Radio Node)</title>
+    <conbody>
+        <p>The node information file elements specific to the Pico Radio Node are described below:</p>
+        <section id="node_info_sections">
+            <p>
+                The node information file, as defined by <i>nodeInfo.xml</i> file, contains:
+                <ul>
+                    <li>
+                        <xref href="#1">Node Information</xref>
+                    </li>
+                    <li>
+                        <xref href="#2">Auto Integration</xref>
+                    </li>
+                    <li>
+                        <xref href="#3">Security</xref>
+                    </li>
+                    <li>
+                        <xref href="#4">Location</xref>
+                    </li>
+                    <li>
+                        <xref href="#5">User Credentials</xref>
+                    </li>
+                    <li>
+                        <xref href="#6">Artifacts</xref>
+                    </li>
+                    <li>
+                        <xref href="#7">Supervision</xref>
+                    </li>
+                    <li>
+                        <xref href="#8">DHCP</xref>
+                    </li>
+                </ul>
+            </p>
+        </section>
+        <section conref="duradionodeinfo.xml#node_info_common_attributes"></section>
+        <section>
+            <title id="2">Auto Integration</title>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Tag</b>
+                    </stentry>
+                    <stentry>
+                        Mandatory
+                    </stentry>
+                    <stentry>
+                        Description
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;autoIntegration&gt;</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>The &lt;autoIntegration&gt; tag describes options that allow you to configure tasks executed during node integration.</stentry>
+                </strow>
+            </simpletable>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Auto Integration Subtags</b>
+                    </stentry>
+                    <stentry>
+                        <b>Mandatory</b>
+                    </stentry>
+                    <stentry>
+                        <b>Description</b>
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;upgradePackageName&gt;</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>The name of the upgrade package installed on the node during integration.</stentry>
+                </strow>
+            </simpletable>
+        </section>
+        <section>
+            <title id="3">Security</title>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Tag</b>
+                    </stentry>
+                    <stentry>
+                        Mandatory
+                    </stentry>
+                    <stentry>
+                        Description
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;security&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>The &lt;security&gt; tag describes options to configure security.</stentry>
+                </strow>
+            </simpletable>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Security Subtags</b>
+                    </stentry>
+                    <stentry>
+                        <b>Mandatory</b>
+                    </stentry>
+                    <stentry>
+                        <b>Description</b>
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;targetGroups&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>
+                        This is the root tag for the Target Groups settings. If Target Groups tag is included, the Target Groups Subtags are mandatory.
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;ipSecurity&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>
+                        This is the root tag for the IP security settings. If IP security is enabled the following subtags are mandatory.
+                    </stentry>
+                </strow>
+            </simpletable>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>IP Security Subtags</b>
+                    </stentry>
+                    <stentry>
+                        <b>Mandatory</b>
+                    </stentry>
+                    <stentry>
+                        <b>Description</b>
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;ipSecLevel&gt;</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>The IP security level.
+                        See <xref href="/overview/apconcepts.xml#IPSecurityLevel">Concepts, IP Security Level</xref>.
+                    </stentry>
+                </strow>
+            </simpletable>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Target Groups Subtags</b>
+                    </stentry>
+                    <stentry>
+                        <b>Mandatory</b>
+                    </stentry>
+                    <stentry>
+                        <b>Description</b>
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;targetGroup&gt;</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>
+                        The name of the Target Group that the node will be assigned to. See <xref href="/overview/apconcepts.xml#TBAC">Concepts, TBAC</xref>.
+                    </stentry>
+                </strow>
+            </simpletable>
+        </section>
+        <section>
+            <title id="4">Location</title>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Tag</b>
+                    </stentry>
+                    <stentry>
+                        Mandatory
+                    </stentry>
+                    <stentry>
+                        Description
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;location&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>The geographic location of the node.</stentry>
+                </strow>
+            </simpletable>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Location Subtags</b>
+                    </stentry>
+                    <stentry>
+                        <b>Mandatory</b>
+                    </stentry>
+                    <stentry>
+                        <b>Description</b>
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;latitude&gt;</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>The latitude location of the node. The value must be in decimal format between -90 and 90 (inclusive) and up to five decimal places.</stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;longitude&gt;</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>The longitude location of the node. The value must be in decimal format between -180 and 180 (inclusive) and up to five decimal places.</stentry>
+                </strow>
+            </simpletable>
+        </section>
+        <section>
+            <title id="5">User Credentials</title>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Tag</b>
+                    </stentry>
+                    <stentry>
+                        Mandatory
+                    </stentry>
+                    <stentry>
+                        Description
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;users&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>The subtags listed below allow you to configure users.</stentry>
+                </strow>
+            </simpletable>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Users Subtags</b>
+                    </stentry>
+                    <stentry>
+                        <b>Mandatory</b>
+                    </stentry>
+                    <stentry>
+                        <b>Description</b>
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;secureUser&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry><p>Secure users use SSH to connect to the node.The <b>secadm credentials create</b> command manages both the node usernames and the encrypted passwords to allow
+                        the Ericsson Network Manager (ENM) to access the nodes when required.</p>
+                        <p>Security credentials can be set at any point once the node has been added. If security credentials are not set or set incorrectly, management services that require login credentials - such as AMOS, Performance Management File Collection and Software Inventory Management - may fail.</p>
+                        For more information, see <xref href="#help/app/cliapp/topic/syntax_secadm/credentials_create" scope="external"> secadm credentials create command. </xref></stentry>
+                </strow>
+            </simpletable>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Secure User Subtags</b>
+                    </stentry>
+                    <stentry>
+                        <b>Mandatory</b>
+                    </stentry>
+                    <stentry>
+                        <b>Description</b>
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;name&gt;</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>This is the name of the secure user.</stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;password&gt;</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>This is the password of the secure user.</stentry>
+                </strow>
+            </simpletable>
+        </section>
+        <section>
+            <title id="6">Artifacts</title>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Tag</b>
+                    </stentry>
+                    <stentry>
+                        Mandatory
+                    </stentry>
+                    <stentry>
+                        Description
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;artifacts&gt;</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>The &lt;artifacts&gt; tag describes the files used by the node during integration.</stentry>
+                </strow>
+            </simpletable>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Artifact Subtags</b>
+                    </stentry>
+                    <stentry>
+                        <b>Mandatory</b>
+                    </stentry>
+                    <stentry>
+                        <b>Description</b>
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;icf&gt;</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>The name of the initial configuration file. This file contains contains the configuration information that is required by the node.
+                        AP can autogenerate node certificate details, LDAP credentials and SwM content, if substitution tags exist in the ICF file according to Node CPI sample ICF files.
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;siteInstallation&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>The name of the site installation configuration file.
+                        It should strictly follow the naming convention as "SiteInstallation.xml". This configuration file defines the
+                        parameters in the node. The file can be brought to site. It provides the Integrate RBS (IRBS) application with
+                        parameters to initiate the integration of the node within the network.
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;configurations&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>The &lt;configurations&gt; subtag describes the configuration files used by the node during integration. The order of files listed determines the order they are pushed to the live network. Supported Node Type(s): Pico Radio Node (WCDMA).</stentry>
+                </strow>
+            </simpletable>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Configurations Subtags</b>
+                    </stentry>
+                    <stentry>
+                        <b>Mandatory</b>
+                    </stentry>
+                    <stentry>
+                        <b>Description</b>
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;remoteNodeConfiguration&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>
+                        Remote node configurations can be used to update additional nodes as part of the node integration activity.
+                        Multiple remote node configuration files can be included.
+                         Supported Node Type Pico Radio Node (WCDMA).
+                        See <xref href="/overview/apconcepts.xml#RemoteNodeConfiguration">Concepts, Remote Node Configuration</xref>.
+                    </stentry>
+                </strow>
+            </simpletable>
+        </section>
+        <section>
+            <title id="7">Supervision</title>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Tag</b>
+                    </stentry>
+                    <stentry>
+                        Mandatory
+                    </stentry>
+                    <stentry>
+                        Description
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;supervision&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>The subtags listed below allow you to configure supervision on the node.</stentry>
+                </strow>
+            </simpletable>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Supervision Subtags</b>
+                    </stentry>
+                    <stentry>
+                        <b>Mandatory</b>
+                    </stentry>
+                    <stentry>
+                        <b>Description</b>
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;managementState&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>
+                        Indicates the mode to which managementState is set. (Default: AUTOMATIC). See <xref href="/overview/apconcepts.xml#MaintenanceMode">Concepts, Maintenance Mode</xref>.
+                    </stentry>
+                </strow>
+            </simpletable>
+        </section>
+        <section>
+            <title id="8">DHCP</title>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Tag</b>
+                    </stentry>
+                    <stentry>
+                        Mandatory
+                    </stentry>
+                    <stentry>
+                        Description
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;dhcp&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>The subtags listed below allow you to configure DHCP support. DHCP subtags must be included in the order listed below.</stentry>
+                </strow>
+            </simpletable>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>DHCP Subtags</b>
+                    </stentry>
+                    <stentry>
+                        <b>Mandatory</b>
+                    </stentry>
+                    <stentry>
+                        <b>Description</b>
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;initialIpAddress&gt;</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>
+                        The address that DHCP server should offer to the node. This address must be in the CIDR format.
+                        A temporary address is allocated from the network ranges that have been defined.
+                        The node uses this IP address to connect to the Auto Integration Web Service (AIWS) which validates the
+                        node based on its serial number and returns the appropriate Initial Configuration File (ICF) or
+                        a Combined Configuration File (ICF combined with Site Install File) if a Site Installation File is used.
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;defaultRouter&gt;</stentry>
+                    <stentry>IPv4: Yes, IPv6: No</stentry>
+                    <stentry>
+                        The address of default gateway for the node.
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;ntpServer&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>
+                        NTP Server address. 0 to 2 entries allowed.
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;dnsServer&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>
+                        DNS Server address. 0 to 3 entries allowed.
+                    </stentry>
+                </strow>
+            </simpletable>
+        </section>
+
+
+    </conbody>
+</concept>

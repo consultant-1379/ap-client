@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<task id="AP-Integrate-CLI-Tutorial">
+    <title>Auto Integrate Node(s) using Auto Provisioning CLI</title>
+    <taskbody>
+        <prereq>
+            <p conref="../prerequisites.xml#NodeIntegrationPreqCommon"></p>
+        </prereq>
+
+        <context>
+            <p><b>Objective</b></p>
+            <p>
+                This tutorial describes the steps required to automatically integrate a node(s) to a user-defined
+                software and configuration with a pre-created Auto Provisioning project using Auto Provisioning CLI
+                commands.
+            </p>
+            <p><b>Steps</b></p>
+            <ol>
+                <li>
+                    <xref href="#1">Start Integration</xref>
+                </li>
+                <li>
+                    <xref href="#2">Download Site Installation File (Optional)</xref>
+                </li>
+                <li>
+                    <xref href="#3">Bind Node (Optional)</xref>
+                </li>
+                <li>
+                    <xref href="#4">Switch on Node</xref>
+                </li>
+                <li>
+                    <xref href="#5">Monitor Integration</xref>
+                </li>
+                <li>
+                    <xref href="#6">Remove Node Auto Provisioning Data</xref>
+                </li>
+
+            </ol>
+        </context>
+        <steps>
+            <step id="1">
+                <cmd>Start Integration</cmd>
+                <info>
+                    <ol>
+                        <li>Launch <xref href="#cliapp" scope="external">Command Line Interface (CLI)</xref>.</li>
+                        <li>Drag and drop the integration project file into the ENM CLI.</li>
+                        <li>
+                            Execute <xref href="/commands/order.xml">ap order</xref> to start integration.
+                            <p>
+                                <b>Example:</b>
+                                <codeblock>ap order file:&lt;filename&gt;</codeblock>
+                            </p>
+                        </li>
+                        <li>
+                            Execute <xref href="/commands/status.xml">ap status</xref> to monitor the node(s) integration.
+                            <p>
+                                <b>Example:</b>
+                                <codeblock>ap status -p &lt;projectName&gt;</codeblock>
+                                <codeblock>ap status -n &lt;nodeName&gt;</codeblock>
+                            </p>
+                        </li>
+                        <li>Monitor the task output until the node(s) goes to state Order Completed.</li>
+                    </ol>
+                </info>
+            </step>
+            <step id="2">
+                <cmd>Download Site Installation File (Optional)</cmd>
+                <info>
+                    This step is only required for LMT Integration.
+                    <ol>
+                        <li>
+                            Execute <xref href="/commands/download.xml">ap download</xref> for each node to download
+                            the Site Installation File (CCF for Pico Radio Node) to the users desktop.
+                            <p>
+                                <b>Example:</b>
+                                <codeblock>ap download -o -n &lt;nodeName&gt;</codeblock>
+                            </p>
+                        </li>
+                        <li>
+                            The Site Installation File (CCF for Pico Radio Node) is given to the Field Technician with
+                            the credentials for the FIELD_TECHNICIAN user.
+                        </li>
+                    </ol>
+                </info>
+            </step>
+            <step id="3">
+                <cmd>Bind Node (Optional)</cmd>
+                <info>
+                    <p>This step is only required for Zero Touch Late Bind with serial number.</p>
+                    <ol>
+                        <li>Execute <xref href="/commands/bind.xml">ap bind</xref> for each node to bind the node to a serial number.
+                            <p>
+                                <b>Example:</b>
+                                <codeblock>ap bind -n &lt;nodeName&gt; -s &lt;serialnumber&gt;</codeblock>
+                            </p>
+                        </li>
+                    </ol>
+                </info>
+            </step>
+            <step id="4">
+                <cmd>Switch on Node</cmd>
+                <info>
+                    <p>This step is executed on site by the Field Technician and is not applicable for virtual nodes.</p>
+                    <p>Switch on power at the node(s) being integrated.</p>
+                    <p>
+                        <b>Note:</b> Dependent on
+                        <xref href="/overview/apconcepts.xml#IntegrationProcedure">Integration Procedure</xref>
+                        additional on-site activities may be required.
+                    </p>
+                </info>
+            </step>
+            <step id="5">
+                <cmd>Monitor Integration</cmd>
+                <info>
+                    <ol>
+                        <li>
+                            Execute <xref href="/commands/status.xml">ap status</xref> command to monitor the node(s) integration.
+                            <p>
+                                <b>Example:</b>
+                                <codeblock>ap status -n &lt;nodeName&gt;</codeblock>
+                            </p>
+                        </li>
+                        <li>Monitor the task output until Integration Completed task is shown.</li>
+                    </ol>
+                </info>
+            </step>
+            <step id="6">
+                <cmd>Remove Node Auto Provisioning Data</cmd>
+                <info>
+                    <p>
+                        Execute <xref href="/commands/delete.xml">ap delete</xref>
+                        command to remove the node(s) Auto Provisioning data.
+                    </p>
+                    <p>
+                        <b>Example:</b>
+                        <codeblock>ap delete -n &lt;nodeName&gt;</codeblock>
+                    </p>
+                    <p>
+                        <b>Note:</b>
+                        Removing the node Auto Provisioning data does not affect the ENM Network Element if the state is
+                        Integration Completed or Integration Completed with Warnings.
+                    </p>
+                </info>
+            </step>
+        </steps>
+
+        <result>
+            <p>The node(s) is integrated in ENM with the user-defined software and configuration.</p>
+        </result>
+    </taskbody>
+</task>

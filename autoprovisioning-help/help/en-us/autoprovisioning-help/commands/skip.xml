@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<concept id="AP-CLI-Command-Skip">
+    <title>ap skip</title>
+    <conbody>
+       <section>
+            <title>Syntax</title>
+            <p><image href="/resources/images/commands/cli.png" /> <b>Syntax to skip an artifact import</b></p>
+            <codeblock>
+                ap skip -n &lt;nodeName&gt;
+            </codeblock>
+        </section>
+
+        <section>
+            <title>Description</title>
+            <p>
+                Skip allows a user to bypass a failed configuration file and to continue an Auto Provisioning activity if it has been suspended due to import configurations failure.
+            </p>
+            <p><b>Warning: </b>Executing skip can result in subsequent import configurations job(s) failure, or node integration completed without fully expected configuration.
+               It is the operator's responsibility to check which configuration can be skipped and to ensure that the operation causes no harm.</p>
+            <p>For more information on skip, see <xref href="/overview/apoperations.xml#Skip" type="concept">Operations, Skip</xref></p>
+        </section>
+
+        <section>
+        <title>Examples</title>
+            <sectiondiv>
+                    <p><image href="/resources/images/commands/cli.png" /> <b>Skip a configuration import during node integration</b></p>
+                    <codeblock>
+                        ap skip -n Node01
+                    </codeblock>
+                    <p><b>Response</b></p>
+                    <p><pre>Initiated. Run 'ap status -n Node01' for progress</pre></p>
+            </sectiondiv>
+        </section>
+    </conbody>
+</concept>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<concept id="AP-Overview-HardwareReplace">
+    <title>Replace a Node Overview</title>
+    <conbody>
+        <section>
+            <p>Auto Provisioning (AP) provides an automated task based workflow that supports replacing a nodes hardware. It can be used when replacing a nodes for equivalent hardware. It configures the replacement node using a backup of the original node.</p>
+            <p>This diagram gives a high level overview of the roles involved and some of the tasks that are automated by AP when replacing a node.</p>
+            <p><image href="/resources/images/common/AP_Hardware_Replace_Overview.png" alt="Hardware Replace Overview"  height="100px" width="100px"/></p>
+        </section>
+        <section>
+            <p>AP Node Replace is executed by adding a pre-created Auto Provisioning project file to ENM through ENM CLI or the Auto Provisioning GUI.</p>
+            <p>
+                The following tutorials describe how to prepare an AP project file:
+                    <ul>
+                        <li><xref href="/prerequisites/standard_project_file_tutorial.xml">Prepare a Standard Project File</xref></li>
+                    </ul>
+                The following tutorials describe how to replace a node to ENM using AP:
+                <ul>
+                    <li><xref href="/tutorials/hardwarereplaceGUI.xml" type="concept"> Perform Hardware Replace using Auto Provisioning GUI</xref>.</li>
+                    <li><xref href="/tutorials/hardwarereplaceCLI.xml" type="concept"> Perform Hardware Replace using Auto Provisioning CLI</xref>.</li>
+                </ul>
+            </p>
+        </section>
+        <section>
+        <title>AP Replace Node Flow</title>
+        <p>The following are some of the main tasks that are executed by an Auto Provisioning workflow when when replacing a node in ENM:</p>
+            <ol>
+                <li>Generates node configurations and stores them on a staging area (SMRS/AIWS).</li>
+                <li>Configures node security certificates.</li>
+                <li>Sets node Management State to Maintenance.</li>
+                <li>Waits for a notification to continue*. The following are the different notifications received by ENM for hardware replace:
+                <ul>
+                    <li>Node Up Notification (Pico Radio Node)</li>
+                    <li>Auto Integration Web Server (AIWS) Notification (Zero Touch Baseband Radio Node or Controller 6610)</li>
+                    <li>ENM Operator executes resume (LMT Baseband Radio Node or Controller 6610)</li>
+                </ul>
+                </li>
+                <li>Initiates synchronization between the node and ENM.</li>
+                <li>Waits for the node synchronization notification.</li>
+                <li>Sets the node Management state to Normal.</li>
+                <li>The node is replaced.</li>
+            </ol>
+                <p>*Additional node status tasks are shown for certain node types, see <xref href="/overview/apconcepts.xml#NodeStatusEntries">Node Status Entries</xref>.</p>
+                <p>
+                 Additional tasks are supported or some of the above tasks may not be applicable,
+                 dependent on <xref href="/prerequisites/supported_nodeinfo.xml">Node Information File</xref> configuration,
+                 <xref href="/overview/apconcepts.xml#IntegrationProcedure">Integration Procedure</xref>
+                 and node type, see <xref href="/overview/supportednodetypes.xml">Supported Node Types</xref>.
+                </p>
+        </section>
+    </conbody>
+</concept>

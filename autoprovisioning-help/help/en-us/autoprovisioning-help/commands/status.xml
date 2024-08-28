@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<concept id="AP-CLI-Command-Status">
+    <title>ap status</title>
+    <conbody>
+        <section>
+            <title>Syntax</title>
+            <p>
+                <image href="/resources/images/commands/cli.png"/>
+                <b>Syntax to display the status of all projects</b>
+            </p>
+            <codeblock>
+                ap status
+            </codeblock>
+            <p>
+                <image href="/resources/images/commands/cli.png"/>
+                <b>Syntax to display the status of a project</b>
+            </p>
+            <codeblock>
+                ap status -p &lt;projectName&gt;
+            </codeblock>
+            <p>
+                <image href="/resources/images/commands/cli.png"/>
+                <b>Syntax to display the status of a node</b>
+            </p>
+            <codeblock>
+                ap status -n &lt;nodeName&gt;
+            </codeblock>
+            <p>
+                <image href="/resources/images/commands/cli.png"/>
+                <b>Syntax to display the status of a deployment</b>
+            </p>
+            <codeblock>
+                ap status -d &lt;deploymentName&gt;
+            </codeblock>
+
+
+        </section>
+
+        <section>
+            <title>Description</title>
+            <p>
+                The <i>ap status</i> command is used to display the current status of all projects,
+                individual projects, individual nodes or individual deployments.
+            </p>
+
+            <p>
+                The following options are available:
+                <ul>
+                    <li>Status for all projects is requested using
+                        <i>ap status</i> command with no parameters.
+                    </li>
+                    <li>Status for an individual project is requested using the <i>ap status</i> command with the
+                        <i>-p</i>
+                        parameter.
+                    </li>
+                    <li>Status for an individual node is requested using the <i>ap status</i> command with the
+                        <i>-n</i>
+                        parameter.
+                    </li>
+                    <li>Status for an individual deployment is requested using the <i>ap status</i> command with the
+                        <i>-d</i>
+                        parameter.
+                    </li>
+                </ul>
+            </p>
+            <p>For more information on status see <xref href="/overview/apoperations.xml#Status" type="concept">Operations, Status</xref></p>
+
+        </section>
+        <section>
+            <title>Examples</title>
+            <sectiondiv>
+                <p>
+                    <image href="/resources/images/commands/cli.png"/>
+                    <b>Display the status of a project</b>
+                </p>
+                <codeblock>
+                    ap status -p Project01
+                </codeblock>
+                <p>
+                    <b>Response</b>
+                </p>
+                <p>This command displays the following information for each project</p>
+                <ul>
+                    <li>
+                        <b>Project Name</b>
+                    </li>
+                    <li>
+                        <b>Node Quantity:</b> Total number of nodes in project.
+                    </li>
+                    <li>
+                        <b>In Progress:</b> Number of nodes currently executing AP activities.
+                    </li>
+                    <li>
+                        <b>Suspended:</b> Number of nodes that have its AP activity suspended and are waiting for input to proceed.
+                    </li>
+                    <li>
+                        <b>Successful:</b> Number of nodes successfully completed AP activities.
+                    </li>
+                    <li>
+                        <b>Failed:</b> Number of nodes that failed to complete an AP activity.
+                    </li>
+                    <li>
+                        <b>Cancelled:</b> Number of nodes that were cancelled.
+                    </li>
+                    <li>
+                        <b>An additional table showing the status for each node in the project.
+                        </b>
+                    </li>
+                </ul>
+            </sectiondiv>
+            <image href="/resources/images/commands/hr.png"/>
+            <sectiondiv>
+                <p>
+                    <image href="/resources/images/commands/cli.png"/>
+                    <b>Display the status of a node</b>
+                </p>
+                <codeblock>
+                    ap status -n Node01
+                </codeblock>
+                <p>
+                    <b>Response</b>
+                </p>
+                <p>This command displays the following information for the specified node.</p>
+                <ul>
+                    <li>
+                        <b>Node Name</b>
+                    </li>
+                    <li>
+                        <b>Project Name</b>
+                    </li>
+                    <li>
+                        <b>State</b>
+                    </li>
+                    <li>
+                        <b>A table showing the progress for the tasks in the Auto Provisioning workflow.
+                        </b>
+                    </li>
+                </ul>
+            </sectiondiv>
+            <image href="/resources/images/commands/hr.png"/>
+            <sectiondiv>
+                <p>
+                    <image href="/resources/images/commands/cli.png"/>
+                    <b>Display the status of a deployment</b>
+                </p>
+                <codeblock>
+                    ap status -d SouthEast
+                </codeblock>
+                <p>
+                    <b>Response</b>
+                </p>
+                <p>This command displays the following information for each deployment:</p>
+                <ul>
+                    <li>
+                        <b>Deployment Name</b>
+                    </li>
+                    <li>
+                        <b>Node Quantity:</b> Total number of nodes in deployment.
+                    </li>
+                    <li>
+                        <b>In Progress:</b> Number of nodes currently executing AP activities.
+                    </li>
+                    <li>
+                        <b>Suspended:</b> Number of nodes that have its AP activity suspended and are waiting for input to proceed.
+                    </li>
+                    <li>
+                        <b>Successful:</b> Number of nodes successfully completed AP activities.
+                    </li>
+                    <li>
+                        <b>Failed:</b> Number of nodes that failed to complete an AP activity.
+                    </li>
+                    <li>
+                        <b>Cancelled:</b> Number of nodes that were cancelled.
+                    </li>
+                    <li>
+                        <b>A table showing the status for each node in the deployment.
+                        </b>
+
+                    </li>
+                </ul>
+            </sectiondiv>
+        </section>
+    </conbody>
+</concept>

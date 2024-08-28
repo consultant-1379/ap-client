@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<task id="AP-Expansion-BasebandRadioNode-ConfigureAndIntegrate-Tutorial-Cell-Centric">
+    <title>Configure and expand Baseband Radio Node(s)</title>
+    <taskbody>
+        <prereq>
+            <p>
+                <ul>
+                    <li>The node type being expanded is a Baseband Radio Node.</li>
+                    <li>You have Autoprovisioning_Operator role or higher.</li>
+                    <li>Be familiar with <xref href="/overview/expansion_flow.xml">Expand a Node Overview</xref>.</li>
+                    <li>The node that is being expanded is synchronized with ENM.</li>
+                    <li>The required Upgrade Package for the version of software installed on the node is available in SHM
+                        see <xref href="#help/app/shm/topic/tutorials/softwareadmin/managePackages" scope="external">Manage Software Packages</xref>.
+                    </li>
+                    <li>Desktop CSV or XLSX editor software, for example Excel.</li>
+                </ul>
+            </p>
+            <b>Expansion Node Health Check (NHC)</b>
+            <p>
+                If a Health Check Profile is referenced as part of an Expansion Project a Health Check Profile must be created before Node Expansion,
+                see <xref href="#help/app/nhc/topic/tutorials/createHealthCheckProfile" scope="external">Create Health Check Profile for eNodeB Baseband Radio Node Type</xref>.
+                For more information on Health Check see <xref href="/overview/apconcepts.xml#HealthCheck">Concepts, HealthCheck</xref>.
+            </p>
+            <p>
+                Additional NHC privileges are required to view the health check reports.
+                See <xref href="#help/app/nhc/topic/prerequisites" scope="external">NHC Online Help</xref> for more information.
+            </p>
+            <p conref="../../configuration-generator/enm/autoprovisioningexpansion.xml#prereq_BuildProfile"/>
+        </prereq>
+        <context>
+            <p conref="../../configuration-generator/enm/autoprovisioningexpansion.xml#context_BuildProfile"/>
+        </context>
+        <steps conref="../../configuration-generator/enm/autoprovisioningexpansion.xml#steps_BuildProfile">
+            <step id="launch_enm">
+                <cmd>Launch AP</cmd>
+                <info>
+                    <ol>
+                        <li>Launch <xref href="#autoprovisioning" scope="external">Auto Provisioning (AP)</xref>.</li>
+                    </ol>
+                </info>
+            </step>
+        </steps>
+        <result>
+            <p>The Baseband Radio Node(s) automatic expansion has started.</p>
+            <p>See additional steps <xref href="/tutorials/expansionGUI.xml#2">Trigger Expansion</xref></p>
+        </result>
+    </taskbody>
+</task>

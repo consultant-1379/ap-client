@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<task id="AP-PrepareStandardProject-Tutorial">
+    <title>
+        Prepare a Standard Project for Auto Provisioning
+    </title>
+    <taskbody>
+        <context>
+            <p>
+                This workflow describes how to prepare a project file for Auto Provisioning.
+                A project is modeled by a zip file. The file contains the configurations required by AP to execute Auto Provisioning usecases.
+                An Auto Provisioning project can contain node configurations for all AP supported node types and use cases.
+                Below are the examples of the standard project file structure for Node Integration with two nodes,
+                Expansion with two nodes, Hardware replace with one node and Migration with one node.
+            </p>
+            <p>
+                Note: Project zip file should strictly follow the naming convention for site installation artifact file as "SiteInstallation.xml".
+            </p>
+            <codeblock>
+                [standard-project.zip] - Node integration - 2 nodes
+                > projectInfo.xml
+                > Node01 / nodeInfo.xml
+                > Node01 / SiteBasic.xml
+                > Node01 / SiteEquipment.xml
+                > Node01 / SiteInstallation.xml
+                > Node01 / BulkCm_RN.xml
+                > Node01 / BulkCm_TN.xml
+                > Node02 / nodeInfo.xml
+                > Node02 / SiteBasic.xml
+                > Node02 / SiteEquipment.xml
+                > Node02 / SiteInstallation.xml
+                > Node02 / Netconf_RN.xml
+                > Node02 / Netconf_TN.xml
+            </codeblock>
+            <codeblock>
+                [standard-project.zip] - Expansion - 2 nodes
+                > projectInfo.xml
+                > Node01 / nodeInfo.xml
+                > Node01 / BulkCm_RN.xml
+                > Node01 / BulkCm_TN.xml
+                > Node02 / nodeInfo.xml
+                > Node02 / Netconf_RN.xml
+                > Node02 / Netconf_TN.xml
+            </codeblock>
+            <codeblock>
+                [standard-project.zip] - Hardware replace - 1 node
+                > projectInfo.xml
+                > Node01 / nodeInfo.xml
+                > Node01 / SiteInstallation.xml
+            </codeblock>
+            <codeblock>
+                [standard-project.zip] - Node migration - 1 node
+                > projectInfo.xml
+                > Node01 / nodeInfo.xml
+                > Node01 / SiteBasic.xml
+                > Node01 / SiteEquipment.xml
+                > Node01 / SiteInstallation.xml
+                > Node01 / Netconf_RN.xml
+                > Node01 / Netconf_TN.xml
+            </codeblock>
+
+            <p>
+                The <xref href="/commands/download.xml" type="concept"> <i>ap download</i> </xref>
+                command can be used to download a sample standard project with projectInfo and nodeInfo schemas.
+            </p>
+            <p>
+                <b>Steps</b>
+                <ol>
+                    <li>
+                        <xref href="#1">Create a Project Information File </xref>
+                    </li>
+                    <li>
+                        <xref href="#2">Create Node Folders with Node Info Files</xref>
+                    </li>
+                    <li>
+                        <xref href="#3">Create Node Configurations</xref>
+                    </li>
+                    <li>
+                        <xref href="#4">Add License Key File (Optional)</xref>
+                    </li>
+                    <li>
+                        <xref href="#5">Add Mandatory License Keys (Optional)</xref>
+                    </li>
+                    <li>
+                        <xref href="#6">Add Automatic License Request File (Optional)</xref>
+                    </li>
+                    <li>
+                        <xref href="#7">Create the Project Zip File</xref>
+                    </li>
+                </ol>
+            </p>
+        </context>
+        <steps>
+            <step id="1">
+                <cmd>Create a Project Information File</cmd>
+                <info>
+                    <ol>
+                        <li>Create an empty project folder.</li>
+                        <li>
+                            Create a <xref href="/prerequisites/projectinfo.xml">Project Information File</xref> within the empty project folder.
+                            <ul>
+                                <li>
+                                    Must be named <b>projectInfo.xml</b>.
+                                </li>
+                                <li>
+                                    Must be in adherance to projectInfo schema.
+                                </li>
+                            </ul>
+                        </li>
+                    </ol>
+                </info>
+            </step>
+            <step id="2">
+                <cmd>Create Node Folders with Node Info Files</cmd>
+                <info>
+                    <ol>
+                        <li>Create a node folder for each node within the project folder.
+                            <ul>
+                                <li>Each node folder must be at the same level as the projectInfo.xml file.</li>
+                                <li>The node folders should match the name of the node.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Create a
+                            <xref href="/prerequisites/supported_nodeinfo.xml">Node Information File</xref> in each node folder.
+                            <ul>
+                                <li>
+                                    A Node Information File is required for each node in the project.
+                                </li>
+                                <li>
+                                    Must be named <b>nodeInfo.xml</b>.
+                                </li>
+                                <li>
+                                    Must be in adherance to nodeInfo schema.
+                                </li>
+                            </ul>
+                        </li>
+                    </ol>
+                </info>
+            </step>
+            <step id="3">
+                <cmd>Create Node Configurations</cmd>
+                <info>
+                    <p>
+                        It is optional for Hardware Replace.
+                    </p>
+                    <p>
+                        <ol>
+                            <li>Create node configurations for each node in the project.
+                                <ul>
+                                    <li>
+                                        For a listing of configurations for supported node types
+                                         see <xref href="/prerequisites/supported_configurations.xml">Supported Configurations</xref>.
+                                    </li>
+                                    <li>All configurations that are referenced in the nodeInfo.xml should have a configuration file
+                                     created in the node folder.*</li>
+                                </ul>
+                            </li>
+                            <li>Copy the node configurations to each node folder(s).</li>
+                        </ol>
+                            * Baseline files can be stored on the scripting cluster, see <xref href="/overview/apconcepts.xml#Baselines">
+                            Concepts, Baselines</xref>
+                    </p>
+                </info>
+            </step>
+            <step id="4">
+                <cmd>Add License Key File (Optional)</cmd>
+                <info>
+                    <p>
+                        Not applicable for Hardware Replace or Migration.
+                    </p>
+                    <p>
+                        Copy the License Key File (LKF) zip file to each node folder(s).
+                            <ul>
+                                <li>The <i>licenseFile</i> tag must be included in the nodeInfo.xml and must match the LKF file name.</li>
+                            </ul>
+                    </p>
+                </info>
+            </step>
+            <step id="5">
+                <cmd>Add Mandatory License Keys (Optional)</cmd>
+                <info>
+                    <p>
+                    Not applicable for Hardware Replace or Migration.
+                    </p>
+                    <p>
+                    <ol>
+                        <li>
+                           Create a Mandatory License Key file for each node in the project.
+                            <ul>
+                                <li>
+                                    The <i>mandatoryLicenseKeys</i> tag must be included in the nodeInfo.xml and
+                                     the Mandatory License Key file must adhere to format described in <xref href="/overview/apconcepts.xml#MandatoryLicenseKeys">
+                                    Concepts, Mandatory License Keys</xref>.
+                                </li>
+                            </ul>
+                        </li>
+                        <li>Add the Mandatory License Key file to each node folder(s).</li>
+                    </ol>
+                    </p>
+                </info>
+            </step>
+            <step id="6">
+                <cmd>Add Automatic License Request File (Optional)</cmd>
+                <info>
+                    <p>
+                    Applicable for Baseband Radio Node Integration.
+                    </p>
+                    <p>
+                    <ol>
+                        <li>
+                           Create an Automatic License Request file for each node in the project.
+                            <ul>
+                                <li>
+                                    The <i>automaticLicenseRequest</i> tag must be included in the nodeInfo.xml and
+                                     the Automatic License Request file must adhere to format described in <xref href="/overview/apconcepts.xml#RequestLicense">
+                                    Concepts, Request License Key Files</xref>.
+                                </li>
+                            </ul>
+                        </li>
+                        <li>Add the Automatic License Request file to each node folder(s).</li>
+                    </ol>
+                    </p>
+                </info>
+            </step>
+            <step id="7">
+                <cmd>Create the Project Zip File</cmd>
+                <info>
+                    <p>
+                        <ol>
+                            <li>Select all the contents of the project folder.
+                            </li>
+                            <li>Create new zip file.
+                                <ul>
+                                    <li>
+                                        Project Information File and all node folders must be in the root folder of the project zip.
+                                    </li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </p>
+                </info>
+            </step>
+        </steps>
+        <result>
+            <p>Auto Provisioning standard project zip file is created.</p>
+        </result>
+    </taskbody>
+</task>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<concept id="AP-Supported-NodeInformationFiles">
+    <title>Supported Node Information Files</title>
+    <conbody>
+        <section>
+        <title>Description</title>
+        <p>
+            The Node Information File (nodeInfo.xml) contains the configuration information of the node. It's content also configures what tasks will be executed by Auto Provisioning
+            and what node configurations are applied to the node.
+        </p>
+        <p>
+            The nodeInfo.xml is required to be stored in a node folder within an Auto Provisioning project zip file.
+        </p>
+        <p>
+            Sample nodeInfo.xml are included as part of AP sample projects which can be downloaded from ENM CLI see <xref href="/commands/download.xml">ap download</xref>.
+        </p>
+        </section>
+
+        <section>
+        <title>File Content</title>
+            <p>
+                The following defines the configuration supported per Auto Provisioning use-case and node type:
+            </p>
+            <ul>
+                <li>Integrate Node
+                <ul>
+                    <li><xref href="duradionodeinfo.xml" type="concept">DU Radio Node</xref></li>
+                    <li><xref href="basebandnodeinfo.xml" type="concept">Baseband Radio Node</xref></li>
+                    <li><xref href="controller6610_nodeinfo.xml" type="concept">Controller 6610 Node</xref></li>
+                    <li><xref href="routernodeinfo.xml" type="concept">Router Node</xref></li>
+                    <li><xref href="fronthaul6000_nodeinfo.xml" type="concept">Fronthaul-6000 Node</xref></li>
+                    <li><xref href="msrbsv1_nodeinfo.xml" type="concept">Pico Radio Node</xref></li>
+                    <li><xref href="VNF_nodeinfo.xml" type="concept">VNF Node</xref></li>
+                </ul>
+                </li>
+                <li>Replace Node
+                    <ul>
+                        <li><xref href="baseband_replace_nodeinfo.xml" type="concept">Baseband Radio Node</xref></li>
+                        <li><xref href="msrbsv1_replace_nodeinfo.xml" type="concept">Pico Radio Node</xref></li>
+                        <li><xref href="controller6610_replace_nodeinfo.xml" type="concept">Controller 6610</xref></li>
+                    </ul>
+                </li>
+                <li>Expand Node
+                    <ul>
+                        <li><xref href="expansion_nodeinfo.xml" type="concept">Baseband Radio Node</xref></li>
+                        <li><xref href="controller6610_expansion_nodeinfo.xml" type="concept">Controller 6610 Node</xref></li>
+                    </ul>
+               </li>
+            <li>Migrate Node
+                    <ul>
+                        <li><xref href="migrate_nodeinfo.xml" type="concept">Baseband Radio Node</xref></li>
+                    </ul>
+               </li>
+            </ul>
+        </section>
+    </conbody>
+</concept>

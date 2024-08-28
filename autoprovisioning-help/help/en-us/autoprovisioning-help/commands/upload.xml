@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<concept id="AP-CLI-Command-Upload">
+    <title>ap upload</title>
+    <conbody>
+
+        <section>
+            <title>Syntax</title>
+            <p><image href="/resources/images/commands/cli.png" /> <b>Syntax to upload a node artifact</b></p>
+            <codeblock>
+                ap upload -n &lt;nodeName&gt; file:&lt;fileName&gt;
+            </codeblock>
+        </section>
+
+        <section>
+            <title>Description</title>
+            <p>
+                The <i>ap upload</i> command is used to replace an existing configuration file for a node. The configuration file has been added to the ENM CLI browser workspace.
+            </p>
+            <p>
+                The commands <i>ap upload</i> and <i>ap resume</i> can be used together. For example, if a configuration import fails because of an invalid configuration file,
+                a new configuration file can be uploaded and the node integration can be resumed.
+            </p>
+            <p>For more information on upload see <xref href="/overview/apoperations.xml#Upload" type="concept">Operations, Upload</xref></p>
+        </section>
+        <section>
+        <title>Examples</title>
+        <sectiondiv>
+                    <p><image href="/resources/images/commands/cli.png" /> <b>Upload a node artifact</b></p>
+                    <codeblock>
+                        ap upload -n Node01 file:transport.xml
+                    </codeblock>
+                    <p><b>Response</b></p>
+                    <p><pre>Successful</pre></p>
+        </sectiondiv>
+        </section>
+    </conbody>
+</concept>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<concept id="AP-UserInterface-Monitor">
+    <title>Auto Provisioning GUI</title>
+    <conbody>
+        <section>
+            <p><xref href="#topology">Topology Pane</xref></p>
+            <p><xref href="#status">Status Tab</xref></p>
+            <p><xref href="#properties">Properties Tab</xref></p>
+            <p><xref href="#project_actions">Project Actions</xref></p>
+            <p><xref href="#node_actions">Node Actions</xref></p>
+            <p><xref href="#validation_errors">Validation Errors</xref></p>
+        </section>
+
+        <section id="topology">
+            <title>Topology Pane</title>
+            <p>This pane is used to view the project(s) and node(s) created by Auto Provisioning (AP).</p>
+            <p>The <b>Import</b> button is used to order an integration, migration, expansion or hardware replace for a project file, or a node.</p>
+            <p>Select a valid Project File from local file system to import it.</p>
+            <p>The <b>Add Node</b> button allows a user to create a single or multiple node(s) using a profile. For more details see <xref href="add_node.xml">here</xref>.</p>
+            <p>The <b>Expand Node</b> button allows a user to expand a single or multiple node(s) using a profile. For more details see <xref href="expand_node.xml">here</xref>.</p>
+            <p>When there is no selection in the topology pane <b>Add Node</b> or <b>Expand Node</b> allows a user create a new project and profile.</p>
+            <p>Auto Provisioning supports one <b>Integration Profile</b> and one <b>Expansion Profile</b> per project.</p>
+            <p>Profiles already added to a project can be viewed in the overall properties tab displayed when the top level Projects folder is selected in the Auto Provisioning topology.</p>
+            <p>The <b>Search</b> box is used to locate a project or node in the Topology Pane.</p>
+            <p><image href="../resources/images/gui/Topology.png" alt="Topology pane"/></p>
+            <p>Expand a project to view the node(s) within the project.</p>
+            <p><b>Note:</b> Enable the auto refresh by selecting "Projects" to view the latest list of project(s) and node(s).</p>
+        </section>
+
+        <section id="status">
+            <title>Status Tab</title>
+            <p>The <b>Status</b> tab is used to view the project or node status.</p>
+            <p>Double clicking on a project or node within the table in the <b>Status</b> tab allows a user to view the project or node status.</p>
+            <p><image href="../resources/images/gui/project_status.PNG" alt="Project Status Tab"/></p>
+            <p>Select the Projects folder at the top of the Auto Provisioning topology tree and select the status tab the view an overview of all projects status.</p>
+            <p><image href="../resources/images/gui/project__status.png" alt="Project Status Tab"/></p>
+            <p><b>Note:</b> The status tab automatically updates if a change is detected on the selected project or node.</p>
+        </section>
+
+        <section id="properties">
+            <title>Properties Tab</title>
+            <p>The <b>Properties</b> tab is used to view the project or node properties.</p>
+            <p>Double clicking on a project or node within the table in the <b>Properties</b> tab allows a user to view the project or node properties.</p>
+            <p><image href="../resources/images/gui/project_properties.PNG" alt="Project Properties Tab"/></p>
+            <p>Select the Projects folder at the top of the Auto Provisioning topology tree and select the Properties tab the view an overview of all projects properties.</p>
+            <p><image href="../resources/images/gui/project__properties.png" alt="Project Properties Tab"/></p>
+        </section>
+
+        <section id="project_actions">
+            <title>Project Actions</title>
+            <p>
+                When a Project is selected in the <b>Topology Pane</b>, the <b>Import</b>, <b>Add Node</b>, <b>Expand Node</b> and <b>Delete</b> actions are enabled.
+            </p>
+            <p>The <b>Add Node</b> or <b>Expand Node</b> button when selected in the context of an existing project allows a user to reuse an existing profile
+                associated with that project or add a profile to the selected project. </p>
+            <p>For more details on the <b>Add Node</b> and <b>Expand Node</b> button see the following tutorials:</p>
+            <p>Add Node:
+                <ul>
+                    <li><xref href="/tutorials/addnode_radionode_node_centric.xml">
+                        Configure and Auto Integrate Baseband Radio Node(s) with a node centric CIQ</xref></li>
+                    <li><xref href="/tutorials/addnode_radionode_cell_centric.xml">
+                        Configure and Auto Integrate Baseband Radio Node(s) with a cell centric CIQ</xref></li>
+                    <li><xref href="/tutorials/addnode_controller6610_node_centric.xml">
+                        Configure and Auto Integrate Controller 6610 Node(s) with a node centric CIQ</xref></li>
+                </ul>
+            </p>
+            <p>Expand Node:
+                <ul>
+                    <li><xref href="/tutorials/expandnode_radionode.xml">
+                        Configure and perform Baseband Radio Node(s) Expansion</xref></li>
+                </ul>
+            </p>
+            <p>
+                <image href="../resources/images/gui/project_actions.PNG" alt="Project Actions"/>
+            </p>
+            <p>
+                <b>Note:</b> It is also possible to delete multiple projects.
+            </p>
+            <p>
+                <image href="../resources/images/gui/project_actions_multi.png" alt="Project Actions"/>
+            </p>
+        </section>
+
+        <section id="node_actions">
+            <title>Node Actions</title>
+            <p>
+                When a Node is selected in the <b>Topology Pane</b>, actions are enabled depending on state and type, see table below for details.
+            </p>
+            <p>
+                <image href="../resources/images/gui/node_actions.PNG" alt="Node Actions"/>
+            </p>
+            <simpletable frame="all" relcolwidth="1* 3* 1*">
+                <sthead>
+                    <stentry>Action</stentry>
+                    <stentry>Description</stentry>
+                    <stentry>Operation</stentry>
+                </sthead>
+                <strow>
+                    <stentry><b>ZT Bind</b></stentry>
+                    <stentry>Zero Touch Bind, is used to bind a hardware serial number to a node.</stentry>
+                    <stentry><xref href="/overview/apoperations.xml#Bind">Bind</xref></stentry>
+                </strow>
+                <strow>
+                    <stentry><b>LMT Download</b></stentry>
+                    <stentry>Downloads Site Installation File (CCF for Pico).
+                    </stentry>
+                    <stentry><xref href="/overview/apoperations.xml#Download">Download</xref></stentry>
+                </strow>
+                <strow>
+                    <stentry><b>Resume</b></stentry>
+                    <stentry>
+                        Resume allows a user to continue an Auto Provisioning activity if it has been suspended due to failure,
+                        if it is required to wait for an on site activity to be completed or user input is required.
+                    </stentry>
+                    <stentry><xref href="/overview/apoperations.xml#Resume">Resume</xref></stentry>
+                </strow>
+                <strow>
+                    <stentry><b>Skip</b></stentry>
+                    <stentry>
+                        Skip allows a user to bypass a failed configuration file. It allows to continue an Auto Provisioning activity if it has been suspended because of import configurations failure.
+                        Executing skip can result in subsequent import configurations job(s) failure, or node integration completed without the fully expected configuration.
+                    </stentry>
+                    <stentry><xref href="/overview/apoperations.xml#Skip">Skip</xref></stentry>
+                </strow>
+                <strow>
+                    <stentry><b>Cancel</b></stentry>
+                    <stentry>Cancel can be used to cancel an Auto Provisioning activity.
+                        Cancelling expansion can result in the node being restored to a backup if expansion configurations have been applied to the node.</stentry>
+                    <stentry><xref href="/overview/apoperations.xml#Cancel">Cancel</xref></stentry>
+                </strow>
+                <strow>
+                    <stentry><b>Order</b></stentry>
+                    <stentry>Order is used to re-trigger certain workflows that have not been successful.</stentry>
+                    <stentry><xref href="/overview/apoperations.xml#Order">Order</xref></stentry>
+                </strow>
+                <strow>
+                    <stentry><b>Upload</b></stentry>
+                    <stentry>
+                        Upload is used to replace an existing configuration file for a node.
+                        Upload can precede resume to replace an existing configuration file and then resume continues the node integration or expansion.
+                    </stentry>
+                    <stentry><xref href="/overview/apoperations.xml#Upload">Upload</xref></stentry>
+                </strow>
+                <strow>
+                    <stentry><b>Delete</b></stentry>
+                    <stentry>
+                        Delete removes all Auto Provisioning data for a project or node from AP and ENM.
+                        For Node Integration it will remove the network element if the node has never been synchronized with ENM or does not have CM Supervision enabled.
+                    </stentry>
+                    <stentry><xref href="/overview/apoperations.xml#Delete">Delete</xref></stentry>
+                </strow>
+            </simpletable>
+        </section>
+        <section id="validation_errors">
+            <title>Validation Errors</title>
+            <p>The <b>Validation Errors</b> dialog is used to display validation errors found when preparing a project.</p>
+            <p>It provides the user with detailed feedback about the issues they have encountered.</p>
+            <p>The export button <image href="../resources/images/common/export_button.png" alt="Export Button" /> can be used to export the table to a CSV file that is downloaded to the user's desktop.</p>
+            <p><image href="../resources/images/gui/import_project_failed_dialog.PNG" alt="Validation Errors Dialog"/></p>
+        </section>
+    </conbody>
+</concept>

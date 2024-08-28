@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<task id="AP-Migration-GUI-Tutorial">
+    <title>Migrate Node(s) using Auto Provisioning GUI</title>
+    <taskbody>
+        <prereq>
+            <p conref="../prerequisites.xml#MigrationPreqCommon"></p>
+        </prereq>
+
+        <context>
+            <p><b>Objective</b></p>
+            <p>
+                This tutorial describes the steps required to automatically migrate a node(s) to a user-defined
+                software and configuration with a pre-created Auto Provisioning project using Auto Provisioning GUI.
+            </p>
+            <p><b>Steps</b></p>
+            <ol>
+                <li>
+                    <xref href="#1">Start Migration</xref>
+                </li>
+                <li>
+                    <xref href="#2">Download Site Installation File (Optional)</xref>
+                </li>
+                <li>
+                    <xref href="#3">Bind Node (Optional)</xref>
+                </li>
+                <li>
+                    <xref href="#4">Update Hardware and Switch on Node</xref>
+                </li>
+                <li>
+                    <xref href="#5">Monitor Migration</xref>
+                </li>
+                <li>
+                    <xref href="#6">Remove Node Auto Provisioning Data</xref>
+                </li>
+            </ol>
+        </context>
+
+        <steps>
+
+            <step id="1">
+                <cmd>Start Migration</cmd>
+                <info>
+                    <ol>
+                        <li>Launch <xref href="#autoprovisioning" scope="external">Auto Provisioning (AP)</xref>.
+                        </li>
+                        <li>Click
+                            <b>Import</b>
+                            and select your project.
+                        </li>
+                        <li>Verify the node(s) in the project are in state Pre Migration Completed.</li>
+                    </ol>
+                </info>
+            </step>
+
+            <step id="2">
+                <cmd>Download Site Installation File (Optional)</cmd>
+                <info>
+                    <p>This step is only required for LMT Migration.</p>
+                    <ol>
+                        <li>Select the project that contains the node that you are migrating in the Auto Provisioning
+                            topology.
+                        </li>
+                        <li>Double click the node entry in the status tab.</li>
+                        <li>Click <b>LMT Download</b>.</li>
+                        <li>The Site Installation File is given
+                            to the field technician with the credentials for the FIELD_TECHNICIAN user.
+                        </li>
+                    </ol>
+                </info>
+
+            </step>
+            <step id="3">
+                <cmd>Bind Node (Optional)</cmd>
+                <info>
+                    This step is only required for Zero Touch Late Bind with Serial Number.
+                    <p>
+                        <ol>
+                            <li>Select the node within the project that is being migrated.</li>
+                            <li>Click the <b>ZT Bind</b>.
+                            </li>
+                            <li>Input the node serial number.</li>
+                            <li>Click <b>ZT Bind</b>.
+                            </li>
+                        </ol>
+                    </p>
+                </info>
+            </step>
+
+            <step id="4">
+                <cmd>Update Hardware Switch on Node</cmd>
+                <info>
+                    This step is executed on site by the Field Technician.
+                    <p>
+                        <ol>
+                            <li>Update Node Hardware.</li>
+                            <li>Switch on power for new hardware.</li>
+                        </ol>
+                    </p>
+                    <p>
+                        <b>Note:</b> Dependent on
+                        <xref href="/overview/apconcepts.xml#IntegrationProcedure">Integration Procedure</xref>
+                        additional on-site activities may be required.
+                    </p>
+                </info>
+            </step>
+
+            <step id="5">
+                <cmd>Monitor Migration</cmd>
+                <info>
+                    <ol>
+                        <li>Expand the project folder in the Auto Provisioning topology.
+                        </li>
+                        <li>Select each node that is being migrated.
+                        </li>
+                        <li>Monitor the task output until Migration Completed task is shown in the status tab.
+                        </li>
+                    </ol>
+                </info>
+            </step>
+            <step id="6">
+                <cmd>Remove Node Auto Provisioning Data</cmd>
+                <info>
+                    <ol>
+                        <li>
+                            Select the Auto Provisioning node(s) that was migrated in the Auto Provisioning topology.
+                        </li>
+                        <li>Click <b>Delete</b>.</li>
+                        <li>Confirm deletion.</li>
+                    </ol>
+                    <p>
+                        <b>Note:</b>
+                        Removing the node Auto Provisioning data does not affect the ENM Network Element.
+                    </p>
+                </info>
+            </step>
+
+        </steps>
+        <result>
+            <p>The node is migrated in ENM with the user-defined software and configuration.</p>
+        </result>
+    </taskbody>
+</task>

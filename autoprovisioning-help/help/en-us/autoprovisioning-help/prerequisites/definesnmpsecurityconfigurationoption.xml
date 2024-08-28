@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<task id="AP-DefineSNMPSecurityConfigurationOption-Tutorial">
+     <title>Define SNMP Security Configuration Options</title>
+     <taskbody>
+          <prereq>
+               <p>You must have CLI access and one of the following roles:
+                    <ul>
+                         <li>Configuration_Parameter_Application_Administrator</li>
+                         <li>Custom role with the capability: "Resource: config_app_param, Operation: update"</li>
+                    </ul>
+                   For user and role configuration in ENM, see User Management in the ENM Identity and Access Management System Administrator Guide , 2/1543-AOM 901 151-1.
+               </p>
+          </prereq>
+          <context>
+               <p>Use <xref href="#help/app/cliapp/topic/admin" scope="external">admin</xref> CLI commands to configure the security level of the SNMP communication channel between ENM and the Baseband RadioNode Network Elements.</p>
+               <p>There are two ENM level parameter settings used to automate the SNMP configurations with the wanted values when adding the node to the network.</p>
+               <p>1. NODE_SNMP_SECURITY
+                   <ul>
+                        <li>Used to auto-configure OAM IP Address change and FM SNMP communication channels.</li>
+                   </ul>
+               </p>
+               <p>2. NODE_SNMP_INIT_SECURITY
+                   <ul>
+                        <li>
+                        Used to auto-configure the snmp channel for nodeup communication during initial stages of autointegration process.
+                         Once the nodeup hello message is successfully consumed by ENM,
+                         these SNMP parameter settings are no longer used for this node.
+                         See <xref href="/overview/apconcepts.xml#NodeUpNotification">Concepts, Node Up Notification</xref>.
+                        </li>
+                   </ul>
+               </p>
+               <p>All Baseband RadioNodes being added to the network using Auto Provisioning will have their SNMP configured as per the above parameters. If the parameters are modified then all subsequent Baseband RadioNode integrations will take on the new parameter values.
+               </p>
+               <p>For details of these parameters, see ENM Parameter List, 1/190 59-AOM 901 151.
+               </p>
+                    <b>Steps</b>
+                    <ol>
+                         <li>
+                              <xref href="#1">View Application Parameter</xref>
+                         </li>
+                         <li>
+                              <xref href="#2">Modify Application Parameter</xref>
+                         </li>
+                    </ol>
+          </context>
+
+          <steps>
+                <step id="1">
+                <cmd>View Application Parameter</cmd>
+                <info>
+                    <ol>
+                        <li>Launch <xref href="#cliapp" scope="external">Command Line Interface (CLI)</xref>.</li>
+                        <li>Execute <xref href="#help/app/cliapp/topic/syntax_admin/parameter_view" scope="external">admin parameter view</xref> command:
+                        <p>
+                        <b>Command Example 1: NODE_SNMP_SECURITY</b>
+                        </p>
+                        <p>
+                           <codeblock>admin parameter view --name NODE_SNMP_SECURITY</codeblock>
+                        </p>
+                        <p>
+                        <b>Command Result 1:</b>
+                        </p>
+                        <p>
+                           <codeblock>NODE_SNMP_SECURITY: {securityLevel:NO_AUTH_NO_PRIV,authProtocol:NONE,authPassword:,privProtocol:NONE,privPassword:,user:defaultsnmpuser}</codeblock>
+                        </p>
+                        <p><b>Command Example 2: NODE_SNMP_INIT_SECURITY</b></p>
+                        <p>
+                           <codeblock>admin parameter view --name NODE_SNMP_INIT_SECURITY</codeblock>
+                        </p>
+                        <p>
+                        <b>Command Result 2:</b>
+                        </p>
+                        <p>
+                           <codeblock>NODE_SNMP_INIT_SECURITY: {securityLevel:NO_AUTH_NO_PRIV,authProtocol:NONE,authPassword:,privProtocol:NONE,privPassword:,user:defaultsnmpuser}</codeblock>
+                        </p>
+                        </li>
+                    </ol>
+                </info>
+            </step>
+               <step id="2">
+                    <cmd>Modify Application Parameter</cmd>
+                    <info>
+                    <ol>
+                    <li>Launch <xref href="#cliapp" scope="external">Command Line Interface (CLI)</xref>.</li>
+                    <li>Execute <xref href="#help/app/cliapp/topic/syntax_admin/parameter_modify" scope="external">admin parameter modify</xref> command:
+                        <p>
+                        <b>Command Example 1: NODE_SNMP_SECURITY</b>
+                        </p>
+                        <p>
+                           <codeblock>admin parameter modify --name NODE_SNMP_SECURITY --value {securityLevel:AUTH_PRIV,authProtocol:SHA1,authPassword:onlytest,privProtocol:AES128,privPassword:nodeSnmpPassword,user:nodeSnmpUser}
+                           </codeblock>
+                        </p>
+                        <p>
+                        <b>Command Result 1:</b>
+                        </p>
+                        <p>
+                           <codeblock>Parameter NODE_SNMP_SECURITY updated successfully.
+                           </codeblock>
+                        </p>
+                        <p><b>Command Example 2: NODE_SNMP_INIT_SECURITY</b></p>
+                        <p>
+                           <codeblock>admin parameter modify --name NODE_SNMP_INIT_SECURITY --value {securityLevel:AUTH_PRIV,authProtocol:SHA1,authPassword:onlytest,privProtocol:AES128,privPassword:nodeUpHelloSnmpPassword,user:nodeUpSnmpUser}
+                           </codeblock>
+                        </p>
+                        <p>
+                        <b>Command Result 2:</b>
+                        </p>
+                        <p>
+                           <codeblock>Parameter NODE_SNMP_INIT_SECURITY updated successfully.
+                           </codeblock>
+                        </p>
+                    </li>
+                    </ol>
+                           <ul>
+                            <li><b>NOTE</b>: The following table displays the fields value range of parameters NODE_SNMP_SECURITY and NODE_SNMP_INIT_SECURITY, and the node MOs that are subsequently auto-configured during autointegration.</li>
+                           </ul>
+                           <simpletable>
+                              <sthead>
+                                   <stentry>Field Name</stentry>
+                                   <stentry>Field Value</stentry>
+                                   <stentry>Default Value</stentry>
+                                   <stentry>Configure Node in Integration</stentry>
+                              </sthead>
+                              <strow>
+                                   <stentry>securityLevel</stentry>
+                                   <stentry>
+                                      <ul>
+                                           <li>NO_AUTH_NO_PRIV</li>
+                                      </ul>
+                                      <ul>
+                                           <li>AUTH_NO_PRIV</li>
+                                      </ul>
+                                      <ul>
+                                           <li>AUTH_PRIV</li>
+                                      </ul>
+                                   </stentry>
+                                   <stentry>NO_AUTH_NO_PRIV</stentry>
+                                   <stentry>
+                                      <ul>
+                                           <li>SystemFunctions=1,SysM=1,Snmp=1,SnmpTargetV3=1 snmpSecurityLevel</li>
+                                      </ul>
+                                      <ul>
+                                           <li>SystemFunctions=1,SysM=1,Snmp=1,SnmpTargetV3=ENMFM snmpSecurityLevel</li>
+                                      </ul>
+                                   </stentry>
+                              </strow>
+                              <strow>
+                                   <stentry>authProtocol</stentry>
+                                   <stentry>
+                                      <ul>
+                                          <li>NONE</li>
+                                      </ul>
+                                      <ul>
+                                          <li>MD5</li>
+                                      </ul>
+                                      <ul>
+                                          <li>SHA1</li>
+                                      </ul>
+                                   </stentry>
+                                   <stentry>NONE</stentry>
+                                   <stentry>
+                                      <ul>
+                                           <li>SystemFunctions=1,SysM=1,Snmp=1,SnmpTargetV3=1 authProtocol</li>
+                                      </ul>
+                                      <ul>
+                                           <li>SystemFunctions=1,SysM=1,Snmp=1,SnmpTargetV3=ENMFM authProtocol</li>
+                                      </ul>
+                                   </stentry>
+                              </strow>
+                              <strow>
+                                   <stentry>authPassword</stentry>
+                                   <stentry>String, can not contain space and the character "," can not be used.</stentry>
+                                   <stentry>Empty String</stentry>
+                                   <stentry>
+                                      <ul>
+                                           <li>SystemFunctions=1,SysM=1,Snmp=1,SnmpTargetV3=1 authKey</li>
+                                      </ul>
+                                      <ul>
+                                           <li>SystemFunctions=1,SysM=1,Snmp=1,SnmpTargetV3=ENMFM authKey</li>
+                                      </ul>
+                                      With encrypted value.
+                                   </stentry>
+                              </strow>
+                              <strow>
+                                   <stentry>privProtocol</stentry>
+                                   <stentry>
+                                      <ul>
+                                          <li>NONE</li>
+                                      </ul>
+                                      <ul>
+                                          <li>DES</li>
+                                      </ul>
+                                      <ul>
+                                         <li>AES128</li>
+                                      </ul>
+                                    </stentry>
+                                    <stentry>NONE</stentry>
+                                    <stentry>
+                                      <ul>
+                                           <li>SystemFunctions=1,SysM=1,Snmp=1,SnmpTargetV3=1 privProtocol</li>
+                                      </ul>
+                                      <ul>
+                                           <li>SystemFunctions=1,SysM=1,Snmp=1,SnmpTargetV3=ENMFM privProtocol</li>
+                                      </ul>
+                                   </stentry>
+                              </strow>
+                              <strow>
+                                    <stentry>privPassword</stentry>
+                                    <stentry>String, can not contain space and the character "," can not be used.</stentry>
+                                    <stentry>Empty String</stentry>
+                                    <stentry>
+                                      <ul>
+                                           <li>SystemFunctions=1,SysM=1,Snmp=1,SnmpTargetV3=1 privKey</li>
+                                      </ul>
+                                      <ul>
+                                           <li>SystemFunctions=1,SysM=1,Snmp=1,SnmpTargetV3=ENMFM privKey</li>
+                                      </ul>
+                                      With encrypted value.
+                                   </stentry>
+                              </strow>
+                              <strow>
+                                    <stentry>user</stentry>
+                                    <stentry>String[1..20], can not contain space, the characters "," and ":" can not be used.</stentry>
+                                    <stentry>defaultsnmpuser</stentry>
+                                    <stentry>
+                                      <ul>
+                                           <li>SystemFunctions=1,SysM=1,Snmp=1,SnmpTargetV3=1 user
+                                               <p>- set to 'ECIMUser', when securityLevel is NO_AUTH_NO_PRIV</p>
+                                               <p>- set to 'user' value with a unique hash suffix appended when securityLevel is AUTH_NO_PRIV / AUTH_PRIV, e.g. for user=snmpuser, SnmpTargetV3.user=snmpuser17d0ce32</p>
+                                           </li>
+                                      </ul>
+                                      <ul>
+                                           <li>SystemFunctions=1,SysM=1,Snmp=1,SnmpTargetV3=ENMFM user
+                                               <p>- set to 'user' value</p>
+                                           </li>
+                                      </ul>
+                                   </stentry>
+                              </strow>
+                         </simpletable>
+                    </info>
+               </step>
+          </steps>
+     </taskbody>
+</task>

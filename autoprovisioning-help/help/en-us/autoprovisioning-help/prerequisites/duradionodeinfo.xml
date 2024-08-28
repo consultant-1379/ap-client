@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="utf-8"?>
+<concept id="AP-NodeInfo-DURadioNode-NodeIntegration">
+    <title>Node Information File (DU Radio Node)</title>
+    <conbody>
+        <p>
+            The node information file elements specific to the DU Radio Node are described below:
+        </p>
+        <section id="node_info_sections">
+            <p>
+                The node information file, as defined by <i>nodeInfo.xml</i> file, contains:
+                <ul>
+                    <li>
+                        <xref href="#1">Node Information</xref>
+                    </li>
+                    <li>
+                        <xref href="#2">Auto Integration</xref>
+                    </li>
+                    <li>
+                        <xref href="#3">License</xref>
+                    </li>
+                    <li>
+                        <xref href="#4">Security</xref>
+                    </li>
+                    <li>
+                        <xref href="#5">Location</xref>
+                    </li>
+                    <li>
+                        <xref href="#6">User Credentials</xref>
+                    </li>
+                    <li>
+                        <xref href="#7">Supervision</xref>
+                    </li>
+                    <li>
+                        <xref href="#8">Artifacts</xref>
+                    </li>
+                    <li>
+                        <xref href="#9">DHCP</xref>
+                    </li>
+                </ul>
+            </p>
+        </section>
+        <section id="node_info_common_attributes">
+            <title id="1">Node Information</title>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Tag</b>
+                    </stentry>
+                    <stentry>
+                        <b>Mandatory</b>
+                    </stentry>
+                    <stentry>
+                        <b>Description</b>
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;name&gt;</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>The logical name of the node, see <xref href="/overview/apconcepts.xml#NodeName">Concepts, Node Name</xref>.
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;deployment&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>The name of the deployment associated with the node.</stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;nodeIdentifier&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>The supported OSS Model Identity (OMI), see <xref href="/overview/apconcepts.xml#NodeIdentifier">Concepts, Node Identifier</xref>.
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;ipAddress&gt;</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>The IP Address of the node (IPv4 or IPv6 format), see <xref href="/overview/apconcepts.xml#DynamicIPAddress">Concepts, Dynamic IP Address</xref>.
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;nodeType&gt;</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>The node type, see <xref href="/overview/supportednodetypes.xml" type="concept">Supported Node Types</xref></stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;userLabel&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>This value populates the user label attribute of the Network Element MO. The label must not exceed 90 characters.</stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;hardwareSerialNumber&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>The hardware serial number of the node. (If provided it is bound to the node when the node is ordered, generally referred to as an early bind).</stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;ossPrefix&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>The subnetwork(s) that the node can be grouped into. (Requires zero to many SubNetwork RDNs followed by zero to one MeContext RDNs to be provided).
+                        See <xref href="/overview/apconcepts.xml#ossPrefix">Concepts, ossPrefix</xref>.
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;timeZone&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>The Time Zone region in which the Network Element resides. For supported Time Zone values, run command: <i>'cmedit describe NetworkElement.timeZone -t'</i>.</stentry>
+                </strow>
+            </simpletable>
+        </section>
+        <section>
+            <title id="2">Auto Integration</title>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Tag</b>
+                    </stentry>
+                    <stentry>
+                        Mandatory
+                    </stentry>
+                    <stentry>
+                        Description
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;autoIntegration&gt;</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>The &lt;autoIntegration&gt; tag describes options to configure tasks executed during node integration.</stentry>
+                </strow>
+            </simpletable>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Auto Integration Subtags</b>
+                    </stentry>
+                    <stentry>
+                        <b>Mandatory</b>
+                    </stentry>
+                    <stentry>
+                        <b>Description</b>
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;upgradePackageName&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>The name of the upgrade package installed on the node during integration.</stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;basicPackageName&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>The name of the basic package installed on the node during integration.</stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;unlockCells&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>
+                        Flag indicating if the cells on the node are to be unlocked. (Default: False).
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;uploadCVAfterIntegration&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>
+                        Flag indicating if AP uploads the most recent Configuration Version (CV) to the SMRS server. (Default: False)
+                    </stentry>
+                </strow>
+            </simpletable>
+        </section>
+
+        <section>
+            <title id="3">License</title>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Tag</b>
+                    </stentry>
+                    <stentry>
+                        Mandatory
+                    </stentry>
+                    <stentry>
+                        Description
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;license&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>The &lt;license&gt; tag contains license file information.</stentry>
+                </strow>
+            </simpletable>
+                        <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>License Subtags</b>
+                    </stentry>
+                    <stentry>
+                        <b>Mandatory</b>
+                    </stentry>
+                    <stentry>
+                        <b>Description</b>
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;licenseFile&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>The name of the license File zip.</stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;installLicense&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>
+                        Flag indicating whether AP adds the License Key File (LKF) path to the RbsSummary file, so the node can install optional features. (Default: True)
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;activateLicense&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>
+                        Flag indicating whether AP activates the optional features defined by the LKF. (Default: False)
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;mandatoryLicenseKeys&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>
+                        The name of the file which contains a list of mandatory license key IDs to be validated against a supplied License Key File.
+                        See <xref href="/overview/apconcepts.xml#MandatoryLicenseKeys">Concepts, Mandatory License Keys</xref>.
+                    </stentry>
+                </strow>
+            </simpletable>
+        </section>
+        <section>
+            <title id="4">Security</title>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Tag</b>
+                    </stentry>
+                    <stentry>
+                        Mandatory
+                    </stentry>
+                    <stentry>
+                        Description
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;security&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>The &lt;security&gt; tag describes options to allow you to configure security.</stentry>
+                </strow>
+            </simpletable>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Security Subtags</b>
+                    </stentry>
+                    <stentry>
+                        <b>Mandatory</b>
+                    </stentry>
+                    <stentry>
+                        <b>Description</b>
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;minimumSecurityLevel&gt;</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>
+                        This is the minimum security level the node should be left in, if node failure occurs.
+                        See <xref href="/overview/apconcepts.xml#SecurityLevel">Concepts, Security Level</xref>.
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;optimumSecurityLevel&gt;</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>
+                        The intended security level for node.
+                        See <xref href="/overview/apconcepts.xml#SecurityLevel">Concepts, Security Level</xref>.
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;enrollmentMode&gt;</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>
+                        The node certificate enrollment type.
+                        See <xref href="/overview/apconcepts.xml#EnrollmentMode">Concepts, Enrollment Mode</xref>.
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;targetGroups&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>
+                        This is the root tag for the Target Groups settings. If Target Groups tag is included, the Target Groups Subtags are mandatory.
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;ipSecurity&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>
+                        This is the root tag for the IP security settings. If IP security is enabled the following subtags are mandatory.
+                    </stentry>
+                </strow>
+            </simpletable>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>IP Security Subtags</b>
+                    </stentry>
+                    <stentry>
+                        <b>Mandatory</b>
+                    </stentry>
+                    <stentry>
+                        <b>Description</b>
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;ipSecLevel&gt;</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>The IP security level. See <xref href="/overview/apconcepts.xml#IPSecurityLevel">Concepts, IP Security Level</xref>.
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;subjectAltNameType&gt;</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>
+                        The subject alternative name type - IPv4 | IPv6 | FQDN.
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;subjectAltName&gt;</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>
+                        The IPv4 | IPv6 address or a string representing the FQDN of the node in ENM.
+                        See <xref href="/overview/apconcepts.xml#SubjectAlternativeName">Concepts, Subject Alternative Name</xref>.
+                    </stentry>
+                </strow>
+            </simpletable>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Target Groups Subtags</b>
+                    </stentry>
+                    <stentry>
+                        <b>Mandatory</b>
+                    </stentry>
+                    <stentry>
+                        <b>Description</b>
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;targetGroup&gt;</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>
+                        The name of the Target Group that the node will be assigned to. See <xref href="/overview/apconcepts.xml#TBAC">Concepts, TBAC</xref>.
+                    </stentry>
+                </strow>
+            </simpletable>
+        </section>
+        <section>
+            <title id="5">Location</title>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Tag</b>
+                    </stentry>
+                    <stentry>
+                        Mandatory
+                    </stentry>
+                    <stentry>
+                        Description
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;location&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>The geographic location of the node.</stentry>
+                </strow>
+            </simpletable>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Location Subtags</b>
+                    </stentry>
+                    <stentry>
+                        <b>Mandatory</b>
+                    </stentry>
+                    <stentry>
+                        <b>Description</b>
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;latitude&gt;</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>The latitude location of the node. The value must be in decimal format between -90 and 90 (inclusive) and up to five decimal places.</stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;longitude&gt;</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>The longitude location of the node. The value must be in decimal format between -180 and 180 (inclusive) and up to five decimal places.</stentry>
+                </strow>
+            </simpletable>
+        </section>
+        <section>
+            <title id="6">User Credentials</title>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Tag</b>
+                    </stentry>
+                    <stentry>
+                        Mandatory
+                    </stentry>
+                    <stentry>
+                        Description
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;users&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>The subtags listed below allow you to configure users.</stentry>
+                </strow>
+            </simpletable>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Users Subtags</b>
+                    </stentry>
+                    <stentry>
+                        <b>Mandatory</b>
+                    </stentry>
+                    <stentry>
+                        <b>Description</b>
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;secureUser&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry><p>Secure users use SSH to connect to the node.  If defined, then the Security section as per <b><xref href="#3" type="concept"> &lt;security&gt; </xref></b>  must also be defined.</p>
+                        <p>The <b>secadm credentials create</b> command manages both the node usernames and the encrypted passwords to allow the Ericsson Network Manager (ENM) to access the nodes when required.</p>
+                        <p>Security credentials can be set at any point once the node has been added. If security credentials are not set or set incorrectly, management services that require login credentials - such as AMOS, Performance Management File Collection and Software Inventory Management - may fail.</p>
+                        For more information, see <xref href="#help/app/cliapp/topic/syntax_secadm/credentials_create" scope="external"> secadm credentials create command. </xref></stentry>
+                </strow>
+            </simpletable>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Secure User Subtags</b>
+                    </stentry>
+                    <stentry>
+                        <b>Mandatory</b>
+                    </stentry>
+                    <stentry>
+                        <b>Description</b>
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;name&gt;</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>This is the name of the secure user.</stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;password&gt;</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>This is the password of the secure user.</stentry>
+                </strow>
+            </simpletable>
+        </section>
+        <section>
+            <title id="7">Supervision</title>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                 <sthead>
+                    <stentry>
+                        <b>Tag</b>
+                    </stentry>
+                    <stentry>
+                        Mandatory
+                    </stentry>
+                    <stentry>
+                        Description
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;supervision&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>The subtags listed below allow you to configure supervision on the node.</stentry>
+                </strow>
+            </simpletable>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Supervision Subtags</b>
+                    </stentry>
+                    <stentry>
+                        <b>Mandatory</b>
+                    </stentry>
+                    <stentry>
+                        <b>Description</b>
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;managementState&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>
+                        Indicates the mode to which managementState is set. (Default: AUTOMATIC). See <xref href="/overview/apconcepts.xml#MaintenanceMode">Concepts, Maintenance Mode</xref>.
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;fm&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>Flag indicating whether AP activates FM supervision on the node. (Supported Values: enabled, disabled, Default: enabled)</stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;pm&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>Flag indicating whether AP activates PM supervision on the node. (Supported Values: enabled, disabled, Default: enabled)</stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;inventory&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>Flag indicating whether AP activates Inventory supervision on the node (Supported Values: enabled, disabled, Default: enabled). If enabled, a secure user as per <b><xref href="#5" type="concept"> &lt;secureUser&gt; </xref></b>  is required. (Default: enabled)</stentry>
+                </strow>
+            </simpletable>
+        </section>
+        <section>
+            <title id="8">Artifacts</title>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Tag</b>
+                    </stentry>
+                    <stentry>
+                        Mandatory
+                    </stentry>
+                    <stentry>
+                        Description
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;artifacts&gt;</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>The &lt;artifacts&gt; tag describes the configuration files used by the node during integration.</stentry>
+                </strow>
+            </simpletable>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Artifacts Subtags</b>
+                    </stentry>
+                    <stentry>
+                        <b>Mandatory</b>
+                    </stentry>
+                    <stentry>
+                        <b>Description</b>
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;siteBasic&gt;</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>The name of the site basic artifact. This file contains parameters for Operation and Maintenance (OAM)
+                        synchronization and network frequency synchronization.
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;siteEquipment&gt;</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>The name of the site equipment configuration file. This configuration file sets parameters defining external alarms, external
+                        controls, power supply, antenna equipment and radio equipment.
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;siteInstallation&gt;</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>The name of the site installation configuration file.
+                        It should strictly follow the naming convention as "SiteInstallation.xml". This configuration file defines the
+                        parameters in the node. The file is brought to site. It provides the Integrate RBS (IRBS) application with
+                        parameters to initiate the integration of a node within a network.
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;configurations&gt;</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>The &lt;configurations&gt; subtag, describes the configuration files used by the node during integration. The order of files listed, determines the order they are pushed to the live network.</stentry>
+                </strow>
+            </simpletable>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Configurations Subtag</b>
+                    </stentry>
+                    <stentry>
+                        Mandatory
+                    </stentry>
+                    <stentry>
+                        Description
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;configuration&gt;</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>
+                        The name of a configuration file. For example transport or radio.
+                        Multiple configuration files can be optionally included.
+                    </stentry>
+                </strow>
+            </simpletable>
+        </section>
+        <section>
+            <title id="9">DHCP</title>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Tag</b>
+                    </stentry>
+                    <stentry>
+                        Mandatory
+                    </stentry>
+                    <stentry>
+                        Description
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;dhcp&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>The subtags listed below allow you to configure DHCP support. DHCP subtags must be included in the order listed below.</stentry>
+                </strow>
+            </simpletable>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>DHCP Subtags</b>
+                    </stentry>
+                    <stentry>
+                        <b>Mandatory</b>
+                    </stentry>
+                    <stentry>
+                        <b>Description</b>
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;initialIpAddress&gt;</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>
+                        The address that DHCP server should offer to the node. This address must be in the CIDR format.
+                        A temporary address is allocated from the network ranges that have been defined.
+                        The node uses this IP address to connect to the Auto Integration Web Service which validates the node based on its serial number and returns the appropriate Site Install File.
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;defaultRouter&gt;</stentry>
+                    <stentry>IPv4: Yes, IPv6: No</stentry>
+                    <stentry>
+                        The address of default gateway for the node.
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;ntpServer&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>
+                        NTP Server address. 0 to 2 entries allowed.
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;dnsServer&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>
+                        DNS Server address. 0 to 3 entries allowed.
+                    </stentry>
+                </strow>
+            </simpletable>
+        </section>
+    </conbody>
+</concept>

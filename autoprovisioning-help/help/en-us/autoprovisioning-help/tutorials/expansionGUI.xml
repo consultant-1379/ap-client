@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<task id="AP-BasebandRadioNode-Expansion-GUI-Tutorial">
+    <title>Perform Node Expansion using Auto Provisioning GUI</title>
+    <taskbody>
+        <prereq>
+            <p conref="../prerequisites.xml#ExpansionPreqCommon"></p>
+        </prereq>
+        <context>
+            <p>
+                <b>Objective</b>
+            </p>
+            <p>
+                This tutorial describes the steps required to add additional hardware to node(s) and automatically apply configurations with a pre-created Auto Provisioning project using Auto Provisioning GUI.
+            </p>
+            <p>
+                <b>Outline</b>
+            </p>
+            <ol>
+                <li>
+                    <xref href="#1">Start Expansion</xref>
+                </li>
+                <li>
+                    <xref href="#2">Trigger Expansion (Optional)</xref>
+                </li>
+                <li>
+                    <xref href="#3">Trigger Expansion using Resume (Optional)</xref>
+                </li>
+                <li>
+                    <xref href="#4">Monitor Expansion</xref>
+                </li>
+                <li>
+                    <xref href="#5">Remove Node Auto Provisioning Data</xref>
+                </li>
+            </ol>
+        </context>
+
+        <steps>
+            <step id="1">
+                <cmd>Start Expansion</cmd>
+                <info>
+                    <ol>
+                        <li>Launch <xref href="#autoprovisioning" scope="external">Auto Provisioning (AP)</xref>.
+                            <p>
+                                <b>Note:</b>
+                                Expansion can also be executed using Auto Provisioning CLI
+                                <xref href="/tutorials/expansionCLI.xml">Learn More</xref>
+                            </p>
+                        </li>
+                        <li>Click <b>Import</b> and select your project.</li>
+                        <li>Verify the node(s) in the project are in state Expansion Suspended.</li>
+                        <li>ENM Operator instructs field technician to perform expansion on site.</li>
+                    </ol>
+                </info>
+            </step>
+            <step id="2">
+                <cmd>Trigger Expansion (Optional)</cmd>
+                <info>
+                    <p>
+                        This step can be run as an alternative to Step 3 by the Field Technician
+                         and is not applicable if &lt;configurations suspend="false"&gt; in the nodeInfo.xml.
+                    </p>
+                    <p>
+                        <b>Warning:</b> Pressing the maintenance button can cause traffic loss.
+                    </p>
+                    <ol>
+                        <li>
+                            Press maintenance button on Baseband Radio Node (greater than 2 seconds and less than 7
+                            seconds) and wait for the node to enter full maintenance mode (MLED light steady blue).
+                        </li>
+                        <li>Mark down timestamp and perform equipment expansion at site.</li>
+                        <li>Mark down timestamp again once site activity is completed.</li>
+                        <li>Check both timestamp's and ensures the timestamp interval is greater than 30 seconds.</li>
+                        <li>
+                            Press maintenance button on Baseband Radio Node (less than 7 seconds) to resume expansion workflow.
+                        </li>
+                        <li>Wait for the node to quit maintenance mode (MLED light off).</li>
+                    </ol>
+                </info>
+            </step>
+            <step id="3">
+                <cmd>Trigger Expansion using Resume (Optional)</cmd>
+                <info>
+                    <p>
+                        This step can be run as an alternative to Step 2 by the ENM operator once on site activity is completed
+                         and is not applicable if &lt;configurations suspend="false"&gt; in the nodeInfo.xml.
+                    </p>
+                    <ol>
+                        <li>Expand the project folder in the Auto Provisioning topology.
+                        </li>
+                        <li>Select each node that is being expanded.
+                        </li>
+                        <li>Click <b>Resume</b>.</li>
+                    </ol>
+                </info>
+            </step>
+            <step id="4">
+                <cmd>Monitor Expansion</cmd>
+                <info>
+                   <ol>
+                        <li>Expand the project folder in the Auto Provisioning topology.</li>
+                        <li>Select each node that is being expanded.</li>
+                        <li>Monitor the task output until the node(s) goes to state Expansion Completed.</li>
+                    </ol>
+                </info>
+       		</step>
+            <step id="5">
+                <cmd>Remove Node Auto Provisioning Data</cmd>
+                <info>
+                    <ol>
+                        <li>
+                            Select the Auto Provisioning node(s) that was expanded in the Auto Provisioning topology.
+                        </li>
+                        <li>Click <b>Delete</b>.</li>
+                        <li>Confirm deletion.</li>
+                    </ol>
+                    <p>
+                        <b>Note:</b>
+                        Removing the node Auto Provisioning data does not affect the ENM Network Element if the state is
+                        Expansion Completed.
+                    </p>
+                </info>
+            </step>
+        </steps>
+        <result>
+            <p>The node(s) configuration is expanded.</p>
+        </result>
+    </taskbody>
+</task>

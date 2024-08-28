@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="utf-8"?>
+<concept id="AP-Concepts">
+    <title>Concepts</title>
+    <conbody>
+        <section>
+            <p><xref href="#BackupHandling">Backup Handling</xref>
+            </p>
+            <p><xref href="#Baseline">Baseline</xref>
+            </p>
+            <p><xref href="#BatchConfigurationTemplate">Batch Configuration Template</xref>
+            </p>
+            <p><xref href="#BatchProjectCSVFormat">Batch Project CSV Format</xref>
+            </p>
+            <p><xref href="#ConfigurationFiles">Configuration Files</xref>
+            </p>
+            <p><xref href="#ConfigurationVersionHandling">Configuration Version Handling - DU Radio Node</xref>
+            </p>
+            <p><xref href="#DynamicIPAddress">Dynamic IP Address</xref>
+            </p>
+            <p><xref href="#DynamicSFTPPort">Dynamic SFTP Port</xref>
+            </p>
+            <p><xref href="#EnrollmentMode">Enrollment Mode</xref>
+            </p>
+            <p><xref href="#ExternalSecurityCA">External Security CA</xref>
+            </p>
+            <p><xref href="#GeographicalLocationCheck">Geographical Location Check</xref>
+            </p>
+            <p><xref href="#HealthCheck">Health Check</xref>
+            </p>
+            <p><xref href="#Housekeeping">Housekeeping</xref>
+            </p>
+            <p><xref href="#IntegrationProcedure">Integration Procedure</xref>
+            </p>
+            <p><xref href="#IPSecurityLevel">IP Security Level</xref>
+            </p>
+            <p><xref href="#MaintenanceMode">Maintenance Mode</xref>
+            </p>
+            <p><xref href="#MandatoryLicenseKeys">Mandatory License Keys</xref>
+            </p>
+            <p><xref href="#MigrationRollback">Migration Rollback</xref>
+            </p>
+            <p><xref href="#NodeIdentifier">Node Identifier</xref>
+            </p>
+            <p><xref href="#NodeName">Node Name</xref>
+            </p>
+            <p><xref href="#NodeUpNotification">Node Up Notification</xref>
+            </p>
+            <p><xref href="#NodeStatusEntries">Node Status Entries</xref>
+            </p>
+            <p><xref href="#ossPrefix">ossPrefix</xref>
+            </p>
+            <p><xref href="#RemoteNodeConfiguration">Remote Node Configuration</xref>
+            </p>
+            <p><xref href="#RequestLicense">Request License Key Files</xref>
+            </p>
+            <p><xref href="#SecurityLevel">Security Level</xref>
+            </p>
+            <p><xref href="#SubjectAlternativeName">Subject Alternative Name</xref>
+            </p>
+            <p><xref href="#SupportedConfigurationforHardwareReplace">Supported Configuration for Hardware Replace</xref>
+            </p>
+            <p><xref href="#TBAC">TBAC</xref>
+            </p>
+            <p><xref href="#Treat-As">Treat-As</xref>
+            </p>
+            <p><xref href="#UnlockOfCells">Unlock Of Cells</xref>
+            </p>
+        </section>
+
+        <section id="BackupHandling">
+            <title>Backup Handling</title>
+            <p>AP carries out the following backup steps as part of Node Integration for Baseband Radio Node, Controller 6610, Router and Node Migration for Baseband Radio Node:
+                <ol>
+                    <li>Create a backup request to SHM.</li>
+                    <li>If backup completes successfully, upload is started.</li>
+                    <li>A successful upload results in a backup saved on ENM.</li>
+                </ol>
+            </p>
+            <p>To confirm completion of the create and upload backup task, see <xref href="/overview/apoperations.xml#Status" type="concept"><i>Operations, Status</i></xref>.</p>
+            <p><b>Note:</b> If there was a failure to create a backup, AP does not initiate upload.</p>
+            <p>For Node Integration, failure to create backup will result in Integration completing with warnings.</p>
+            <p>For Migration, failure to create backup in the Pre Migration stage will fail the migration, failure in the Migration stage will continue and be completed with warnings.</p>
+        </section>
+
+        <section id="Baseline">
+            <title>Baseline</title>
+            <p>
+                A baseline file is a node configuration file that can be included in the node folder of a node integration, migration or expansion project.
+                Amos (.mos) is the supported file format. Multiple baseline files can be included in a node folder. A baseline file is taken as a main script.
+                A baseline file can alternatively be placed in /home/shared/autoprovisioning folder on the shared file system of the scripting server.
+                The main script may call additional scripts, these additional scripts must be in the shared folder.
+                When a baseline file is included in the project zip file, the maximum size of this file is 1,000,000 bytes.
+            </p>
+            <p>
+                A baseline file can be configured to continue execution upon failure of a MO write command (create, delete, set, action). Set ignoreError to true in the baseline tag in the NodeInfo file. If the ignoreError is omitted or is set to false, the baseline file will stop upon failure of a MO write command.
+            </p>
+            <p>
+               <b>Note</b>: You must check the baseline file execution result via contextual log or node configuration when ignoreError is set to true.
+            </p>
+            <p>Scripting role access is required to transfer files and access the scripting cluster see <xref href="#help/app/scriptingterminal/topic/prerequisites" scope="external">Scripting Prerequisites</xref>.</p>
+            <p>Baseline files are not validated, and will be deleted right after execution.</p>
+        </section>
+
+        <section id="BatchConfigurationTemplate">
+            <title>Batch Configuration Template</title>
+            <p>
+                Auto Provisioning provides support for a Batch Integration Project.
+                This allows a user to create a single set of templates and integrate multiple nodes of a similar configuration
+                 inputting only the site specific values in a CSV file.
+            </p>
+            <p>
+                A prerequisite for execution of Batch Integration Project is the creation of required batch configuration templates.
+            </p>
+            <p>
+                A batch configuration template is an Auto Provisioning configuration that adheres to the configuration schema with substitution
+                variables represented as "&#37;&lt;substitution_name> &#37;" in place of a node specific value.
+            </p>
+            <p>
+                For example, the &lt;ipAddress> attribute of <i>nodeInfo.xml</i> file can be represented as:
+            </p>
+            <codeblock>
+                &lt;ipAddress>%substitution_nodeInfo_ipAddress%&lt;/ipAddress>
+            </codeblock>
+            <p>
+                In place of the node specific value
+            </p>
+            <codeblock>
+                &lt;ipAddress>192.168.0.1&lt;/ipAddress>
+            </codeblock>
+            <p>
+                For additional information on how to create a Batch Project refer to the tutorial:
+                <xref href="/prerequisites/batch_project_file_tutorial.xml">Prepare a Batch Integration Project for Auto Provisioning</xref>.
+            </p>
+        </section>
+
+        <section id="BatchProjectCSVFormat">
+            <title>Batch Project CSV Format</title>
+            <p>
+                When creating a Batch Project CSV (Comma-Separated Values) File it must adhere to the following:
+                <ul>
+                    <li>The CSV header row maps to the
+                        substitution variable names. Do not use the word "logicalName" or "INTERNAL_" to start any substitution variable name.</li>
+                    <li>Each CSV data row corresponds to a
+                        node in the project. This data is
+                        substituted into each template file
+                        with the corresponding substitution
+                        variable name.</li>
+                    <li>A header row and a minimum of one data
+                        row is mandatory in the CSV file.
+                    </li>
+                    <li>Use your own naming convention for
+                        this file.</li>
+                    <li>Comma is the only supported separator. If the batch csv value contains a comma then user should use double quotes to start and end the batch csv value. For example: "ManagedElement=1,Transport=1,Sctp=1"
+                    </li>
+                    <li>The following characters are not supported in any substitution variable name:
+                        %
+                        *
+                        &amp;   </li>
+                </ul>
+            </p>
+        </section>
+
+        <section id="ConfigurationFiles">
+            <title>Configuration Files</title>
+            <p>A configuration file is used to create and/or update Managed Objects (MOs) on a node as part of integration, migration or expansion. Baseline configuration scripts can support additional scripting functions.
+            For Node Integration or Migration the Site Installation File (SIF) (CCF for Pico Radio Node) is also used to retrieve additional configurations from the Auto Provisioning staging area Auto Integration Web Server (AIWS) or ENM SMRS.</p>
+            <p>
+                For Zero Touch Node Integration, Migration and Hardware Replace the SIF (CCF for Pico Radio Node) is automatically retrieved by the node from the AIWS.
+                The SIF file is used to retrieve additional configurations.
+                Other configuration files are applied to the node post Synchronization.
+                This is done as part of the Import Configurations task. For LMT Node Integration and Migration the SIF is manually downloaded and provided to the Field Technician
+                 see <xref href="#IntegrationProcedure">Concepts, Integration Procedure</xref>
+            </p>
+            <p>If the configuration data is successfully applied to the node as part of Import Configurations the task status is set to completed and the next task in the workflow is started.</p>
+            <p>If the configuration data is unsuccessfully applied to the node as part of Import Configurations or Pre Migration Import Configurations the task status is set to failed and an error message is output to Additional Information in the node status output.</p>
+            <p>If auto restore is set to true for expansion in the nodeInfo.xml and the configuration fails to import, the expansion is automatically cancelled and the node is set back to its original configuration.
+                And in this situation, the Skip operation that is used to skip this faulty configuration, is not available.
+                See <xref href="/overview/apoperations.xml#Skip" type="concept">Operations, Skip</xref> for more information.</p>
+            <p>If a configuration file fails import for DU Radio Node, the AP workflow is ended. AP reports Integration Failed for the node state. Configurations are imported as part of the Initiate Import Configurations for DU Radio Node.</p>
+            <p>If a configuration file fails import for Baseband Radio Node, Pico Radio Node or VNF Node Types, the AP workflow is suspended. The workflow can be re-engaged using Resume.
+                See <xref href="/overview/apoperations.xml#Resume" type="concept">Operations, Resume</xref> for more information.</p>
+            <p>If a configuration file fails import for Baseband Radio Node or Controller 6610 Node Types, the AP workflow is suspended. The workflow can continue using Skip to bypass the faulty configuration.
+                See <xref href="/overview/apoperations.xml#Skip" type="concept">Operations, Skip</xref> for more information.</p>
+            <p>Bulk3gpp and NETCONF (Baseband Radio Node and Controller 6610 node) files are validated as part of the Validate Configurations task in Node Integration.</p>
+            <p>Bulk3gpp and NETCONF (Baseband Radio Node) files are validated as part of the Validate Configurations task in Expansion.</p>
+            <p>Bulk3gpp and NETCONF (Baseband Radio Node) files are validated as part of the Validate Configurations task in Migration. Pre migration import configurations are not validated when in NETCONF format.</p>
+            <p><b>Warning:</b> When building NETCONF configurations, AP only supports sending <b>edit-config</b> RPC operation to configure target node(s). Other configuration operations supplied are ignored.</p>
+        </section>
+
+        <section id="ConfigurationVersionHandling">
+            <title>Configuration Version Handling - DU Radio Node</title>
+            <p>AP carries out the following CV steps as part of DU Radio Node integration:
+                <ol>
+                    <li>Create a new Configuration Version (CV) on the node (stored on the node file system).</li>
+                    <li>Set the new CV to <i>startable</i>, this CV should be loaded the next time the node restarts.</li>
+                    <li>Set the previous CV as the first in the rollback list. This CV should be used in the event that the new CV does not work.</li>
+                    <li>If upload CV is selected, it is saved on ENM. This acts as a backup CV. It can be used if the node file store does not survive a system crash.</li>
+                </ol>
+            </p>
+            <p>When the Upload CV has started it is shown in the node status output, see <xref href="/overview/apoperations.xml#Status" type="concept">Operations, Status</xref>.
+            The Upload CV result is reported in SHM job output.</p>
+            <p><b>Note:</b> If there was a failure to activate the optional features, failure of the Geographical Location Check,
+                or failure to unlock the cells, AP does not initiate creation and upload of a new CV.</p>
+        </section>
+
+        <section id="DynamicIPAddress">
+            <title>Dynamic IP Address</title>
+            <p>To dynamically assign an IP Address, set to "0.0.0.0" for an IPv4 address and  "0:0:0:0:0:0:0:0" or "::" for an IPv6 address.</p>
+            <p>IPv6 IP addresses are normalized by AP, however, IPv4-mapped IPv6 IP addresses are not supported.</p>
+        </section>
+
+        <section id="DynamicSFTPPort">
+            <title>Dynamic SFTP Port</title>
+            <p>It is possible to define the SFTP port to be used during Node Integration.
+                This is an optional step done by assigning a dynamic port number to the property <i>smrs_sftp_securePort</i> in the Site Engineering Document.</p>
+            <ul>
+                <li>Refer to "SFTP Port Configuration" section on how to configure a dynamic SFTP port in the ENM System Administration Guide 1/1543-AOM 901 151;
+                    available in the ENM CPI Library.</li>
+            </ul>
+            <p><b>Note: </b>Dynamic SFTP Port Configuration is supported for Baseband Radio Node and DU Radio Node.</p>
+        </section>
+
+        <section id="EnrollmentMode">
+            <title>Enrollment Mode</title>
+            <p>Auto Provisioning supports the following enrollment modes:</p>
+
+            <ul>
+                <li>SCEP: Simple Certificate Enrollment Protocol (Default)</li>
+                <li>CMPv2_VC: Certificate Management Protocol v2 Initial Request using Vendor Credentials</li>
+                <li>CMPv2_INITIAL: Certificate Management Protocol v2 Initial Request (using username/password)</li>
+            </ul>
+            <p>The SHA-1 algorithm must be enabled before using SCEP.</p>
+            <p>Run the following command from the ENM CLI to enable SHA-1:</p>
+            <codeblock>pkiadm configmgmt algo --enable --name SHA1</codeblock>
+        </section>
+
+        <section id="ExternalSecurityCA">
+            <title>External Security CA</title>
+            <p>If using an external Certification Authority for Node Integration and Migration the security tag entry should be omitted from the Node Information File.</p>
+        </section>
+
+        <section id="GeographicalLocationCheck">
+            <title>Geographical Location Check</title>
+            <p>Supported for DU Radio Node. See <xref href="/overview/supportednodetypes.xml">Supported Node Types</xref>.</p>
+
+            <p> For nodes that support the geographic location check, AP sets GPS_CHECK_POSITION on the RBS
+                configuration level. This requests the node to execute a geographic location check. This compares the wanted
+                geographic location (as defined in the site basic file), and the actual geographic location of the node.
+                Depending on the result of the location check, and the defined tolerance, the node returns one of the following results:
+                <ul>
+                    <li><i>GPS_WANTED_POSITION_NOT_SET:</i>
+                        The wanted position is not defined in the site basic file. No geographic location check is executed by the node.
+                        The node cells can be unlocked during the integration workflow.</li>
+
+                    <li><i>GPS_SUCCESSFULLY_MATCHED:</i> The wanted position defined in the site basic file matches the nodes geographic location.
+                        The node cells can be unlocked during the integration workflow.</li>
+
+                    <li><i>GPS_POSITION_UNAVAILABLE:</i> The GPS position is unable to be obtained by the node.
+                        The node cells are <b>not</b> unlocked during the integration workflow, but node integration continues. It is possible to manually unlock the cells post integration workflow.</li>
+
+                    <li><i>GPS_MISMATCH_ERROR:</i> The wanted position defined in the site basic file does not match the nodes geographic location.
+                        The nodes cells are <b>not</b> unlocked during the integration workflow, but node integration continues. It is possible to manually
+                        unlock the cells post integration workflow.
+                        <b>Note: </b>This failure of the GPS location check results in an alarm, reporting the failure, in the FM monitoring view.</li>
+                </ul>
+            </p>
+            <p>
+                The result of the Geographical Location Check is shown in the node status, see <xref href="/overview/apoperations.xml#Status" type="concept">Operations, Status</xref>.
+            </p>
+        </section>
+
+        <section id="HealthCheck">
+            <title>Health Check</title>
+            <p>Health Check is supported for Integration, Migration and Expansion of a Baseband Radio Node. Health Check verifies the health of a node based on a list of Health Check Rules selected in a Health Check Profile.
+            </p>
+            <p>
+                Integration: In the event of a Health Check failure, then Run Health Check task is reported as failed, and a link to the Health Check Report is shown in the Additional Information. Integration of the node will not be suspended.
+                If the Health Check reports the node as healthy or with warnings, then Run Health Check task is reported as successful. A link to the Health Check Report is shown in the Additional Information
+            </p>
+            <p>
+                Migration: In the event of a Health Check failure, the Run Health Check task is reported as failed, and a link to the Health Check Report is shown in the Additional Information. Migration of the node will be suspended.
+                Migration can be resumed using the <xref href="/overview/apoperations.xml#Resume" type="concept"> Operations, Resume</xref>. When resumed, the Health Check will be re-executed.
+                If the Health Check reports the node as healthy or with warnings, then Run Health Check task is reported as successful. A link to the Health Check Report is shown in the Additional Information.
+            </p>
+            <p>
+                Expansion: In the event of a Health Check failure, then Run Health Check task is reported as failed and node expansion is suspended. Expansion can be resumed using the
+                <xref href="/overview/apoperations.xml#Resume" type="concept"> Operations, Resume</xref>. When resumed, the Health Check will be re-executed.
+                If the Health Check reports the node as healthy or with warnings, then Run Health Check task is successful. A link to the Health Check Report is shown in the Additional Information.
+            </p>
+            <p>
+                Health Check Reports that are created as part of Auto Provisioning will be automatically removed once the Auto Provisioning node data is deleted, see <xref href="/overview/apoperations.xml#Delete" type="concept">Operations, Delete</xref>
+            </p>
+        </section>
+
+        <section id="Housekeeping">
+            <title>Housekeeping</title>
+            <p>Housekeeping is the automatic deletion of the AP node data. It is executed seven days after the completion of the AP activity if the node is in a cancelled or successful end state.</p>
+        </section>
+
+        <section id="IntegrationProcedure">
+            <title>Integration Procedure</title>
+            <p>For Node Auto Integration, Migration and Hardware Replace the following integration procedures are recommended using AP.</p>
+            <p><b>Zero Touch Integration (ZT)</b></p>
+            <p>ZT automates the interaction between the node and ENM for the node to retrieve it's configurations. As a result the
+             Field Technician does not need to access the node via a Local Maintenance Terminal (LMT) device.
+            Additional network infrastructure is required to execute ZT Integration. To execute ZT Integration the node hardware is bound to
+             the node configurations with the node serial number, see <xref href="/overview/apoperations.xml#Bind" type="concept">Operations, Bind</xref>.</p>
+            <p><b>Local Maintenance Terminal (LMT)</b></p>
+            <p>The ENM Operator supplies the Site Installation File (SIF) (CCF for Pico Radio Node) and the credentials for a user with the FIELD_TECHNICIAN role to the Field Technician. The Field Technician
+                then accesses the node via LMT device and loads the SIF to start the integration.</p>
+            <p>For downloading SIF see <xref href="/overview/apoperations.xml#Download" type="concept">Operations, Download</xref>.</p>
+            <p>Additional integration procedures are available see node documentation for more details.</p>
+            <p>LMT Hardware Replace is supported for Baseband Radio Node.</p>
+        </section>
+
+        <section id="IPSecurityLevel">
+            <title>IP Security Level</title>
+            <p>The following are the IP Security levels supported by AP:</p>
+            <ul>
+                <li>OAM: IP Security for Operation And Maintenance (OAM) is enabled.</li>
+                <li>CUSOAM: IP Security for Control Plane (CP), User Plane (UP), Storage over IP (SoIP) and Operation And Maintenance (OAM) is enabled.</li>
+                <li>CUS *: IP Security for Control Plane (CP), User Plane (UP) and Storage over IP (SoIP) is enabled.</li>
+            </ul>
+            <p>* Supported for DU Radio Node</p>
+            <p>
+                There is a restriction on the amount of characters of a node name when using Zero Touch Node Integration of DU Radio Node with IP Sec.
+                Auto Provisioning requires that the node name length is 6 characters less than the maximum characters for sftp username.
+                Consult node documentation for sftp username supported characters length.
+                Failure to adhere to this may result in issues such as failure to install trusted certificates during Node Integration.
+            </p>
+        </section>
+
+        <section id="MaintenanceMode">
+            <title>Maintenance Mode</title>
+            <p>ManagementState is a Network Element attribute that indicates whether a node is under maintenance.</p>
+            <p>The following are possible states which the <i>managementState</i> attribute can have:
+                <ul>
+                    <li>NORMAL</li>
+                    <li>MAINTENANCE</li>
+                </ul>
+            </p>
+            <p>
+                Auto Provisioning allows a user to configure the <i>managementState</i> of a Network Element,
+                 this can be configured through the <i>managementState</i> element in the <xref href="/prerequisites/supported_nodeinfo.xml"><i>nodeInfo.xml</i></xref>.</p>
+            <p>
+                 Node Integration:
+                <ul>
+                    <li>
+                        Default value of the <i>managementState</i> element is AUTOMATIC. In this case, <i>managementState</i> is set to MAINTENANCE upon creation of the Network Element.
+                        Subsequently upon successful completion of Auto Provisioning flow, the <i>managementState</i> is set to NORMAL.
+                        <p>This behavior is reflected via the Set Management State task in the Auto Provisioning status output.</p>
+                    </li>
+                </ul>
+            </p>
+            <p>
+                 Node Migration:
+                <ul>
+                   <li>
+                        Default value of the <i>managementState</i> element is AUTOMATIC. During Node Migration a node is set to MAINTENANCE at the beginning of the workflow.
+                        Subsequently upon successful completion of Auto Provisioning flow, the <i>managementState</i> element is set to NORMAL.
+                        <p>This behavior is reflected via the Set Management State task in the Auto Provisioning status output.</p>
+                   </li>
+                </ul>
+            </p>
+            <p>
+                <ul>
+                    <li>
+                        Given the value of the <i>managementState</i> element is MANUAL. In this case, <i>managementState</i> is set to MAINTENANCE upon creation of the Network Element.
+                        Subsequently upon successful completion of Auto Provisioning flow, the <i>managementState</i> remains in MAINTENANCE.
+                        <p>As the <i>managementState</i> is held in MAINTENANCE, the operator needs to update the state to NORMAL explicitly.</p>
+                    </li>
+                </ul>
+            </p>
+            <p>
+                Hardware Replace:
+                <ul>
+                    <li>
+                        During Hardware Replace the <i>managementState</i> is set to MAINTENANCE. Subsequently upon successful completion of Hardware Replace, the <i>managementState</i> is set to NORMAL.
+                        <p>This behavior is reflected via the Set Management State task in the Auto Provisioning status output.</p>
+                    </li>
+                </ul>
+            </p>
+            <p>
+                Expansion:
+                <ul>
+                    <li>
+                        Default value of the <i>managementState</i> element is AUTOMATIC. In this case, <i>managementState</i> is set to MAINTENANCE
+                         during Expansion. Subsequently upon successful completion of Expansion flow, the <i>managementState</i> is set to NORMAL.
+                        <p>This behavior is reflected via the Set Management State task in the Auto Provisioning status output.</p>
+                    </li>
+                </ul>
+            </p>
+            <p>
+                <ul>
+                    <li>
+                        Given the value of the <i>managementState</i> element is MANUAL. In this case, <i>managementState</i> is set to MAINTENANCE during Expansion.
+                         Subsequently upon successful completion of Expansion flow, the <i>managementState</i> remains in MAINTENANCE.
+                        <p>As the <i>managementState</i> is held in MAINTENANCE, the operator needs to update the state to NORMAL explicitly.</p>
+                    </li>
+                </ul>
+            </p>
+
+            <p>
+                Execute the following command in the CLI to see the value of <i>managementState</i>:
+                <codeblock>cmedit get NetworkElement=&lt;nodeName&gt;</codeblock>
+            </p>
+            <p>
+                Execute the following command in the CLI to update the value of <i>managementState</i>:
+                <codeblock>cmedit set NetworkElement=&lt;nodeName&gt; managementState=&lt;desiredState&gt;</codeblock>
+            </p>
+        </section>
+
+        <section id="MandatoryLicenseKeys">
+            <title>Mandatory License Keys</title>
+            <p>
+                Each License Key ID listed in the file referenced from the mandatoryLicenseKeys element in the nodeInfo.xml is validated against the License Keys in the LKF used.
+                If the listed License Key IDs are not present, the Validate Configuration task fails.
+            </p>
+            <p>The mandatory License Keys specified are validated to ensure that:
+                <ul>
+                    <li>the License Key exists.</li>
+                    <li>the License Key has not expired.</li>
+                </ul>
+                If validation fails or there is an error retrieving LKF details, the Validate Configuration task fails.
+            </p>
+            <p>
+                Example mandatory License Keys file structure:
+                <pre>
+                    &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+                    &lt;licenseKeys&gt;
+                    &lt;licenseKey&gt;CXC11111/1111&lt;/licenseKey&gt;
+                    &lt;licenseKey&gt;CXC22222/2222&lt;/licenseKey&gt;
+                    &lt;/licenseKeys&gt;
+                </pre>
+            </p>
+        </section>
+        <section id="MigrationRollback">
+            <title>Migration Rollback</title>
+            <p>
+                During the execution of Migration you may choose to rollback a node to its original configuration before migration is completed. Migration supports manual triggered rollback procedure.
+                Selecting cancel starts the rollback see <xref href="/overview/apoperations.xml#Cancel" type="concept"> Operations, Cancel</xref>.
+            </p>
+            <p><b>Warning: </b>User need to make sure original node is connected before executing rollback.</p>
+            <p>
+                If any of the below tasks have been executed as part of migration a manual step is required upon completion of rollback.
+                Depending on what stage you are at in the migration different manual steps may be required after the rollback.
+               <ul>
+                    <li>
+                     <i>Task: </i>Set Management State (MAINTENANCE),<i>Manual Step</i>: The Network Element managementState has to be set to NORMAL.</li>
+                    <li>
+                     <i>Task: </i>Generate Security,<i>Manual Step</i>: A certificate reissue is required. For how to reissue certificate See <xref href="#help/app/cliapp/concept/tutorials_secadm/CertificateReissueTutorial" scope="external"> Certificate Reissue Tutorial </xref>.
+
+                    </li>
+                    <li>
+                     <i>Task: </i>Generate Security Credentials,<i>Manual Step</i>: If the security credentials have changed from the original nodes security credentials the credentials have to be reset to their original values.
+                    </li>
+                </ul>
+            </p>
+            <p>In the event of rollback the node still be shown in SHM as it is having the migrated node LKF installed even after rollback.
+               In the case of permanent rollback a new LKF file may need to be installed.
+            </p>
+            <p>Even after rollback the nodes SNMP settings will have been updated to the latest system specified default SNMP Settings, see <xref href="/prerequisites/definesnmpsecurityconfigurationoption.xml">
+                            Define SNMP Security configuration options</xref>.</p>
+        </section>
+        <section id="NodeIdentifier">
+            <title>Node Identifier</title>
+            <p>
+                Node Identifier in the nodeInfo.xml indicates the OSS Model Identity (OMI) to be used during Node Integration.
+                If omitted, AP attempts to determine the OMI to use, based on the Upgrade Package
+                selected. If AP cannot determine the OMI to use, a supported OMI must be included.
+                Run the following command from the ENM CLI to identify a supported OMI:</p>
+            <codeblock>cmedit describe --netype &lt;Node Type&gt; </codeblock>
+            <p>
+                ENM also supports Treat-as functionality, meaning that ENM has the ability to manage a node as a different version to the actual version of that node.
+                Refer to section: <xref href="/overview/apconcepts.xml#Treat-As" type="concept">Treat-As</xref>.
+            </p>
+        </section>
+
+        <section id="NodeName">
+            <title>Node Name</title>
+            <p>
+                The node name is the logical name of the node. The following characters can not be used =,%{}&lt;&gt;:"/\|?* and ASCII characters below or equal to hexa-decimal 20(space).
+                The node name must be unique within the ENM deployment across all entities of type NetworkElement, VNFM, NFVO and ManagementSystem.
+                AP checks and prevents duplicate names for NetworkElement, however a user should verify no duplicate names exist for VNFM, NFVO and ManagementSystem.
+                Duplicate naming prevents you from being able to apply Target Based Access Control (TBAC) to an entity.
+            </p>
+        </section>
+
+        <section id="NodeUpNotification">
+            <title>Node Up Notification</title>
+            <p>Node Up Notification is the term used to define the notification from the node to ENM that on site configuration of the node is complete and AP should continue the AP workflow.</p>
+            <p>The Node Up Notification is sent during Node Integration, Migration and Hardware Replace for Pico Radio Node.</p>
+        </section>
+
+        <section id="NodeStatusEntries">
+            <title>Node Status Entries</title>
+            <p>Node Status Entries are notifications sent from the Node to ENM showing additional progress information of the Node Integration, Migration or Hardware Replacement status.</p>
+            <p>During LMT Integration or LMT Hardware Replacement if the process is cancelled at node, the AP node should be removed, see <xref href="/overview/apoperations.xml#Delete" type="concept">Operations, Delete</xref>
+               and ordered again, see <xref href="/overview/apoperations.xml#Order" type="concept">Operations, Order</xref>. Failure to remove the AP node may result in inconsistencies in node status reporting.</p>
+            <p>Supported for Baseband Radio Nodes and Controller 6610, see node documentation for more information.</p>
+
+        </section>
+
+        <section id="ossPrefix">
+            <title>ossPrefix</title>
+            <p>
+                Examples of ossPrefix to use are:
+                <ul>
+                    <li>&lt;ossPrefix&gt;SubNetwork=xxxxx,MeContext=xxxxxxx&lt;ossPrefix&gt;</li>
+                    <li>&lt;ossPrefix&gt;SubNetwork=xxxxx,SubNetwork=xxxxx&lt;ossPrefix&gt;</li>
+                </ul>
+            </p>
+        </section>
+
+        <section id="RemoteNodeConfiguration">
+            <title>Remote Node Configuration</title>
+            <p>
+                Remote Node Configurations are node configuration files that can be included in the node folder of an Node Integration, Migration or Expansion project.
+                 The remote node configuration file can be used to update the configurations of a node other than the node that is being integrated or expanded.
+            </p>
+            <p>
+                It is commonly used for use-cases such as unlocking cells on remote nodes such as RNC’s and BSC’s when a multi-standard mixed mode node is being integrated.
+                 Multiple remote node configuration files can be included in a node folder.
+                They must be included in the node folder of a project and referenced with the &lt;remoteNodeConfiguration&gt; tag.
+            </p>
+            <p>
+                Bulk3GPP and NETCONF (Baseband Radio Node) are the supported file formats.
+                The nodename attribute is required when a NETCONF format Remote Node Configuration is included
+                 for example &lt;remoteNodeConfiguration nodename="RemoteNode"&gt;NETCONF-Configuration-file.xml&lt;/remoteNodeConfiguration&gt;.
+                 Including multiple remote node configurations with different file format’s is supported.
+            </p>
+        </section>
+
+        <section id="RequestLicense">
+            <title>Request License Key Files</title>
+            <p>
+                AP supports automatic License Key File (LKF) retrieval for node integration via Instantaneous License (IL) feature provided by SHM.
+                Request License Task is executed during node order if IL is selected.
+            </p>
+            <p>
+                Prerequisites:
+                <ul>
+                    <li>ENM is configured and connected to Network Element Software Store (CAS-C).</li>
+                    <li>CAS-C and Ericsson License Generation System are connected and available.</li>
+                </ul>
+                For information about CAS-C configuration, refer to the ENM Configuration System Administration Guide (1/1543-AOM 901 151-1),
+                under Software and Hardware Management Administration Tasks -> Integration of Instantaneous Licensing with ENM.
+            </p>
+            <p>
+                To enable IL, an Automatic License Request file is required, which contains parameters for request license key files.
+                This file is referenced from the automaticLicenseRequest element in the nodeInfo.xml.
+                Here is an example of Automatic License Request file:
+                <pre>
+                    &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+                    &lt;licenseRequest&gt;
+                    &lt;radioAccessTechnologies&gt;LTE,NR&lt;/radioAccessTechnologies&gt;
+                    &lt;swltId&gt;LCS_945587_10081&lt;/swltId&gt;
+                    &lt;groupId&gt;949525&lt;/groupId&gt;
+                    &lt;hardwareType&gt;BB6648&lt;/hardwareType&gt;
+                    &lt;/licenseRequest&gt;
+                </pre>
+                If multiple technologies are configured then a comma needs to be used as separator in the radioAccessTechnologies entry.
+                The radioAccessTechnologies and swltId are mandatory while the groupId and hardwareType are optional.
+                For more information about parameters, see <xref href="#help/app/shm/topic/ui/common/lkfCsvFileData" scope="external">User input file format </xref>.
+            </p>
+            <p>
+                The IL interface also supports validation of Mandatory License Keys if the mandatory license keys file are provided.
+                There is a timeout of the progress of request license key files, which is 160 minutes.
+            </p>
+            <p>
+                <b>Note:</b> Execution of the Request License task may take up to 30 minutes to execute dependent on Instantaneous Licensing configuration
+            </p>
+        </section>
+
+        <section id="SecurityLevel">
+            <title>Security Level</title>
+            <p>The following are the Security Levels supported by AP for DU Radio Node:</p>
+            <ul>
+                <li>Security Level 1. Secure protocols are <b>not</b> used in ENM/Node communication.</li>
+                <li>Security Level 2. Secure protocols are used in all ENM/Node communication.</li>
+            </ul>
+            <p>The minimum security level cannot be set to a level higher than the optimum security level.</p>
+        </section>
+
+        <section id="SubjectAlternativeName">
+            <title>Subject Alternative Name</title>
+            <p>
+                For Node Integration if FQDN is specified as the subject alternative name type, and the subject alternative name is empty, a default value is used.
+                The default value is generated by AP and it follows this format:
+            </p>
+            <p><i>&lt;Logical node name&gt;-ipsec.&lt;organization&gt;.&lt;country&gt;</i> </p>
+            <p>
+                Values for organization and country are taken from:
+            </p>
+            <p>
+                <ul>
+                    <li>System environment settings if customized.</li>
+                    <li>
+                        If the system environment is not customized, then an internal default is used.
+                        The organization part of the FQDN is set to the value 'ericsson'. The country code part of the FQDN is set to the value defined by the system locale setting.
+                    </li>
+                </ul>
+            </p>
+            <p>For Baseband Radio Node Hardware Replace including the subjectAltName in the nodeInfo.xml file updates the
+               subjectAltName of a node. The IPSec node credentials are updated to reflect the new subjectAltName.</p>
+        </section>
+
+        <section id="SupportedConfigurationforHardwareReplace">
+            <title>Supported Configuration for Hardware Replace</title>
+            <p>Certain Hardware Replace usecases are dependent on the node being replaced having a specific configuration.</p>
+            <p><b><u>LMT Hardware Replace for Baseband Radio Node and Controller 6610</u></b></p>
+            <p>
+                The Site Installation file can only be generated when the OAM interface (InterfaceIPv4/InterfaceIPv6) references a VlanPort.
+                See below image for Managed Object Model (MOM) layout.
+            </p>
+            <p><image href="/resources/images/replace/hardwareReplace_LMT_supported_configuration.png" alt="Hardware Replace Supported Configuration"  height="100px" width="100px"/></p>
+            <p><b><u>Automatic update of SubjectAltName and SubjectName for Baseband Radio Node and Controller 6610</u></b></p>
+            <p>
+                For automatic update of SubjectAltName and SubjectName the following node configuration is required.
+                See below image for MOM layout.
+            </p>
+            <p><image href="/resources/images/replace/hardwareReplace_LMT_supported_configuration_subjectAltName.png" alt="Hardware Replace Supported Configuration for Automatic Subject Alt Name Update"  height="100px" width="100px"/></p>
+            <p><i>Ikev2PolicyProfile</i> attribute <i>credential</i> must reference IPSec NodeCredential.*</p>
+            <p>IPSec <i>NodeCredential</i> must contain the following attributes <i>enrollmentServerGroup</i>, <i>keyInfo</i>, <i>renewalMode</i>, <i>enrollmentAuthority</i>, <i>subjectName</i>.</p>
+            <p><b>Note:</b> If multiple Ikev2PolicyProfiles exist they must all reference the same IPSec NodeCredentials.</p>
+        </section>
+
+        <section id="TBAC">
+            <title>TBAC</title>
+            <p>
+                TBAC enables an operator to allocate its users access to only specific nodes through assigning users access to specific target groups.
+                 This can be done by adding the desired target groups in the <xref href="/prerequisites/supported_nodeinfo.xml"><i>nodeInfo.xml</i></xref>
+                 file under the TargetGroups tag. More than one TargetGroups can be allocated to the users.
+            </p>
+            <p>See <xref href="#help/app/targetmanagement" scope="external">Target Group Management User Guide</xref> for more information on TBAC (Target Based Access Control).</p>
+        </section>
+
+        <section id="Treat-As">
+            <title>Treat-As</title>
+            <p>
+                Treat-As allows ENM to manage a node as a different version to the actual version of that node.
+                An unknown node version is managed (or treated) as a known node version.
+            </p>
+            <p>
+                Treat-As can be used when nodes are upgraded to an unsupported version or added to ENM with an unsupported version.
+            </p>
+            <p>To specify an OSS Model Identity (OMI) using Treat-As, do the following:
+                <ol>
+                    <li>Choose a ‘Treat-As’ OMI from the available OMIs in ENM. Run the following command from the ENM CLI to identify a supported OMI:
+                        <codeblock>cmedit describe --netype &lt;Node Type&gt;</codeblock>
+                    </li>
+                    <li>Select an OMI and add this value into the  &lt;nodeIdentifier&gt; tag in the <xref href="/prerequisites/supported_nodeinfo.xml"><i>nodeInfo.xml</i></xref>.</li>
+                    <li>Specify an associated upgrade package in the <xref href="/prerequisites/supported_nodeinfo.xml"><i>nodeInfo.xml</i></xref>.</li>
+                </ol>
+            </p>
+        </section>
+
+        <section id="UnlockOfCells">
+            <title>Unlock of Cells</title>
+            <p>If unlock of cells is selected, it makes cells available for user plane traffic. The node can start transmitting on the common channels (pilot, synch and broadcast).
+                    Synchronization is required to an external clock source before all resources are enabled, and ready for traffic.
+                    Failure to unlock the cells results in an event reporting this failure being displayed in the FM Monitoring view.
+            </p>
+        </section>
+
+    </conbody>
+</concept>

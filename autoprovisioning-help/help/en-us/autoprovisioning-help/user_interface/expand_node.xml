@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<concept id="ap-userinterface-expandnode">
+    <title>Expand Node</title>
+    <conbody>
+        <section>
+            <p><xref href="#create_project">Create Project</xref></p>
+            <p><xref href="#create_profile">Create Profile</xref></p>
+            <p><xref href="#edit_profile">Edit Profile</xref></p>
+            <p><xref href="#delete_profile">Delete Profile</xref></p>
+            <p><xref href="#export_ciq">Export CIQ</xref></p>
+            <p><xref href="#import_ciq">Import CIQ</xref></p>
+            <p><xref href="#order">Order</xref></p>
+        </section>
+        <section id="create_project">
+            <title>Create Project</title>
+            <p>The <b>Create Project</b> button is used to create a new empty project.</p>
+            <p><image href="../resources/images/gui/create_project.png" alt="Create Project"/></p>
+            <p>Click <b>Create Project</b> to launch the following:</p>
+            <p><image href="../resources/images/gui/create_project_dialog.png" alt="Create Project Dialog"/></p>
+            <ul>
+                <li><b>Name:</b> Name of the project. Minimum of 3 characters, maximum of 100 characters. Must not duplicate the name of an existing project.</li>
+                <li><b>Description:</b> An optional description of the project.</li>
+            </ul>
+        </section>
+
+        <section id="create_profile">
+            <title>Create Profile</title>
+            <p>The <b>Create Profile</b> button is used to create a new profile.</p>
+            <p><image href="../resources/images/gui/create_profile.png" alt="Create Profile"/></p>
+            <p>Click <b>Create Profile</b> to launch the following:</p>
+            <p><image href="../resources/images/gui/Expandnode_create_profile_dialog.png" alt="Expandnode Create Profile Dialog"/></p>
+            <ul>
+                <li><b>Profile Name:</b> Name of the profile. Minimum of 3 characters, maximum of 100 characters.</li>
+                <li><b>Node Type:</b> All node types that profiles can be created for.</li>
+                <li><b>Upgrade Package:</b> All imported software packages for the selected <b>Node Type</b>.</li>
+            </ul>
+            <p>Click <b>Create...</b> to continue. See <xref href="../tutorials.xml">tutorials</xref> for more information.</p>
+        </section>
+
+        <section id="configuration_details">
+            <title>Configuration Details</title>
+            <p>The <b>Configuration Details</b> pane is used to view optional additional information about an existing profile.</p>
+            <p><image href="../resources/images/gui/configuration_details_default.png" alt="Configuration Details"/></p>
+            <p>The following may be displayed:</p>
+            <ul>
+                <li><b>Node Type:</b> An expandable tree structure respresenting the hierarchy of configurations in the profile.
+                    <p><image href="../resources/images/gui/expand_configuration_details_nodetype.png" alt="Configuration Details Node Type"/></p></li>
+                <li><b>Diagram:</b> A diagram representing a logical view of the components that will be configured by the profile.
+                    <p><image href="../resources/images/gui/expand_configuration_details_diagram.png" alt="Configuration Details Diagram"/></p></li>
+            </ul>
+            <p><b>Note:</b> Certain profiles will not generate a diagram or have any definitions to display in a diagram. In these cases only the legend will be shown or no diagram will be presented to the user.</p>
+        </section>
+
+        <section id="edit_profile">
+            <title>Edit Profile</title>
+            <p>The <b>Edit Profile</b> button is used to edit an existing profile.</p>
+            <p><image href="../resources/images/gui/edit_profile.png" alt="Edit Profile Dialog"/></p>
+            <p>Click <b>Edit Profile</b> to launch the following:</p>
+            <p><image href="../resources/images/gui/Expandnode_edit_profile_dialog.png" alt="Expandnode Edit Profile Dialog"/></p>
+            <ul>
+                <li><b>Upgrade Package:</b> All imported software packages for the selected node type.</li>
+            </ul>
+            <p>Click <b>Edit...</b> to continue.</p>
+        </section>
+
+        <section id="delete_profile">
+            <title>Delete Profile</title>
+            <p>The <b>Delete Profile</b> button is used to delete an existing profile.</p>
+            <p><image href="../resources/images/gui/delete_profile.png" alt="Delete Profile Dialog"/></p>
+            <p>Click <b>Delete Profile</b> to launch the following:</p>
+            <p><image href="../resources/images/gui/delete_profile_dialog.png" alt="Delete Profile Dialog"/></p>
+            <p>Click <b>Delete</b> to permanently delete the profile.</p>
+        </section>
+
+        <section id="export_ciq">
+            <title>Export CIQ</title>
+            <p><b>Export CIQ</b> generates a template Customer Information Questionnaire (CIQ) for the profile. The parameters and descriptions will be prepopulated, but the values are blank.</p>
+            <p><image href="../resources/images/gui/export_ciq.png" alt="Export CIQ"/></p>
+            <p>Click <b>Export CIQ</b> to download a xlsx file, which is required for input of site specific values for node expansion.</p>
+        </section>
+
+        <section id="import_ciq">
+            <title>Import CIQ</title>
+            <p><b>Import CIQ</b> generates node configurations based on a user-completed Customer Information Questionnaire generated from the profile.</p>
+            <p><image href="../resources/images/gui/import_ciq.png" alt="Import CIQ"/></p>
+            <p>Click <b>Import CIQ</b> to upload a xlsx file which contains site specific values for node expansion.</p>
+        </section>
+
+        <section id="order">
+            <title>Order</title>
+            <p>Before a valid CIQ is imported, the <b>Node Details</b> section will be empty.</p>
+            <p><image href="../resources/images/gui/summary_no_nodes.png" alt="Summary of Nodes Configurations when none are created using a Profile"/></p>
+            <p>When a valid CIQ is imported, you can view the nodes that are ready for order, with warnings if available.</p>
+            <p><image href="../resources/images/gui/summary_valid_warning_nodes.png" alt="Summary of Nodes Configurations created using a Profile"/></p>
+            <p>When a valid CIQ is imported successfully, click <b>Order</b> to initiate the order.</p>
+            <p><image href="../resources/images/gui/profile_order.png" alt="Order Nodes using a Profile"/></p>
+            <p>When the order has initiated, a dialog will be displayed:</p>
+            <p><image href="../resources/images/gui/Monitor_expansion_dialogbox.png" alt="Monitor or continue"/></p>
+            <p>Click <b>Monitor Expansion</b> to display the <xref href="autoprovisioning.xml#status">Project Status Tab</xref>.</p>
+            <p>Click <b>Continue Provisioning</b> to close the dialog.</p>
+        </section>
+    </conbody>
+</concept>
+

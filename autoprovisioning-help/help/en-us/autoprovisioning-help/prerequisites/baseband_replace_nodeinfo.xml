@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<concept id="AP-NodeInfo-BasebandRadioNode-HardwareReplace">
+    <title>Hardware Replace Node Info (Baseband Radio Node)</title>
+    <conbody>
+        <section id="node_info_sections">
+            <p>The hardware replace node information file contains the following elements:</p>
+            <ul>
+                <li>
+                    <xref href="#1">Node Information</xref>
+                </li>
+                <li>
+                    <xref href="#2">Security</xref>
+                </li>
+                <li>
+                    <xref href="#3">Artifacts</xref>
+                </li>
+            </ul>
+        </section>
+        <section id="hardware_replace_node_info_common_attributes">
+            <title id="1">Node Information</title>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Tag</b>
+                    </stentry>
+                    <stentry>
+                        <b>Mandatory</b>
+                    </stentry>
+                    <stentry>
+                        <b>Description</b>
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>noNamespaceSchemaLocation</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>
+                        Attribute on the &lt;nodeInfo&gt; tag. This attribute specifies the name of the schema for hardware replace.
+                        If no schema is specified or if a different schema is specified, then Auto Provisioning will default to a standard
+                        integration schema and integration rules will apply to the project.
+                        <p>
+                            example: &lt;nodeInfo
+                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                            xsi:noNamespaceSchemaLocation="HardwareReplaceNodeInfo.xsd"&gt;.
+                        </p>
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;name&gt;</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>The logical name of the node, see <xref href="/overview/apconcepts.xml#NodeName">Concepts, Node Name</xref>.
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;hardwareSerialNumber&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>
+                         Hardware Serial number of replacement node. LMT Hardware replace will be executed if serialNumber is not included.
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;backup&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>
+                         Name of node backup in SHM to use for hardware replace.
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;defaultRouter&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>
+                         IP Address of the default router.
+                    </stentry>
+                </strow>
+            </simpletable>
+        </section>
+        <section id="security">
+        <title id="2">Security</title>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Tag</b>
+                    </stentry>
+                    <stentry>
+                        Mandatory
+                    </stentry>
+                    <stentry>
+                        Description
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;security&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>The &lt;security&gt; tag describes options to configure security on the replacement node see <xref href="/overview/apconcepts.xml#SupportedConfigurationforHardwareReplace">Concepts, Supported Configuration for Hardware Replace</xref>.</stentry>
+                </strow>
+            </simpletable>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Security Subtag</b>
+                    </stentry>
+                    <stentry>
+                        <b>Mandatory</b>
+                    </stentry>
+                    <stentry>
+                        <b>Description</b>
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;ipSecurity&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>
+                        This is the root tag for the IP security settings.
+                    </stentry>
+                </strow>
+            </simpletable>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>IP Security Subtags</b>
+                    </stentry>
+                    <stentry>
+                        <b>Mandatory</b>
+                    </stentry>
+                    <stentry>
+                        <b>Description</b>
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;subjectAltName&gt;</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>
+                        The Subject Alternative Name for replacement node ipsec node credentials.
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;subjectName&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>Subject Name for replacement node ipsec node credentials.
+                             Subject name update is only supported when using External Certificate Authority (CA).</stentry>
+                </strow>
+            </simpletable>
+        </section>
+        <section>
+            <title id="3">Artifacts</title>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Tag</b>
+                    </stentry>
+                    <stentry>
+                        Mandatory
+                    </stentry>
+                    <stentry>
+                        Description
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;artifacts&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>The &lt;artifacts&gt; tag describes the files used by the node during hardware replace. All configuration files must be included in the same folder as the nodeinfo.</stentry>
+                </strow>
+            </simpletable>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Artifact Subtags</b>
+                    </stentry>
+                    <stentry>
+                        <b>Mandatory</b>
+                    </stentry>
+                    <stentry>
+                        <b>Description</b>
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;siteInstallation&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>The name of the site installation artifact file.
+                        It should strictly follow the naming convention as "SiteInstallation.xml". This artifact file defines the
+                        parameters in the node. The file is brought to site. It provides
+                        parameters to initiate the integration of a node within a network.
+                        AP will automatically generate the site installation file if it is not included.
+                    </stentry>
+                </strow>
+            </simpletable>
+        </section>
+    </conbody>
+</concept>

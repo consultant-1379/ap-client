@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<concept id="About">
+    <title>About</title>
+    <conbody>
+        <dl>
+            <dlentry id="appName">
+                <dt><b>App</b></dt>
+                <dd>Auto Provisioning</dd>
+            </dlentry>
+            <dlentry id="productNumber">
+                <dt><b>Product Number and R-State</b></dt>
+                <dd>CNA 403 2978 R1A</dd>
+            </dlentry>
+            <dlentry id="link">
+                <dt><b>App Link</b></dt>
+                <dd>#autoprovisioning</dd>
+            </dlentry>
+            <dlentry id="ectAppName">
+                <dt><b>App</b></dt>
+                <dd>Configuration Generator(ECT)</dd>
+            </dlentry>
+            <dlentry id="ectProductNumber">
+                <dt><b>Product Number and R-State</b></dt>
+                <dd>
+                    <p conref="../configuration-generator/enm/versions.xml#ect_version"/>
+                </dd>
+            </dlentry>
+        </dl>
+    </conbody>
+</concept>

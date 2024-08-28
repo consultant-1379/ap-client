@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<concept id="AP-Overview-Expansion">
+    <title>Expand a Node Overview</title>
+    <conbody>
+        <section>
+            <p>Auto Provisioning (AP) provides an automated task based workflow that configures a node for expansion.</p>
+            <p>This diagram gives a high level overview of the roles involved and some of the tasks that are automated by AP when expanding a node.</p>
+            <p><image href="/resources/images/common/AP_Expansion_Overview.png" alt="Expansion Auto Provisioning Overview" height="100px" width="100px"/></p>
+        </section>
+        <section>
+            <p>AP Node Expansion can be executed by adding a pre-created Auto Provisioning project file to ENM through ENM CLI, the Auto Provisioning GUI or by creating node configurations using the <i>Expand Node</i> in the Auto Provisioning GUI.</p>
+            <p>
+                The following tutorial describe how to prepare an AP project file:
+                    <ul>
+                        <li><xref href="/prerequisites/standard_project_file_tutorial.xml">Prepare a Standard Project File</xref></li>
+                    </ul>
+                The following tutorial describe how to expand a node to ENM using AP:
+                <ul>
+                    <li><xref href="/tutorials/expansionGUI.xml"> Perform Node Expansion using Auto Provisioning GUI</xref></li>
+                    <li><xref href="/tutorials/expansionCLI.xml"> Perform Node Expansion using Auto Provisioning CLI</xref></li>
+                </ul>
+             </p>
+             <p>
+                The following tutorials describe how to configure and perform an expansion of a node using AP:
+                <ul>
+                    <li><xref href="/tutorials/expandnode_radionode.xml">
+                        Configure and perform Baseband Radio Node(s) Expansion</xref></li>
+                </ul>
+            </p>
+        </section>
+       <section>
+        <title>AP Expand Node Flow</title>
+        <p>The following are some of the main tasks that are executed by an Auto Provisioning workflow when expanding a node in ENM:
+            <ol>
+                <li>Validation of supplied configuration files.</li>
+                <li>Run node Health Check.</li>
+                <li>Waits for Expansion Notification. The following notifications are received by ENM for expansion:
+                <ul>
+                    <li>Maintenance Button Notification *</li>
+                    <li>ENM Operator executes resume</li>
+                </ul>
+                </li>
+                <li>Sets the node Management State to Maintenance.</li>
+                <li>Creates a node backup.</li>
+                <li>Apply configurations.</li>
+                <li>Run node Health Check.</li>
+                <li>Creates a node backup and uploads it to ENM.</li>
+                <li>Sets the node Management State to Normal.</li>
+                <li>The node is expanded and email with node status output is sent.</li>
+            </ol>
+        </p>
+        <p>* Pressing maintenance button will affect traffic</p>
+        <p>
+            1. For non-traffic affecting procedure, the ENM Operator can resume the expansion workflow directly by executing resume without entering full maintenance mode as per Step 6.
+            The ENM Operator can receive the notification that new hardware insertion and deployment at site is ready from the Field Technician.
+        </p>
+        <p>
+            2. If ENM Operator executes resume or cancel on the expansion workflow after the 1st maintenance button pressed on baseband node as per Step 6,
+            the Field Technician must press maintenance button on baseband node (less than 7 seconds) again and wait for the node to quit maintenance mode (MLED light off).
+        </p>
+        </section>
+    </conbody>
+</concept>

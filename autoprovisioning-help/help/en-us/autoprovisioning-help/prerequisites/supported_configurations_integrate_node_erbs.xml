@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<concept id="AP-SupportedNodeConfiguration-DURadioNode-NodeIntegration">
+     <title>Supported Configurations for Node Integration of type DU Radio Node</title>
+     <conbody>
+     <section>
+            <p>The following lists the configuration supported for Node Integration of a DU Radio Node.</p>
+       </section>
+       <section id="BasebandRadioNode">
+            <title>DU Radio Node</title>
+            <simpletable frame="all" relcolwidth="1* 1* 1* 1* 1* 1*">
+            <sthead>
+                <stentry>
+                    <b>Configuration Files</b>
+                </stentry>
+                <stentry>
+                    <b>Tag</b>
+                </stentry>
+                <stentry>
+                    <b>Mandatory</b>
+                </stentry>
+               <stentry>
+                    <b>FileType</b>
+                </stentry>
+               <stentry>
+                    <b>Supported Format(s)</b>
+                </stentry>
+            </sthead>
+            <strow>
+                <stentry>Site Installation</stentry>
+                <stentry>siteInstallation</stentry>
+                <stentry>Yes</stentry>
+                <stentry>XML</stentry>
+                <stentry>XML</stentry>
+            </strow>
+            <strow>
+                <stentry>Site Basic</stentry>
+                <stentry>siteBasic</stentry>
+                <stentry>Yes</stentry>
+                <stentry>XML</stentry>
+                <stentry>CPP</stentry>
+            </strow>
+            <strow>
+                <stentry>Site Equipment</stentry>
+                <stentry>siteEquipment</stentry>
+                <stentry>Yes</stentry>
+                <stentry>XML</stentry>
+                <stentry>CPP</stentry>
+            </strow>
+            <strow>
+                <stentry>Configuration (RN,TN)</stentry>
+                <stentry>configuration</stentry>
+                <stentry>No</stentry>
+                <stentry>XML</stentry>
+                <stentry>Bulk3gpp</stentry>
+            </strow>
+        </simpletable>
+        <p>For samples files refer to <i>DU Radio Node: LZN 793 1010 Initial Configuration / Configuration Files</i></p>
+        </section>
+     </conbody>
+</concept>

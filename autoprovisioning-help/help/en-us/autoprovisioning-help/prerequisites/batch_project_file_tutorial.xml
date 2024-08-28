@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<task id="AP-PrepareBatchProject-Tutorial">
+    <title>Prepare a Batch Integration Project for Auto Provisioning</title>
+    <taskbody>
+        <context>
+            <p>
+                This workflow describes how to prepare a batch project file for Auto Provisioning. A project is modeled by a zip file.
+                 The file contains the configurations required by AP to execute node integration.
+                 An Auto Provisioning project can contain template configurations for all AP supported node types.
+                 An example of the batch project file structure for node integration is displayed below.
+                 The recommended maximum number of nodes supported in a batch project is 100.
+                 A batch project contains nodes which share common parameters and
+                 configuration data. Batch is supported for Node Integration projects.
+            </p>
+            <p>It is made up of two distinct parts:</p>
+            <p>
+                <ul>
+                    <li>A set of XML template files</li>
+                    <li>A CSV file that has unique per node value data</li>
+                </ul>
+            </p>
+            <p>
+                Note: Project zip file should strictly follow the naming convention for site installation artifact file as "SiteInstallation.xml".
+            </p>
+            <p>An example of the batch project file structure is displayed below.</p>
+            <codeblock>
+                [batch-project.zip]
+                > projectInfo.xml
+                > nodeInfo.xml
+                > SiteBasic.xml
+                > SiteEquipment.xml
+                > SiteInstallation.xml
+                > BulkCmRN.xml
+                > BulkCmTN.xml
+                > substitutionValues.csv
+            </codeblock>
+            <p>
+                The <xref href="/commands/download.xml" type="concept"> <i>ap download</i></xref>
+                command can be used to download a sample batch project file.
+                For more information on batch files see <xref href="/overview/apconcepts.xml#BatchConfigurationTemplate" type="concept">Concept, Batch Configuration Template</xref>
+                 and <xref href="/overview/apconcepts.xml#BatchProjectCSVFormat">Concept, Batch Project CSV Format</xref>.
+            </p>
+            <p>
+                <b>Steps</b>
+                <ol>
+                    <li>
+                        <xref href="#1">Create a Project Information File</xref>
+                    </li>
+                    <li>
+                        <xref href="#2">Create Node Info Template</xref>
+                    </li>
+                    <li>
+                        <xref href="#3">Create Node Configuration Templates</xref>
+                    </li>
+                    <li>
+                        <xref href="#4">Create a CSV Substitution File</xref>
+                    </li>
+                    <li>
+                        <xref href="#5">Populate CSV Substitution File</xref>
+                    </li>
+                    <li>
+                        <xref href="#6">Create the Project Zip File</xref>
+                    </li>
+                </ol>
+            </p>
+        </context>
+
+        <steps>
+            <step id="1">
+                <cmd>Create a Project Information File</cmd>
+                <info>
+                    <ol>
+                        <li>Create an empty project folder.</li>
+                        <li>Create a <xref href="/prerequisites/projectinfo.xml">Project Information File </xref> within the empty project folder.
+                            <ul>
+                                <li>Must be named <b>projectInfo.xml</b>.</li>
+                                <li>Must be in adherence to projectInfo schema.</li>
+                            </ul>
+                        </li>
+                        <li>Copy the Project Information file into the project folder.</li>
+                    </ol>
+                </info>
+            </step>
+
+            <step id="2">
+                <cmd>Create Node Info Template</cmd>
+                <info>
+                    <ol>
+                        <li>Create a <xref href="/prerequisites/supported_nodeinfo.xml">Node Information File</xref>
+                            <ul>
+                                <li>Must be named <b>nodeInfo.xml</b>.</li>
+                                <li>Must be in adherence to nodeInfo schema.</li>
+                            </ul>
+                        </li>
+                        <li>Replace any site specific value with a substitution variable.
+                            <ul>
+                                <li>Substitution variables must be represented as "%&lt;substitution_name> %".</li>
+                                <li>The substitution variables must correspond to data in the CSV substitution file.</li>
+                                <li>Substitution variables are not permitted within xml comments.</li>
+                                <li>Node artifact configuration template file names must match the artifact names listed in the nodeInfo.xml template.</li>
+                            </ul>
+                        </li>
+                        <li>Copy the nodeInfo.xml into the project folder.</li>
+                    </ol>
+                </info>
+            </step>
+
+            <step id="3">
+                <cmd>Create Node Configuration Templates</cmd>
+                <info>
+                    <ol>
+                        <li>Create the node configuration templates.
+                            <ul>
+                                <li>
+                                    For a listing of required configurations for supported node types.
+                                     See <xref href="/prerequisites/supported_configurations.xml">Supported Configurations</xref>.
+                                </li>
+                                <li>All node configuration templates that are referenced in the nodeInfo.xml must have an template file created.</li>
+                            </ul>
+                        </li>
+                        <li>Replace any site specific value with a substitution variable.
+                            <ul>
+                                <li>Substitution variables must be represented as "%&lt;substitution_name> %".</li>
+                                <li>The substitution variables must correspond to data in the CSV substitution file.</li>
+                                <li>Substitution variables are not permitted within xml comments.</li>
+                                <li>Node artifact configuration template file names must match the artifact names listed in the nodeInfo.xml template.</li>
+                            </ul>
+                        </li>
+                        <li>Copy the node artifacts configuration templates into the project folder.</li>
+                    </ol>
+                </info>
+            </step>
+
+            <step id="4">
+                <cmd>Create a CSV Substitution File</cmd>
+                <info>
+                    <p>As an alternative to this step CSV substitution file can be created manually, see <xref href="/overview/apconcepts.xml#BatchProjectCSVFormat">Concept, Batch Project CSV Format</xref></p>
+                    <p>
+                        <ol>
+                            <li>Zip all the files in the project folder.</li>
+                            <li>Drag and drop the zip file into the ENM CLI.</li>
+                            <li>Execute the <xref href="/commands/order.xml" type="concept"><i>ap order</i></xref>
+                                command (This will automatically generate a CSV substitution file).</li>
+                        </ol>
+                    </p>
+                </info>
+            </step>
+
+            <step id="5">
+                <cmd>Populate CSV Substitution file</cmd>
+                <info>
+                    <p>
+                        <ol>
+                            <li>Populate the CSV file with node specific values.
+                                <ul>
+                                    <li>The CSV file must adhere to the Batch Project CSV Format, see
+                                <xref href="/overview/apconcepts.xml#BatchProjectCSVFormat">Concept, Batch Project CSV Format</xref></li>
+                                    <li>Each node in the batch must have a single row entry.</li>
+                                </ul>
+                            </li>
+                            <li>Add CSV file to project folder.</li>
+                        </ol>
+                    </p>
+                </info>
+            </step>
+
+            <step id="6">
+                <cmd>Create the Project Zip File</cmd>
+                <info>
+                    <p>
+                        <ol>
+                            <li>Select all the contents of the project folder.
+                            </li>
+                            <li>Create new zip file.
+                                <ul>
+                                    <li>
+                                        All files must be in the root folder of the project zip.
+                                    </li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </p>
+                </info>
+            </step>
+        </steps>
+        <result>
+            <p>Auto Provisioning batch project zip file is created.</p>
+        </result>
+    </taskbody>
+</task>

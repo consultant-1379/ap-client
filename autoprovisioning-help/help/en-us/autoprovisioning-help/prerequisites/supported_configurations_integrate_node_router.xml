@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<concept id="AP-SupportedNodeConfiguration-Router-NodeIntegration">
+     <title>Supported Configurations for Node Integration of type Router</title>
+     <conbody>
+     <section>
+            <p>The following lists the configurations supported for Node Integration of a Router.</p>
+        </section>
+       <section id="Router">
+            <title>Router</title>
+            <simpletable frame="all" relcolwidth="1* 1* 1* 1* 1* 1*">
+            <sthead>
+                <stentry>
+                    <b>Configuration Files</b>
+                </stentry>
+                <stentry>
+                    <b>Tag</b>
+                </stentry>
+                <stentry>
+                    <b>Mandatory</b>
+                </stentry>
+               <stentry>
+                    <b>FileType</b>
+                </stentry>
+               <stentry>
+                    <b>Supported Format(s)</b>
+                </stentry>
+            </sthead>
+            <strow>
+                <stentry>Site Installation</stentry>
+                <stentry>siteInstallation</stentry>
+                <stentry>Yes</stentry>
+                <stentry>XML</stentry>
+                <stentry>XML</stentry>
+            </strow>
+            <strow>
+                <stentry>Site Basic</stentry>
+                <stentry>siteBasic</stentry>
+                <stentry>Yes</stentry>
+                <stentry>CFG</stentry>
+                <stentry>CFG</stentry>
+            </strow>
+            <strow>
+                <stentry>Site Equipment</stentry>
+                <stentry>siteEquipment</stentry>
+                <stentry>Yes</stentry>
+                <stentry>CFG</stentry>
+                <stentry>CFG</stentry>
+            </strow>
+        </simpletable>
+        <p>For samples files refer to <i>Ericsson R6000: LZN 712 0476 Auto-integration / Configuration Files</i></p>
+        </section>
+     </conbody>
+</concept>

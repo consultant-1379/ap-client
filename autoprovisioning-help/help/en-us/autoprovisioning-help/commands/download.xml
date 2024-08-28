@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<concept id="AP-CLI-Command-Download">
+    <title>ap download</title>
+    <conbody>
+        <section>
+            <title>Syntax</title>
+            <p>
+                <image href="/resources/images/commands/cli.png" />
+                <b>Syntax to download sample artifacts for all node types</b>
+            </p>
+            <codeblock>
+                ap download -x
+            </codeblock>
+            <p>
+                <image href="/resources/images/commands/cli.png" />
+                <b>Syntax to download sample artifacts for a specific node type</b>
+            </p>
+            <codeblock>
+                ap download -x &lt;nodeType&gt; </codeblock>
+            <p>
+                <image href="/resources/images/commands/cli.png" />
+                <b>Syntax to download all imported node artifacts</b>
+            </p>
+            <codeblock>
+                ap download -i -n &lt;nodeName&gt;
+            </codeblock>
+            <p>
+                <image href="/resources/images/commands/cli.png" />
+                <b>Syntax to download an ordered node artifact</b>
+            </p>
+            <codeblock>
+                ap download -o -n &lt;nodeName&gt;
+            </codeblock>
+        </section>
+
+        <section>
+            <title>Description</title>
+            <p>
+                The
+                <i>ap download</i>
+                command is used to download node-related samples, schemas, imported configurations, or configurations required for Auto Provisioning activities.
+            </p>
+            <p>
+                The following options are available:
+                <ul>
+                    <li>
+                        Download can be requested for all sample configurations (schemas and project files) for a specified node type using the
+                        <i>ap download</i>
+                        command with the
+                        <i>-x</i>
+                        parameter.
+                        This parameter is used to reference sample configurations to create a project file. Optionally, no node type can be specified after the
+                        <i>-x</i>
+                        parameter to download sample configurations for all node types.
+                        All configurations are downloaded to your local machine in zip file format.
+                    </li>
+                    <li>
+                        Download can be requested for all initial configurations for the node using the
+                        <i>ap download</i>
+                        command with the
+                        <i>-i</i>
+                        parameter.
+                        This parameter is used when you want to download the imported configurations for verification or reuse.
+                        All configurations are downloaded to your local machine in zip file format.
+                        Download of Baseline file is supported only when it is included in project zip file.
+                    </li>
+                    <li>
+                        The <i>ap download</i> command with the <i>-o</i> parameter is used to download the Site Installation File (SIF) (CCF for Pico).
+                         It can be executed when the node is in the following states:
+                        <ul>
+                            <li>Hardware Replace Suspended</li>
+                            <li>Order Completed</li>
+                        </ul>
+                    </li>
+                </ul>
+                <b>Note:</b> Configurations are automatically removed when the Auto Provisioning activity is completed and are no longer available for download.
+            </p>
+            <p>For more information on download see <xref href="/overview/apoperations.xml#Download" type="concept">Operations, Download</xref></p>
+        </section>
+        <section>
+            <title>Examples</title>
+            <sectiondiv>
+                <p>
+                    <image href="/resources/images/commands/cli.png" />
+                    <b>Download an ordered artifact for a node (for example site installation file for a DU Radio Node)</b>
+                </p>
+                <codeblock>
+                    ap download -o -n Node01
+                </codeblock>
+                <p>
+                    <b>Response</b>
+                </p>
+                <p>
+                    <pre>Successful</pre>
+                </p>
+            </sectiondiv>
+            <image href="/resources/images/commands/hr.png" />
+            <sectiondiv>
+                <p>
+                    <image href="/resources/images/commands/cli.png" />
+                    <b>
+                        Download sample artifacts for a
+                        <i>DU Radio Node</i>
+                    </b>
+                </p>
+                <codeblock>
+                    ap download -x ERBS
+                </codeblock>
+                <p>
+                    <b>Response</b>
+                </p>
+                <p>
+                    <pre>Successful</pre>
+                </p>
+            </sectiondiv>
+            <image href="/resources/images/commands/hr.png" />
+            <sectiondiv>
+                <p>
+                    <image href="/resources/images/commands/cli.png" />
+                    <b>
+                        Download sample artifacts for a
+                        <i>Baseband Radio Node</i>
+                    </b>
+                </p>
+                <codeblock>
+                    ap download -x RadioNode
+                </codeblock>
+                <p>
+                    <b>Response</b>
+                </p>
+                <p>
+                    <pre>Successful</pre>
+                </p>
+            </sectiondiv>
+        </section>
+    </conbody>
+</concept>

@@ -1,0 +1,13 @@
+{
+    "name":"AutoProvisioning",
+    "version":"0.0.1-SNAPSHOT",
+    "dependencies": {
+        "cdt-build": "*",
+        "cdt-package": "*"
+    },
+    "devDependencies":{
+        "request": "^2.79.0",
+        "cdt-build":"*",
+        "cdt-package":"*"
+    }
+}

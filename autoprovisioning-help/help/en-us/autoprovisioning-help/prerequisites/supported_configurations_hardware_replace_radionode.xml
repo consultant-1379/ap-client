@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<concept id="AP-SupportedNodeConfiguration-BasebandRadioNode-HardwareReplace">
+    <title>Supported Configurations for Hardware Replace of type Baseband Radio Node</title>
+    <conbody>
+        <section>
+            <p>The following lists the configurations supported for Hardware Replace of a Baseband Radio Node.</p>
+        </section>
+        <section id="BasebandRadioNode">
+            <title>Baseband Radio Node</title>
+            <simpletable frame="all" relcolwidth="1* 1* 1* 1* 1* 1*">
+                <sthead>
+                    <stentry>
+                        <b>Configuration Files</b>
+                    </stentry>
+                    <stentry>
+                        <b>Tag</b>
+                    </stentry>
+                    <stentry>
+                        <b>Mandatory</b>
+                    </stentry>
+                    <stentry>
+                        <b>FileType</b>
+                    </stentry>
+                    <stentry>
+                        <b>Supported Format(s)</b>
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>Site Installation</stentry>
+                    <stentry>siteInstallation</stentry>
+                    <stentry>No</stentry>
+                    <stentry>XML</stentry>
+                    <stentry>XML</stentry>
+                </strow>
+            </simpletable>
+            <p>For samples files refer to <i>Baseband Radio Node: LZN 793 1020 Initial Configuration / Configuration Files</i></p>
+        </section>
+    </conbody>
+</concept>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<task id="AP-BasebandRadioNode-ConfigureAndIntegrate-Tutorial-Cell-Centric">
+    <title>Configure and Auto Integrate Baseband Radio Node(s) with a cell centric CIQ</title>
+    <taskbody>
+        <prereq>
+            <p>
+                <ul>
+                    <li>You have AutoProvisioning_Operator role or higher.</li>
+                    <li>Be familiar with <xref href="/overview/autoprovisioningflow.xml">Auto Integrate a Physical Node Overview</xref>.
+                    </li>
+                    <li>For LMT Integration, it is mandatory to have a user with FIELD_TECHNICIAN role created, see
+                        <xref href="/overview/apconcepts.xml#IntegrationProcedure">Concepts, Integration Procedure</xref>.
+                    </li>
+                    <li>Define SNMP security configuration options if required, see
+                        <xref href="/prerequisites/definesnmpsecurityconfigurationoption.xml">
+                            Define SNMP Security configuration options</xref>.
+                    </li>
+                    <li>
+                        The required Upgrade Package is uploaded to SHM, see
+                        <xref href="#help/app/shm/topic/tutorials/softwareadmin/managePackages" scope="external">Manage Software Packages</xref>.
+                    </li>
+                    <li>The required License Key Files (LKF) are uploaded to SHM, see
+                        <xref href="#help/app/shm/topic/tutorials/licenseadmin/installLKFs~1" scope="external">Import Key Files</xref>.
+                    </li>
+                    <li>Desktop XLSX editor software, for example Excel.</li>
+                </ul>
+            </p>
+            <p conref="../../configuration-generator/enm/ccciqautoprovisioning.xml#prereq_BuildProfile"/>
+        </prereq>
+        <context>
+            <p conref="../../configuration-generator/enm/ccciqautoprovisioning.xml#context_BuildProfile"/>
+        </context>
+        <steps conref="../../configuration-generator/enm/ccciqautoprovisioning.xml#steps_BuildProfile">
+            <step id="launch_enm">
+                <cmd>Launch AP</cmd>
+                <info>
+                    <ol>
+                        <li>Launch <xref href="#autoprovisioning" scope="external">Auto Provisioning (AP)</xref>.</li>
+                    </ol>
+                </info>
+            </step>
+        </steps>
+        <result>
+            <p>The Baseband Radio Node(s) automatic integration has started.</p>
+            <p>See additional steps dependent on <xref href="/overview/apconcepts.xml#IntegrationProcedure">Concepts, Integration Procedure</xref>
+                <ul>
+                    <li>
+                        <xref href="/tutorials/autointegratenodeGUI.xml#2">LMT Integration</xref>
+                    </li>
+                    <li>
+                        <xref href="/tutorials/autointegratenodeGUI.xml#3">ZT Integration (Late Bind)
+                        </xref>
+                    </li>
+                    <li>
+                        <xref href="/tutorials/autointegratenodeGUI.xml#4">ZT Integration (Early Bind)
+                        </xref>
+                    </li>
+                </ul>
+            </p>
+        </result>
+    </taskbody>
+</task>

@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<concept id="AP-NodeInfo-Controller6610-Expansion">
+    <title>Expansion Node Info (Controller 6610 Node)</title>
+    <conbody>
+        <section id="node_info_sections">
+            <p>
+                The expansion node information file contains the following elements:
+                <ul>
+                    <li>
+                        <xref href="#1">Node Information</xref>
+                    </li>
+                    <li>
+                        <xref href="#2">Notifications</xref>
+                    </li>
+                    <li>
+                        <xref href="#3">License</xref>
+                    </li>
+                    <li>
+                        <xref href="#4">Supervision</xref>
+                    </li>
+                    <li>
+                        <xref href="#5">Artifacts</xref>
+                    </li>
+                </ul>
+            </p>
+        </section>
+        <section id="expansion_node_info_common_attributes">
+            <title id="1">Node Information</title>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Tag</b>
+                    </stentry>
+                    <stentry>
+                        <b>Mandatory</b>
+                    </stentry>
+                    <stentry>
+                        <b>Description</b>
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>noNamespaceSchemaLocation</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>
+                        Attribute on the &lt;nodeInfo&gt; tag. This attribute specifies the name of the schema for expansion.
+                        If no schema is specified or if a different schema is specified, then Auto Provisioning will default to a standard
+                        integration schema and integration rules will apply to the project.
+                        <p>
+                            example: &lt;nodeInfo
+                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                            xsi:noNamespaceSchemaLocation="ExpansionNodeInfo.xsd"&gt;.
+                        </p>
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;name&gt;</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>The logical name of the node, see <xref href="/overview/apconcepts.xml#NodeName">Concepts, Node Name</xref>.
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;deployment&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>The name of the deployment associated with the node.</stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;userLabel&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>This value populates the user label attribute of the Network Element MO. The label must not exceed 90 characters.</stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;autoRestoreOnFail&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>
+                         Flag indicating whether restore of the node backup taken earlier will be triggered automatically in case of any configuration import failure or post expansion health check failure.
+                         If true, the node configuration will be automatically restored to its initial pre-expansion configuration state if an error is encountered. (Default: false)
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;workOrderId&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>
+                        The work order ID of a node expansion activity. This attribute must start with a non-blank character, followed by any number of characters.
+                        The attribute, if configured, will be used in the email title of node expansion status report for
+                            example: &lt;workOrderId&gt;SC-3481747362&lt;/workOrderId&gt;.
+                    </stentry>
+                </strow>
+            </simpletable>
+        </section>
+        <section>
+            <title id="2">Notifications</title>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Tag</b>
+                    </stentry>
+                    <stentry>
+                        Mandatory
+                    </stentry>
+                    <stentry>
+                        Description
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;notification&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>The &lt;notification&gt; tag describes options to notify users during the integration flow.</stentry>
+                </strow>
+            </simpletable>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Notifications Subtags</b>
+                    </stentry>
+                    <stentry>
+                        <b>Mandatory</b>
+                    </stentry>
+                    <stentry>
+                        <b>Description</b>
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;email&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>Single or multiple email address(es), which are separated by comma (“,”) or semi-colon (“;”), of the related engineer(s) (e.g. Field Technician(s)) who will receive an email about node integration status.
+                        Refer to section <xref href="/prerequisites.xml#EmailPreq">Prerequisites, Email Setup</xref>.
+                    </stentry>
+                </strow>
+            </simpletable>
+        </section>
+        <section>
+            <title id="3">License</title>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Tag</b>
+                    </stentry>
+                    <stentry>
+                        Mandatory
+                    </stentry>
+                    <stentry>
+                        Description
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;license&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>The &lt;license&gt; tag contains license
+                        file information.
+                    </stentry>
+                </strow>
+            </simpletable>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>License Subtags</b>
+                    </stentry>
+                    <stentry>
+                        <b>Mandatory</b>
+                    </stentry>
+                    <stentry>
+                        <b>Description</b>
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;licenseFile&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>
+                        The name of the License File zip.
+                        <p>
+                            If the License Key File is present in the
+                            node folder and is referenced from
+                            &lt;licenseFile&gt;, the License Key File
+                            will be imported into SHM as part of the
+                            expansion.
+                        </p>
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;installLicense&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>
+                        Flag indicating if the License Key File
+                        (with latest Sequence Number) should be
+                        installed on the node as part of the
+                        expansion.
+                        (Default: False)
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;mandatoryLicenseKeys&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>
+                        The name of the file which contains a list of mandatory license
+                        key IDs to be validated against a supplied
+                        License Key File. Refer to section <xref href="/overview/apconcepts.xml#LicenseKey">Concepts, License Key</xref>
+                    </stentry>
+                </strow>
+            </simpletable>
+        </section>
+        <section>
+            <title id="4">Supervision</title>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Tag</b>
+                    </stentry>
+                    <stentry>
+                        Mandatory
+                    </stentry>
+                    <stentry>
+                        Description
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;supervision&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>The subtags listed below allow you to
+                        configure supervision on the node.
+                    </stentry>
+                </strow>
+            </simpletable>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Supervision Subtags</b>
+                    </stentry>
+                    <stentry>
+                        <b>Mandatory</b>
+                    </stentry>
+                    <stentry>
+                        <b>Description</b>
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;managementState&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>
+                        Indicates the mode to which managementState is set. (Default: AUTOMATIC). Refer to section <xref href="/overview/apconcepts.xml#MaintenanceMode">Concepts, Maintenance Mode</xref>.
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;fm&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>Flag indicating whether AP activates FM
+                        supervision on the node. (Supported Values: enabled, disabled, Default: enabled)
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;pm&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>Flag indicating whether AP activates PM
+                        supervision on the node. (Supported Values: enabled, disabled, Default: enabled)
+                    </stentry>
+                </strow>
+            </simpletable>
+        </section>
+        <section>
+            <title id="5">Artifacts</title>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Tag</b>
+                    </stentry>
+                    <stentry>
+                        Mandatory
+                    </stentry>
+                    <stentry>
+                        Description
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;artifacts&gt;</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>The &lt;artifacts&gt; tag describes the
+                        files used by the node during integration.
+                    </stentry>
+                </strow>
+            </simpletable>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Artifact Subtags</b>
+                    </stentry>
+                    <stentry>
+                        <b>Mandatory</b>
+                    </stentry>
+                    <stentry>
+                        <b>Description</b>
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;configurations suspend="false" strict="false"&gt; </stentry>
+                    <stentry>No</stentry>
+                    <stentry>The &lt;configurations&gt; subtag describes the configuration files used by the node during expansion.
+                         Configurations are pushed to the node in the following order by default, if the strict attribute is not given or with false value: NodeConfiguration(s) and Baseline(s).
+                         When multiple files with the same configuration subtag are included the order of files listed determines the order they are pushed to the live network.
+                        <p>
+                            The suspend attribute controls suspension of the workflow once expansion has started. Default=true.
+                            By setting &lt;configurations suspend="false"&gt;, waiting for the Expansion Notification can be skipped.
+                       </p>
+                        <p>
+                            The strict attribute is optional. If included, it specifies that the configuration files are applied to the node in sequence they are specified in the nodeinfo file. It can be set to <b>true</b> or <b>false</b>, and default value is <b>false</b>.
+                        </p>
+                        <p>
+                            <b>Warning</b>: If strict attribute is set to true, node plugin validation for the NETCONF format configuration files will be skipped. All files referenced within the configurations subtag are impacted by the strict parameter.
+                            This can cause errors during the import of configurations in some scenarios such as, if MO dependencies are not created in the correct order.
+                        </p>
+                    </stentry>
+                </strow>
+            </simpletable>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Configurations Subtags</b>
+                    </stentry>
+                    <stentry>
+                        <b>Mandatory</b>
+                    </stentry>
+                    <stentry>
+                        <b>Description</b>
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;nodeConfiguration&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>The name of a node configuration file.
+                        Multiple configurations can exist.
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;baseline ignoreError="false"&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>
+                        The name of a configuration file which is used to automatically execute baseline configurations.
+                         Amos (.mos) is the supported file format. Multiple configurations can exist.
+                         The name is a combination of letters (a-z,A-Z), numbers (0-9), and special characters dot (.), dash (-) and underscore (_), with the extension '.mos'.
+                         <p>
+                            The optional ignoreError attribute indicates whether to ignore the errors on applying this configuration file. It can be set to <b>true</b> or <b>false</b>, and default value is <b>false</b>.
+                         </p>
+                         See <xref href="/overview/apconcepts.xml#Baseline">Concepts, Baseline</xref>.
+                    </stentry>
+                </strow>
+            </simpletable>
+        </section>
+    </conbody>
+</concept>

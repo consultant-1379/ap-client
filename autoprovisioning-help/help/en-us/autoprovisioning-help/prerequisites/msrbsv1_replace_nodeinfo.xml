@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<concept id="AP-NodeInfo-PicoRadioNode-HardwareReplace">
+    <title>Hardware Replace Node Info (Pico Radio Node)</title>
+    <conbody>
+        <section id="node_info_sections">
+            <p>The hardware replace node information file contains the following elements:</p>
+            <ul>
+                <li>
+                    <xref href="#1">Node Information</xref>
+                </li>
+            </ul>
+        </section>
+        <section id="hardware_replace_node_info_common_attributes">
+            <title id="1">Node Information</title>
+            <simpletable frame="all" relcolwidth="2* 1* 6*">
+                <sthead>
+                    <stentry>
+                        <b>Tag</b>
+                    </stentry>
+                    <stentry>
+                        <b>Mandatory</b>
+                    </stentry>
+                    <stentry>
+                        <b>Description</b>
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>noNamespaceSchemaLocation</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>
+                        Attribute on the &lt;nodeInfo&gt; tag. This attribute specifies the name of the schema for Hardware replace.
+                        If no schema is specified or if a different schema is specified, then Auto Provisioning will default to a standard
+                        integration schema and integration rules will apply to the project.
+                        <p>
+                            example: &lt;nodeInfo
+                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                            xsi:noNamespaceSchemaLocation="HardwareReplaceNodeInfo.xsd"&gt;.
+                        </p>
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;name&gt;</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>The logical name of the node, see <xref href="/overview/apconcepts.xml#NodeName">Concepts, Node Name</xref>.
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;hardwareSerialNumber&gt;</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>
+                         Hardware Serial number of replacement node.
+                    </stentry>
+                </strow>
+            </simpletable>
+        </section>
+    </conbody>
+</concept>

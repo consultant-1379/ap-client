@@ -1,0 +1,35 @@
+Use http://www.plantuml.com to update and build diagram
+
+@startmindmap
+<style>
+mindmapDiagram {
+  node {
+    BackgroundColor white
+LineColor black
+Shadowing 0.0
+RoundCorner 0
+  }
+arrow {
+    LineColor black
+}
+}
+</style>
+* Transport
+** Router
+*** RouterTableIpv4Static 
+**** dst
+***** Nexthop
+*** IPsecTunnel
+**** IkeV2Session
+**** IpsecPolicy
+*** RouterTableIpv6Static 
+**** dst
+***** Nexthop
+*** InterfaceIPv4
+**** AddressIPV4
+*** InterfaceIPv6
+**** AddressIPv6
+*** IKev2PolicyProfile
+***  VlanPort
+*** EthernetPort
+@endmindmap

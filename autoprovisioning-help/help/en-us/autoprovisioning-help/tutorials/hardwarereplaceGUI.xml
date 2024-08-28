@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<task id="AP-HardwareReplace-GUI-Tutorial">
+    <title>Perform Hardware Replace using Auto Provisioning GUI</title>
+
+    <taskbody>
+        <prereq>
+            <p conref="../prerequisites.xml#HardwareReplacePreqCommon"></p>
+        </prereq>
+
+        <context>
+            <p>
+                <b>Objective</b>
+            </p>
+            <p>
+                This tutorial describes the steps required to automatically replace an existing Pico Radio Node (LTE) or
+                Baseband Radio Node in ENM with new hardware with a pre-created Auto Provisioning project using Auto Provisioning GUI.
+            </p>
+            <p>
+                <b>Steps</b>
+            </p>
+            <ol>
+                <li>
+                    <xref href="#1">Start Hardware Replace</xref>
+                </li>
+                <li>
+                    <xref href="#2">Download Site Installation File (Optional)</xref>
+                </li>
+                <li>
+                    <xref href="#3">Replace Node Hardware at Site</xref>
+                </li>
+                <li>
+                    <xref href="#4">Switch on Node</xref>
+                </li>
+                <li>
+                    <xref href="#5">Resume the Hardware Replace (Optional)</xref>
+                </li>
+                <li>
+                    <xref href="#6">Monitor Hardware Replace</xref>
+                </li>
+                <li>
+                    <xref href="#7">Remove Node Auto Provisioning Data</xref>
+                </li>
+            </ol>
+        </context>
+
+        <steps>
+            <step id="1">
+                <cmd>Start Hardware Replace</cmd>
+                <info>
+                    <ol>
+                    	<li>Launch <xref href="#autoprovisioning" scope="external">Auto Provisioning (AP)</xref>.
+                    		<p>
+                                <b>Note:</b>
+                                Hardware Replace can also be executed using Auto Provisioning CLI
+                                <xref href="/tutorials/hardwarereplaceCLI.xml">Learn More</xref>
+                            </p>
+                        </li>
+                        <li>Click <b>Import</b> and select your project.</li>
+                        <li>Verify the node(s) in the project are in state Hardware Replace Suspended (LMT) or Hardware Replace Bind Completed (ZT).</li>
+                        <li>ENM Operator instructs field technician to perform hardware replace on site.</li>
+                    </ol>
+                </info>
+            </step>
+
+            <step id="2">
+                <cmd>Download Site Installation File (Optional)</cmd>
+                <info>
+                    <p>This step is only required for LMT Integration.</p>
+                    <ol>
+                        <li>Select the project that contains the node that you are replacing in the Auto Provisioning
+                            topology.
+                        </li>
+                        <li>Double click the node entry in the status tab.</li>
+                        <li>Click <b>LMT Download</b>.</li>
+                        <li>The Site Installation File is then given to the field technician along with the credentials
+                            for the FIELD_TECHNICIAN user.
+                        </li>
+                    </ol>
+                </info>
+            </step>
+
+            <step id="3">
+                <cmd>Replace Node Hardware at Site</cmd>
+                <info>
+                    <p>This step is executed on site by the field technician.</p>
+                    <p>The node hardware is replaced at site.</p>
+                </info>
+            </step>
+
+            <step id="4">
+                <cmd>Switch on Node</cmd>
+                <info>
+                    <p>This step is executed on site by the field technician.</p>
+                    <p>Switch on power at the node.</p>
+                    <p>
+                        <b>Note:</b> Dependent on
+                        <xref href="/overview/apconcepts.xml#IntegrationProcedure">Integration Procedure</xref>
+                        additional on-site activities may be required.
+                    </p>
+                </info>
+            </step>
+
+
+            <step id="5">
+                <cmd>Resume the Hardware Replace (Optional)</cmd>
+                <info>
+                    <p>Only applicable for Baseband Radio Node LMT Hardware Replace.</p>
+                    <ol>
+	                    <li>Expand the project folder in the Auto Provisioning topology.</li>
+	                    <li>Select each node that is being expanded.</li>
+	                    <li>Click <b>Resume</b>.</li>
+                    </ol>
+                    <p>
+                        <b>Note:</b> Ensure Step 3 - <xref href="#3">Replace Node Hardware at Site</xref> is completed.
+                    </p>
+                </info>
+            </step>
+
+            <step id="6">
+                <cmd>Monitor Hardware Replace</cmd>
+                <info>
+                    <ol>
+                        <li>Expand the project folder in the Auto Provisioning topology.</li>
+                        <li>Select each node that is being replaced.</li>
+                        <li>Monitor the task output until the node(s) goes to state Hardware Replace Completed..</li>
+                    </ol>
+                </info>
+            </step>
+
+            <step id="7">
+                <cmd>Remove Node Auto Provisioning Data</cmd>
+                <info>
+                    <ol>
+                        <li>
+                            Select the Auto Provisioning node(s) that was replaced in the Auto Provisioning topology.
+                        </li>
+                        <li>Click <b>Delete</b>.</li>
+                        <li>Confirm deletion.</li>
+                    </ol>
+                    <p>
+                        <b>Note:</b> Removing the node Auto Provisioning data does not affect the ENM Network Element
+                        if the state is Hardware Replace Completed.
+                    </p>
+                </info>
+            </step>
+
+        </steps>
+        <result>
+            <p>The node is integrated in ENM with new hardware.</p>
+        </result>
+    </taskbody>
+</task>

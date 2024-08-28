@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<concept id="AP-Overview">
+    <title>Overview</title>
+    <conbody>
+        <section>
+            <p>Auto Provisioning (AP) automates node provisioning activities.</p>
+            <p>The key features of AP are:</p>
+            <ul>
+                <li>Automatically integrate a new node in the customer network with user provided information.</li>
+                <li>Automatically expand an existing node configuration.</li>
+                <li>Automatically configure a node for a hardware replace of an existing node.</li>
+                <li>Automatically migrate an existing node to new hardware.</li>
+            </ul>
+        </section>
+
+        <section>
+            <title>High Level Overview</title>
+            <ul>
+                <li><xref href="/overview/autoprovisioningflow.xml">Auto Integrate a Physical Node Overview</xref> </li>
+                <li><xref href="/overview/vnfautoprovisioningflow.xml">Auto Integrate a Virtual Network Function (VNF) Node Overview</xref> </li>
+                <li><xref href="/overview/expansion_flow.xml">Expand a Node Overview</xref> </li>
+                <li><xref href="/overview/hardwarereplaceflow.xml">Replace a Node Overview</xref> </li>
+                <li><xref href="/overview/migration_flow.xml">Migrate a Node Overview</xref> </li>
+            </ul>
+        </section>
+
+        <section>
+            <title>Supported Node Types</title>
+            <p>See <xref href="/overview/supportednodetypes.xml">Supported Node Types</xref>.</p>
+        </section>
+
+        <section>
+            <title>Northbound Interface</title>
+            <p>The Auto Provisioning REST Northbound Interface (NBI) is a feature deployed in ENM.
+            The protocol specification for this is available from the Auto Provisioning REST Northbound Interface
+            document; 1/15519-CNA 403 2978 (<b>ENM Application Launcher -> Documentation -> Elex</b>).</p>
+        </section>
+
+        <section>
+            <title>Operations</title>
+            <p>For additional information about ENM CLI commands and Auto Provisioning GUI actions see <xref href="/overview/apoperations.xml">Operations</xref>.</p>
+        </section>
+
+        <section>
+            <title>Concepts</title>
+            <p>For additional information on Auto Provisioning see <xref href="/overview/apconcepts.xml">Concepts</xref>.</p>
+        </section>
+    </conbody>
+</concept>

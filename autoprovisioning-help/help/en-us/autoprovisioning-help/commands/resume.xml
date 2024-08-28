@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<concept id="AP-CLI-Command-Resume">
+    <title>ap resume</title>
+    <conbody>
+       <section>
+            <title>Syntax</title>
+            <p><image href="/resources/images/commands/cli.png" /> <b>Syntax to resume a node integration</b></p>
+            <codeblock>
+                ap resume -n &lt;nodeName&gt;
+            </codeblock>
+        </section>
+
+        <section>
+            <title>Description</title>
+            <p>
+                Resume allows a user to continue an Auto Provisioning activity if it has been suspended due to failure or
+                 if it is required to wait for an on-site activity to be completed or user input is required.
+            </p>
+            <p>For more information on resume see <xref href="/overview/apoperations.xml#Resume" type="concept">Operations, Resume</xref></p>
+        </section>
+
+        <section>
+        <title>Examples</title>
+            <sectiondiv>
+                    <p><image href="/resources/images/commands/cli.png" /> <b>Resume a node integration</b></p>
+                    <codeblock>
+                        ap resume -n Node01
+                    </codeblock>
+                    <p><b>Response</b></p>
+                    <p><pre>Initiated. Run the command 'ap status -n Node01' for progress</pre></p>
+            </sectiondiv>
+        </section>
+    </conbody>
+</concept>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<concept id="AP-CLI-Command-Bind">
+    <title>ap bind</title>
+    <conbody>
+        <section>
+            <title>Syntax</title>
+            <p><image href="/resources/images/commands/cli.png" /> <b>Syntax to bind an individual node</b></p>
+            <codeblock>
+                ap bind -n &lt;nodeName&gt; -s &lt;hardwareSerialNumber&gt;
+            </codeblock>
+            <p><image href="/resources/images/commands/cli.png" /> <b>Syntax to bind multiple nodes</b></p>
+            <codeblock>
+                ap bind file:&lt;fileName.csv&gt;
+            </codeblock>
+        </section>
+
+        <section>
+            <title>Description</title>
+            <p>The <i>ap bind</i> command is used to bind a logical node in ENM to a hardware serial number. This command ensures all resources (node artifacts and MOs) in ENM are allocated to the dedicated node with that hardware serial number.
+            It can be requested for an individual node or multiple nodes.
+            </p>
+            <p>
+            When binding a batch of nodes with a CSV file, the binding is best effort. For example, when binding a batch of 100 nodes, if some of the hardware serial numbers are invalid, they fail to bind. The remaining nodes bind successfully.
+            The bind command can be re-executed to over-write the bound hardware serial number of a node with a different hardware serial number.
+            The command syntax and input parameters for rebind are the same as those for the <i>ap bind</i> command.
+            </p>
+
+            <p> The following options are available:
+            <ul>
+                <li>Bind can be requested for an individual node using the <i>ap bind</i> command with the <i>-n</i> parameter and hardware serial number using the <i>-s</i> parameter.</li>
+                <li>Bind can be requested for multiple nodes using the <i>ap bind</i> command with the batch file parameter (<i>file:</i>).
+                </li>
+            </ul>
+            </p>
+            <p>The following is an example of a bulk bind CSV file with a header row.
+                <codeblock>
+                     [NodeValues.csv]
+                     #NodeName, HardwareSerialNumber
+                     Node01, SCB12345675
+                     Node02, SCB12345676
+                     Node03, SCB12345677
+                </codeblock>
+
+                <ul>
+                     <li>
+                        The CSV file must contain two columns, one column holding data
+                        for node name and the other column holding the associated hardware
+                        serial number.
+                     </li>
+                     <li>The first column must contain node name.
+                     </li>
+                     <li>
+                        Any row in the CSV file preceded by a # symbol is ignored.
+                          For example, the header row in the above illustration.
+                     </li>
+                     <li>The headers are optional.</li>
+                </ul>
+            </p>
+            <p>For more information on bind see <xref href="/overview/apoperations.xml#Bind" type="concept">Operations, Bind</xref></p>
+        </section>
+
+        <section>
+        <title>Examples</title>
+        <sectiondiv>
+                <p><image href="/resources/images/commands/cli.png" /> <b>Bind a node to a hardware serial number</b></p>
+                <codeblock>
+                    ap bind -n Node01 -s SCB12345678
+                </codeblock>
+                <p><b>Response</b></p>
+                <p><pre>Successful</pre></p>
+            </sectiondiv>
+        </section>
+    </conbody>
+</concept>

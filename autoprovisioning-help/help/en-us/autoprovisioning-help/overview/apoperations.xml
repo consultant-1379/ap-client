@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="utf-8"?>
+<concept id="AP-Operations">
+    <title>Operations</title>
+    <conbody>
+        <section>
+        <title>Description</title>
+        <p>
+            An Auto Provisioning (AP) user can execute Auto Provisioning operations through the ENM CLI using ap command set or through the Auto Provisioning GUI using actions.
+            The following is a list of operations that can be executed through ENM CLI or the Auto Provisioning GUI: </p>
+            <p><xref href="#Order">Order</xref>
+            </p>
+            <p><xref href="#Status">Status</xref>
+            </p>
+            <p><xref href="#View">View</xref>
+            </p>
+            <p><xref href="#Delete">Delete</xref>
+            </p>
+            <p><xref href="#Download">Download</xref>
+            </p>
+            <p><xref href="#Bind">Bind</xref>
+            </p>
+            <p><xref href="#Resume">Resume</xref>
+            </p>
+            <p><xref href="#Upload">Upload</xref>
+            </p>
+            <p><xref href="#Cancel">Cancel</xref>
+            </p>
+            <p><xref href="#Skip">Skip</xref>
+            </p>
+        </section>
+
+       <section id="Order">
+            <title>Order</title>
+            <p>
+                Order is used to start/restart an Auto Provisioning Node Integration, Migration, Hardware Replace or Expansion.
+                During Node Integration if the AP node state is in <i>Order Completed</i> the provisioning phase for Node Integration has successfully completed.
+                During Node Migration if the AP node state is in <i>Pre Migration Completed</i> the provisioning phase for Migration has successfully completed.
+            </p>
+            <p>In a project with multiple nodes, if some nodes are incorrectly configured, they are not ordered.
+             The remaining nodes are ordered successfully.
+              For Node Integration or Migration if this occurs, the <xref href="/commands/order.xml" type="concept">ap order</xref> command with the
+                <i>-n</i> or <i>-p</i> parameter in ENM CLI or select the node and click <b>Order</b> button in the Auto Provisioning GUI to re-Order the node.
+            </p>
+            <p><b>ENM CLI</b></p>
+            <p>
+                When an Auto Provisioning project is dragged and dropped into ENM CLI,
+                an AP Order to start an Auto Provisioning activity can be executed through ENM CLI with the <xref href="/commands/order.xml" type="concept">ap order</xref> command.
+            </p>
+            <p><b>Auto Provisioning GUI</b></p>
+            <p>An Auto Provisioning Order is automatically executed when a project is imported using the <b>Import</b> button on the Auto Provisioning GUI.</p>
+            <p>The <b>Order</b> button can be used if a Node Integration fails to order. Press the <b>Order</b> button to re-execute the order when a the node is selected in the Auto Provisioning GUI Topology.</p>
+            <p><b>Supported Node Types</b></p>
+            <p>All AP supported node types, see <xref href="/overview/supportednodetypes.xml">Supported Node Types</xref>.</p>
+            <p>
+                <b>Required Role</b>
+                <ul>
+                    <li>Requires a user with one of the following roles:
+                        <ul>
+                            <li>Autoprovisioning_Administrator</li>
+                            <li>Autoprovisioning_Operator</li>
+                            <li>Custom role with the capability: <b>Resource:</b> ap, <b>Operation:</b> execute</li>
+                        </ul>
+                    </li>
+                </ul>
+            </p>
+        </section>
+
+        <section id="Status">
+            <title>Status</title>
+            <p>The Auto Provisioning status allows you to monitor the progress of an Auto Provisioning activity.</p>
+            <p><b>ENM CLI</b></p>
+            <p>Status can be executed through the <xref href="/commands/status.xml" type="concept">ap status</xref> command in the ENM CLI.</p>
+            <p><b>Auto Provisioning GUI</b></p>
+            <p>The node and project status can be viewed in the status tab of the Auto Provisioning GUI when the node or project is selected in the Auto Provisioning GUI Topology.</p>
+            <p>Overall project status can be viewed by selecting <b>Projects</b> in the Auto Provisioning GUI Topology.</p>
+            <p><b>Supported Node Types</b></p>
+            <p>All AP supported node types, see <xref href="/overview/supportednodetypes.xml">Supported Node Types</xref>.</p>
+            <p><b>Required Role</b></p>
+            <p>
+                <ul>
+                    <li>Requires a user with one of the following roles:
+                        <ul>
+                            <li>Autoprovisioning_Administrator</li>
+                            <li>Autoprovisioning_Operator</li>
+                            <li>Autoprovisioning_Limited_Remote_Access_Operator</li>
+                            <li>Custom role with the capability: <b>Resource:</b> ap, <b>Operation:</b> read</li>
+                        </ul>
+                    </li>
+                </ul>
+            </p>
+        </section>
+
+        <section id="View">
+            <title>View</title>
+            <p>View allows you to view the project and node properties of an Auto Provisioning project.</p>
+            <p><b>ENM CLI</b></p>
+            <p>View can be executed through the <xref href="/commands/view.xml" type="concept">ap view</xref> command in the ENM CLI.</p>
+            <p><b>Auto Provisioning GUI</b></p>
+            <p>The node and project properties can be viewed in the properties tab of the Auto Provisioning GUI when the node or project is selected in the Auto Provisioning GUI Topology.</p>
+            <p><b>Supported Node Types</b></p>
+            <p>All AP supported node types, see <xref href="/overview/supportednodetypes.xml">Supported Node Types</xref>.</p>
+            <p><b>Required Role</b></p>
+            <p>
+            <ul>
+                <li>Requires a user with one of the following roles:
+                    <ul>
+                        <li>Autoprovisioning_Administrator</li>
+                        <li>Autoprovisioning_Operator</li>
+                        <li>Autoprovisioning_Limited_Remote_Access_Operator</li>
+                        <li>Custom role with the capability: <b>Resource:</b> ap, <b>Operation:</b> read</li>
+                    </ul>
+                </li>
+                </ul>
+            </p>
+        </section>
+
+       <section id="Delete">
+            <title>Delete</title>
+            <p>Delete removes all Auto Provisioning data for a project or node from AP and ENM.</p>
+            <p>The following is a list of conditions that the NetworkElement MO and security data is not deleted by AP:
+                <ul>
+                    <li>The activity is an Expansion, Migration or a Hardware Replace.</li>
+                    <li>The node state is one of the following:
+                        <ul>
+                            <li>Integration Completed</li>
+                            <li>Integration Completed with Warning</li>
+                            <li>Integration Suspended</li>
+                            <li>Integration Cancelled</li>
+                        </ul>
+                    </li>
+                    <li>The corresponding NetworkElement's CmNodeHeartbeatSupervision MO 'active' attribute is set to true</li>
+                    <li>The <i>-i</i> parameter is used with the <xref href="/commands/delete.xml" type="concept">ap delete</xref> command in the ENM CLI.</li>
+                </ul>
+             </p>
+             <p><b>Warning: </b>If the user wants to stop the migration before it is completed it is recommended to cancel the migration activity before deletion. Failure to cancel migration before deletion may result in the node being left in an inconsistent state.</p>
+            <p><b>ENM CLI</b></p>
+            <p>Delete can be executed through the <xref href="/commands/delete.xml" type="concept">ap delete</xref> command in the ENM CLI.</p>
+            <p><b>Auto Provisioning GUI</b></p>
+            <p>Delete is supported through the <b>Delete</b> button in the Auto Provisioning GUI when the node or project is selected in the Auto Provisioning GUI Topology.
+             Multiple projects or nodes can be deleted using the Auto Provisioning GUI.</p>
+            <p><b>Supported Node Types</b></p>
+            <p>All AP supported node types, see <xref href="/overview/supportednodetypes.xml">Supported Node Types</xref>.</p>
+            <p><b>Prerequisites</b></p>
+            <p>
+                Auto Provisioning data for node or project must exist in ENM.
+            </p>
+            <p><b>Required Role</b></p>
+            <p>
+            <ul>
+                <li>Requires a user with one of the following roles:
+                    <ul>
+                        <li>Autoprovisioning_Administrator</li>
+                        <li>Autoprovisioning_Operator</li>
+                        <li>Custom role with the capability: <b>Resource:</b> ap, <b>Operation:</b> execute</li>
+                    </ul>
+                </li>
+            </ul>
+            </p>
+        </section>
+
+        <section id="Download">
+            <title>Download</title>
+            <p>Download allows you to download files to your local desktop required for Auto Provisioning activities.</p>
+            <p>
+                AP automatically generates or updates Site Installation File (SIF) (CCF for Pico Radio Node) data for Node Integration, Migration and Hardware Replace.
+                Download allows a user to download the SIF for LMT Node Integration, LMT Migration or LMT Hardware Replace.
+                 The SIF is provided to the Field Technician to load onto the node to continue the Auto Provisioning activity on site.
+            </p>
+            <p><b>ENM CLI</b></p>
+            <p>
+                ENM CLI command <xref href="/commands/download.xml" type="concept">ap download</xref> allows you to download the updated SIF (CCF for Pico Radio Node).
+                 The ENM CLI download command also supports the download of the initial configuration files that were used as part of the Auto Provisioning project.
+                 Download of schema and sample files is also supported through the download command in ENM CLI.
+            </p>
+            <p><b>Auto Provisioning GUI</b></p>
+            <p>Download of the SIF (CCF for Pico Radio Node) is supported through the <b>LMT Download</b> button in the Auto Provisioning GUI when the node is selected in the Auto Provisioning GUI Topology.</p>
+            <p><b>Supported Node Types</b></p>
+            <p>All AP supported node types, see <xref href="/overview/supportednodetypes.xml">Supported Node Types</xref>.</p>
+            <p><b>Prerequisites</b></p>
+            <p>
+                To execute download of the SIF the node must be in one of the following states:
+                <ul>
+                    <li>Order Completed</li>
+                    <li>Pre Migration Completed</li>
+                    <li>Hardware Replace Suspended</li>
+                </ul>
+            </p>
+            <p><b>Required Role</b></p>
+            <p>
+            <ul>
+                <li>Requires a user with one of the following roles:
+                    <ul>
+                        <li>Autoprovisioning_Administrator</li>
+                        <li>Autoprovisioning_Operator</li>
+                        <li>Custom role with the capability: <b>Resource:</b> ap, <b>Operation:</b> execute</li>
+                    </ul>
+                </li>
+            </ul>
+            </p>
+        </section>
+
+        <section id="Bind">
+            <title>Bind</title>
+            <p>
+                Bind is used to bind a logical node in ENM to a hardware serial number. Bind maps resources (node configurations and MOs) in ENM
+                 with a node with that hardware serial number and configures DHCP. It is applicable to Zero Touch Node Integration, Zero Touch Migration and Zero Touch Hardware Replace.
+            </p>
+            <p>
+                Binding can be executed a number of ways:
+                <ul>
+                    <li>
+                        <b>Early binding</b> is performed from ENM prior to site visit.
+                        When the ENM Operator knows the node serial number in advance they can include the
+                         serial number in the nodeInfo.xml of their Auto Provisioning project
+                        or manually execute the Bind from ENM using the AP Bind operation.
+                    </li>
+                    <li>
+                        <b>Late binding</b> is when the on site Field Technician contacts the ENM Operator with the node serial number.
+                         Then the ENM Operator executes the AP Bind operation.
+                    </li>
+                </ul>
+            </p>
+            <p>
+                If DHCP parameters are included as part of the nodeInfo.xml, ENM DHCP will be configured with the inputted DHCP parameters.
+                 The hardware serial number is used as the Client Identifier.
+            </p>
+            <p>If a bind is executed on a node which is already added its serial number as a the DHCP Client Identifier, then the Client Identifier will be updated in ENM DHCP.</p>
+            <p>
+               The Ericsson Hardware Serial Number frame consists of 13 alphanumeric characters.
+               Character set is the letters A-Z with the exception of O and I, and digits 0-9.
+               Space for 13 characters shall always be available.
+            </p>
+            <p>The following is the format with factory code of 3 characters, which is to be used.
+                <ul>
+                    <li>AAABBBCCCCCCC</li>
+                    <li>A = 3 characters reserved for future use (optional)</li>
+                    <li>B = 3 characters for factory code</li>
+                    <li>C = 7 characters for sequence number</li>
+                </ul>
+            </p>
+            <p>Binding can be executed on site once using the node name for node integration from the Autointegration Web GUI via a Local Machine Terminal connected to the node. This requires
+            <b>autoProvisioning_bind_nodeName</b> feature option to be enabled via SED (Site Engineering Document) for ENM.
+             Contact the System Administrator for more information on updating SED parameters.
+            </p>
+            <p><b>ENM CLI</b></p>
+            <p>Single node bind or multiple node bind using a CSV can be executed through the <xref href="/commands/bind.xml" type="concept">ap bind</xref> command in the ENM CLI.</p>
+            <p><b>Auto Provisioning GUI</b></p>
+            <p>Single node bind is supported through the <b>ZT Bind</b> button in the Auto Provisioning GUI when the node is selected in the Auto Provisioning GUI Topology.</p>
+            <p><b>Supported Node Types</b></p>
+            <p>All AP supported node types excluding the VNF Nodes, see <xref href="/overview/supportednodetypes.xml">Supported Node Types</xref>.</p>
+
+            <p><b>Prerequisites</b></p>
+            <p>
+                The hardware serial number is not already in use by another AP node.
+            </p>
+            <p><b>Required Role</b></p>
+            <p>
+            <ul>
+                <li>Requires a user with one of the following roles:
+                    <ul>
+                        <li>Autoprovisioning_Administrator</li>
+                        <li>Autoprovisioning_Operator</li>
+                        <li>Autoprovisioning_Limited_Remote_Access_Operator</li>
+                        <li>Custom role with the capability: <b>Resource:</b> ap, <b>Operation:</b> patch</li>
+                    </ul>
+                </li>
+            </ul>
+            </p>
+        </section>
+
+        <section id="Resume">
+            <title>Resume</title>
+            <p>
+                Resume allows you to continue an Auto Provisioning activity if it has been suspended due to failure or
+                 if it is required to wait for an on site activity to be completed.
+            </p>
+            <p>
+                Resume can be used with Upload operation if the Import Configuration task fails and a user wants to replace a faulty configuration and Resume their Node Integration, Migration or Expansion.
+                See <xref href="/overview/apoperations.xml#Upload" type="concept">Operations, Upload</xref>.
+            </p>
+
+            <p><b>ENM CLI</b></p>
+            <p>Resume can be executed through the <xref href="/commands/resume.xml" type="concept">ap resume</xref> command in the ENM CLI.</p>
+            <p><b>Auto Provisioning GUI</b></p>
+            <p>Resume is supported through the <b>Resume</b> button in the Auto Provisioning GUI when the node is selected in the Auto Provisioning GUI Topology.</p>
+            <p><b>Supported Node Types</b></p>
+            <p>Supported for Baseband Radio Node, Pico Radio Node (WCDMA) and VNF Nodes, see <xref href="/overview/supportednodetypes.xml">Supported Node Types</xref>.</p>
+
+            <p><b>Prerequisites</b></p>
+            <p>
+                Node is in one of following states:
+                <ul>
+                    <li>Integration Suspended</li>
+                    <li>Order Suspended</li>
+                    <li>Expansion Suspended</li>
+                    <li>Hardware Replace Suspended</li>
+                    <li>Pre Migration Suspended</li>
+                    <li>Migration Suspended</li>
+                </ul>
+            </p>
+            <p><b>Required Role</b></p>
+            <p>
+                <ul>
+                    <li>Requires a user with one of the following roles:
+                        <ul>
+                            <li>Autoprovisioning_Administrator</li>
+                            <li>Autoprovisioning_Operator</li>
+                            <li>Custom role with the capability: <b>Resource:</b> ap, <b>Operation:</b> execute</li>
+                        </ul>
+                    </li>
+                </ul>
+            </p>
+        </section>
+
+        <section id="Upload">
+            <title>Upload</title>
+            <p>
+                Upload allows you to replace a node configuration file after an Auto Provisioning activity has started. It can be used with the resume if an Auto Provisioning
+                 task has failed and node configurations have to be updated. A License Key File (LKF) can be uploaded for node integration if the node is in state Order Failed.
+                  Upload is supported for baseline files when they are included as part of the Auto Provisioning project.
+            </p>
+            <p>
+                Upload can be used with the Resume operation if the Import Configuration or Import Pre Migration Configuration task fails and a user wants to replace a faulty configuration and Resume their Node Integration, Migration or Expansion.
+                See <xref href="/overview/apoperations.xml#Resume" type="concept">Operations, Resume</xref>.
+            </p>
+            <p><b>ENM CLI</b></p>
+            <p>Upload can be executed through the <xref href="/commands/upload.xml" type="concept">ap upload</xref> command in the ENM CLI.</p>
+            <p><b>Auto Provisioning GUI</b></p>
+            <p>Upload is supported through the <b>Upload</b> button in the Auto Provisioning GUI when the node is selected in the Auto Provisioning GUI Topology.</p>
+
+            <p><b>Supported Node Types</b></p>
+            <p>Supported for Pico Radio Node (WCDMA), DU Radio Node, Baseband Radio Node and VNF Nodes, see <xref href="/overview/supportednodetypes.xml">Supported Node Types</xref>.</p>
+
+            <p><b>Prerequisites</b></p>
+            <p>
+            <ul>
+               <li>The replacement configuration file must have the same name as an existing configuration file.</li>
+               <li>The configuration to be uploaded must have the same format as the original artifact.</li>
+            </ul>
+            </p>
+            <p><b>DU Radio Node</b></p>
+            <p>The Site Basic and Site Equipment configurations are supported for Upload when the node is in the following states:
+                <ul>
+                    <li>Order Completed</li>
+                    <li>Order Failed</li>
+                    <li>Bind Started</li>
+                    <li>Bind Completed</li>
+                </ul>
+            </p>
+            <p>Bulk CM configuration configurations can be uploaded at any time. The Site Installation File cannot be uploaded.</p>
+
+            <p><b>Baseband Radio Node</b></p>
+            <p>
+                The Site Basic, Site Equipment files can be uploaded to ENM by AP, before the node fetches the files from ENM during the Integration or Migration process.
+                Additional configuration files can be uploaded to ENM before they are applied to the node as part of the Import Configurations.
+                It is also possible to upload configuration files when Auto Provisioning is in a suspended state.
+                Bulk3gpp and NETCONF validation (Baseband Radio Nodes only) is executed during an Upload action.
+                Upload of Site Installation file is not supported.
+            </p>
+            <p>
+               For Integration and Migration when a NETCONF file is uploaded it is validated with all other NETCONF configuration files (excluding remote node configurations) included in the node integration.
+               If the strict attribute of Configurations subtag is set to true within NodeInfo file, only Site Basic and Site Equipment are sent for validation.
+            </p>
+            <p>For Premigration configurations NETCONF validation is not supported.</p>
+            <p>
+               For Expansion, when a NETCONF file is uploaded it is validated with all other NETCONF configuration files (excluding remote node configurations) included in the node expansion and a copy of the node configuration taken at start of the expansion,
+               if the strict attribute of Configurations subtag is not set within NodeInfo file. Otherwise NETCONF validation is skipped for expansion.
+            </p>
+            <p>
+               <b>Note</b>: Any manual configuration changes that are made during the execution of an expansion may result in upload validation issues for NETCONF files.
+            </p>
+            <p>
+               NETCONF validation is disabled on upload when order is executed using the -nv parameter. (See <xref href="/commands/order.xml">ap order</xref>).
+            </p>
+
+            <p><b>Virtual Network Function</b></p>
+            <p>The Site Basic and Virtual Network Descriptor artifacts are supported when the node is in the following states:
+                <ul>
+                    <li>Order Completed</li>
+                    <li>Order Failed</li>
+                    <li>Order Cancelled</li>
+                    <li>Order Suspended</li>
+                    <li>Order Started</li>
+                </ul>
+            </p>
+            <p>Bulk CM configuration artifacts can be uploaded at any time before the integration completes.</p>
+
+            <p><b>Required Role</b></p>
+            <p>
+            <ul>
+               <li>Requires a user with one of the following roles:
+                   <ul>
+                       <li>Autoprovisioning_Administrator</li>
+                       <li>Autoprovisioning_Operator</li>
+                       <li>Custom role with the capability: <b>Resource:</b> ap, <b>Operation:</b> execute</li>
+                   </ul>
+               </li>
+            </ul>
+            </p>
+        </section>
+
+       <section id="Cancel">
+            <title>Cancel</title>
+            <p>Cancel allows a user to cancel an Auto Provisioning activity.</p>
+            <p>For Node Integration executing cancel will remove any Auto Provisioning generated resources and cancel the Node Integration.</p>
+            <p>For Expansion executing cancel will cancel the expansion and restore the node to its original configuration.</p>
+            <p><b>Warning: </b>Executing cancel during expansion will result in the node being restored to a backup if expansion configurations have been applied to the node.</p>
+            <p>For migration executing cancel will automatically start a rollback to restore a node to it's original configuration.</p>
+            <p><b>Warning: </b>Executing cancel during migration will result in the node being restored to a backup of the nodes original configuration and should not be executed until the original node is connected, see <xref href="/overview/apconcepts.xml#MigrationRollback">Migration Rollback </xref>.</p>
+            <p><b>ENM CLI</b></p>
+            <p>Cancel can be executed through the <xref href="/commands/cancel.xml" type="concept">ap cancel</xref> command in the ENM CLI.</p>
+            <p><b>Auto Provisioning GUI</b></p>
+            <p>Cancel is supported through the <b>Cancel</b> button in the Auto Provisioning GUI when the node is selected in the Auto Provisioning GUI Topology.</p>
+            <p><b>Supported Node Types</b></p>
+            <p>Supported for Baseband Radio Nodes, Pico Radio Node (WCDMA) and VNF Nodes, see <xref href="/overview/supportednodetypes.xml">Supported Node Types</xref>.</p>
+
+            <p><b>Prerequisites</b></p>
+            <p>
+            <ul>
+                <li>For Integration and Expansion node is in one of following states:
+                    <ul>
+                        <li>Integration Suspended</li>
+                        <li>Order Suspended</li>
+                        <li>Expansion Suspended</li>
+                    </ul>
+                </li>
+                <li>
+                For Migration cancel can be executed at any time.
+                </li>
+            </ul>
+            </p>
+            <p><b>Required Role</b></p>
+            <p>
+                <ul>
+                    <li>Requires a user with one of the following roles:
+                        <ul>
+                            <li>Autoprovisioning_Administrator</li>
+                            <li>Autoprovisioning_Operator</li>
+                            <li>Custom role with the capability: <b>Resource:</b> ap, <b>Operation:</b> execute</li>
+                        </ul>
+                    </li>
+                </ul>
+            </p>
+        </section>
+
+        <section id="Skip">
+            <title>Skip</title>
+            <p>
+                Skip allows you to bypass a failed configuration file application to continue an Auto Provisioning activity if it has been suspended due to import configurations failure.
+            </p>
+            <p><b>Warning: </b>Executing skip may result in subsequent import configurations job(s) failure, or node integration completed without fully expected configuration.
+               It is operator's responsibility to ensure which configuration can be skipped and the operation does no harm.</p>
+            <p><b>ENM CLI</b></p>
+            <p>Skip can be executed through the <xref href="/commands/skip.xml" type="concept">ap skip</xref> command in the ENM CLI.</p>
+            <p><b>Auto Provisioning GUI</b></p>
+            <p>Skip is supported through the <b>Skip</b> button in the Auto Provisioning GUI when some import configuration task failed, and the node is selected in the Auto Provisioning GUI Topology.
+               In this case a pop-up window is shown to warn the risk of this operation, and it requires operator's confirmation to carry on the operation.</p>
+            <p><b>Supported Node Types</b></p>
+            <p>Supported for Baseband Radio Node and Controller 6610 Nodes, see <xref href="/overview/supportednodetypes.xml">Supported Node Types</xref>.</p>
+
+            <p><b>Prerequisites</b></p>
+            <p>
+                Node is in one of following states:
+                <ul>
+                    <li>Integration Import Configuration Suspended</li>
+                    <li>Expansion Import Configuration Suspended</li>
+                    <li>Pre Migration Import Configuration Suspended</li>
+                    <li>Migration Import Configuration Suspended</li>
+                </ul>
+            </p>
+            <p><b>Required Role</b></p>
+            <p>
+                <ul>
+                    <li>Requires a user with one of the following roles:
+                        <ul>
+                            <li>Autoprovisioning_Administrator</li>
+                            <li>Autoprovisioning_Operator</li>
+                            <li>Custom role with the capability: <b>Resource:</b> ap, <b>Operation:</b> execute</li>
+                        </ul>
+                    </li>
+                </ul>
+            </p>
+        </section>
+    </conbody>
+</concept>

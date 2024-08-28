@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<concept id="AP-UserInterface">
+    <title>User Interface</title>
+    <conbody>
+
+        <section>
+            <title>Auto Provisioning GUI</title>
+            <p><xref type="concept" href="user_interface/autoprovisioning.xml#topology">Topology Pane</xref></p>
+            <p><xref type="concept" href="user_interface/autoprovisioning.xml#status">Status Tab</xref></p>
+            <p><xref type="concept" href="user_interface/autoprovisioning.xml#properties">Properties Tab</xref></p>
+            <p><xref type="concept" href="user_interface/autoprovisioning.xml#project_actions">Project Actions</xref></p>
+            <p><xref type="concept" href="user_interface/autoprovisioning.xml#node_actions">Node Actions</xref></p>
+            <p><xref type="concept" href="user_interface/autoprovisioning.xml#validation_errors">Validation Errors</xref></p>
+        </section>
+
+        <section>
+            <title>Add Node</title>
+            <p><xref type="concept" href="user_interface/add_node.xml#create_project">Create Project</xref></p>
+            <p><xref type="concept" href="user_interface/add_node.xml#create_profile">Create Profile</xref></p>
+            <p><xref type="concept" href="user_interface/add_node.xml#configuration_details">Configuration Details</xref></p>
+            <p><xref type="concept" href="user_interface/add_node.xml#edit_profile">Edit Profile</xref></p>
+            <p><xref type="concept" href="user_interface/add_node.xml#delete_profile">Delete Profile</xref></p>
+            <p><xref type="concept" href="user_interface/add_node.xml#export_ciq">Export CIQ</xref></p>
+            <p><xref type="concept" href="user_interface/add_node.xml#import_ciq">Import CIQ</xref></p>
+            <p><xref type="concept" href="user_interface/add_node.xml#order">Order</xref></p>
+        </section>
+
+        <section>
+            <title>Expand Node</title>
+            <p><xref type="concept" href="user_interface/expand_node.xml#create_project">Create Project</xref></p>
+            <p><xref type="concept" href="user_interface/expand_node.xml#create_profile">Create Profile</xref></p>
+            <p><xref type="concept" href="user_interface/expand_node.xml#configuration_details">Configuration Details</xref></p>
+            <p><xref type="concept" href="user_interface/expand_node.xml#edit_profile">Edit Profile</xref></p>
+            <p><xref type="concept" href="user_interface/expand_node.xml#delete_profile">Delete Profile</xref></p>
+            <p><xref type="concept" href="user_interface/expand_node.xml#export_ciq">Export CIQ</xref></p>
+            <p><xref type="concept" href="user_interface/expand_node.xml#import_ciq">Import CIQ</xref></p>
+            <p><xref type="concept" href="user_interface/expand_node.xml#order">Order</xref></p>
+        </section>
+    </conbody>
+</concept>

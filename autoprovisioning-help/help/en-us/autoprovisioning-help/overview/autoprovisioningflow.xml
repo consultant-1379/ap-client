@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<concept id="AP-Overview-NodeIntegration-Physical">
+    <title>Auto Integrate a Physical Node Overview</title>
+    <conbody>
+        <section>
+            <p>Auto Provisioning (AP) provides an automated task-based workflow for Node Integration. It brings a node from its factory settings into service in a customer network with full ENM Integration.</p>
+            <p>This diagram gives a high level overview of the roles involved and some of the tasks that are automated by AP when integrating a node.</p>
+            <p><image href="/resources/images/common/AP_Node_Integration_Overview.png" alt="Auto Provisioning Overview"  height="100px" width="100px"/></p>
+        </section>
+        <section>
+            <p>AP Node Integration is executed by adding a pre-created Auto Provisioning project file to ENM through ENM CLI, the Auto Provisioning GUI or by creating node configurations using the <i>Add Node</i> in the Auto Provisioning GUI.</p>
+            <p>
+                The following tutorials describe how to prepare an AP project file:
+                    <ul>
+                        <li><xref href="/prerequisites/standard_project_file_tutorial.xml">Prepare a Standard Project File</xref></li>
+                        <li><xref href="/prerequisites/batch_project_file_tutorial.xml">Prepare a Batch Project File</xref></li>
+                    </ul>
+                The following tutorials describe how to integrate a node using AP:
+                <ul>
+                    <li><xref href="/tutorials/autointegratenodeGUI.xml"> Auto Integrate Node(s) using Auto Provisioning GUI</xref></li>
+                    <li><xref href="/tutorials/autointegratenodeCLI.xml"> Auto Integrate Node(s) using Auto Provisioning CLI</xref></li>
+                </ul>
+                The following tutorials describe how to configure and integrate a node using AP:
+                <ul>
+                    <li><xref href="/tutorials/addnode_radionode_node_centric.xml">
+                        Configure and Auto Integrate Baseband Radio Node(s) with a node centric CIQ</xref></li>
+                    <li><xref href="/tutorials/addnode_radionode_cell_centric.xml">
+                        Configure and Auto Integrate Baseband Radio Node(s) with a cell centric CIQ</xref></li>
+                    <li><xref href="/tutorials/addnode_controller6610_node_centric.xml">
+                        Configure and Auto Integrate Controller 6610 Node(s) with a node centric CIQ</xref></li>
+                </ul>
+            </p>
+        </section>
+        <section>
+        <title>AP Integrate Node Flow</title>
+        <p>The following are some of the main tasks that are executed by an Auto Provisioning workflow when a node is being integrated:</p>
+            <ol>
+                <li>Validation of supplied configuration files.</li>
+                <li>Creates an ENM network element.</li>
+                <li>Configures node security certificates.</li>
+                <li>Generates node configurations and stores them on a staging area (SMRS/AIWS).</li>
+                <li>Configures the node security credentials in ENM.</li>
+                <li>Waits for the node to retrieve configurations* and send a Node Up Notification.</li>
+                <li>Initiates synchronization between the node and ENM.</li>
+                <li>Waits for the node synchronization notification.</li>
+                <li>Imports additional node configuration files included in AP project.</li>
+                <li>Enables ENM node supervision.**</li>
+                <li>Creates a node backup see <xref href="/overview/apconcepts.xml#BackupHandling">Backup Handling </xref> or <xref href="/overview/apconcepts.xml#ConfigurationVersionHandling">Configuration Version Handling - DU Radio Node</xref></li>
+                <li>Sets the node Management state to Normal.</li>
+                <li>The node is integrated and email with node status output is sent.</li>
+            </ol>
+                <p>*Additional node status tasks are shown for certain node types, see <xref href="/overview/apconcepts.xml#NodeStatusEntries">Node Status Entries</xref>.</p>
+                <p>**FM, PM and Inventory supervision being enabled is shown as individual tasks in the AP status output. Inventory supervision is applicable for DU Radio Node only.</p>
+                <p>
+                    Additional tasks are supported or some of the above tasks may not be applicable,
+                    dependent on <xref href="/prerequisites/supported_nodeinfo.xml">Node Information File</xref> configuration,
+                    <xref href="/overview/apconcepts.xml#IntegrationProcedure">Integration Procedure</xref>
+                    and node type, see <xref href="/overview/supportednodetypes.xml">Supported Node Types</xref>.
+                </p>
+        </section>
+    </conbody>
+</concept>

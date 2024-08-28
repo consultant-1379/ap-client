@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<concept id="AP-SupportedNodeConfiguration-Controller6610-Expansion">
+    <title>Supported Configurations for Expansion of type Controller 6610</title>
+    <conbody>
+        <section>
+            <p>The following lists the configurations supported for expansion of a Controller 6610.</p>
+        </section>
+        <section id="Controller6610">
+            <title>Controller 6610</title>
+            <simpletable frame="all" relcolwidth="1* 1* 1* 1* 1* 1*">
+                <sthead>
+                    <stentry>
+                        <b>Configuration Files</b>
+                    </stentry>
+                    <stentry>
+                        <b>Tag</b>
+                    </stentry>
+                    <stentry>
+                        <b>Mandatory</b>
+                    </stentry>
+                    <stentry>
+                        <b>FileType</b>
+                    </stentry>
+                    <stentry>
+                        <b>Supported Format(s)</b>
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>Node Configuration</stentry>
+                    <stentry>nodeConfiguration</stentry>
+                    <stentry>No</stentry>
+                    <stentry>XML</stentry>
+                    <stentry>NETCONF,Bulk3gpp</stentry>
+                </strow>
+                <strow>
+                    <stentry>Optional Features</stentry>
+                    <stentry>optionalFeature</stentry>
+                    <stentry>No</stentry>
+                    <stentry>XML</stentry>
+                    <stentry>NETCONF,Bulk3gpp</stentry>
+                </strow>
+                <strow>
+                    <stentry>Baseline</stentry>
+                    <stentry>baseline</stentry>
+                    <stentry>No</stentry>
+                    <stentry>MOS</stentry>
+                    <stentry>MOSHELL</stentry>
+                </strow>
+            </simpletable>
+            <p>For samples files refer to <i>Controller 6610: LZN 760 5045 Initial Configuration / Configuration Files</i></p>
+        </section>
+    </conbody>
+</concept>

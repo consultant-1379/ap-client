@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<concept id="AP-Overview-NodeIntegration-Virtual">
+    <title>Auto Integrate a Virtual Network Function (VNF) Node Overview</title>
+    <conbody>
+        <section>
+            <p>Auto Provisioning (AP) provides an automated task based workflow for VNF Integration. It instantiates a VNF with full ENM Integration.</p>
+            <p>This diagram gives a high level overview of the roles involved and some of the tasks that are automated by AP when integrating a virtual network function.</p>
+            <p><image href="/resources/images/common/AP_VNF_Node_Integration_Overview.png" alt="VNF Auto Provisioning Overview"  height="100px" width="100px"/></p>
+        </section>
+        <section>
+            <p>AP Integrate VNF Node is executed by adding a pre-created Auto Provisioning project file to ENM through ENM CLI or the Auto Provisioning GUI.</p>
+            <p>
+                The following tutorials describe how to prepare an AP project file:
+                    <ul>
+                        <li><xref href="/prerequisites/standard_project_file_tutorial.xml">Prepare a Standard Project File</xref></li>
+                        <li><xref href="/prerequisites/batch_project_file_tutorial.xml">Prepare a Batch Project File</xref></li>
+                    </ul>
+                The following tutorials describe how to integrate a VNF node using AP:
+                <ul>
+                    <li><xref href="/tutorials/autointegratenodeGUI.xml"> Auto Integrate Node(s) using Auto Provisioning GUI</xref>.</li>
+                    <li><xref href="/tutorials/autointegratenodeCLI.xml"> Auto Integrate Node(s) using Auto Provisioning CLI</xref>.</li>
+                </ul>
+            </p>
+        </section>
+        <section>
+            <title>AP Integrate VNF Node Flow</title>
+            <p>The following are some of the main tasks that are executed by an Auto Provisioning workflow when a VNF node is being integrated:
+                <ol>
+                    <li>Validation of supplied configuration files.</li>
+                    <li>Creates an ENM network element.</li>
+                    <li>Configures node security certificates.</li>
+                    <li>Configures the node security credentials in ENM.</li>
+                    <li>AP invokes 'instantiate' on RVNFM with the configuration in the instantiate pay-load to start VNF.</li>
+                    <li>Waits for the VNF to instantiate and send a Node Up Notification.</li>
+                    <li>Initiates synchronization between the node and ENM.</li>
+                    <li>Waits for the node synchronization notification.</li>
+                    <li>Imports 'Day-1' configurations.</li>
+                    <li>Enables ENM node supervision.*</li>
+                    <li>Sets the node Management state to Normal.</li>
+                    <li>The VNF node is integrated and email with node status output is sent.</li>
+                </ol>
+            </p>
+                <p>*FM and PM being enabled is shown as individual tasks in the AP status output.</p>
+        </section>
+    </conbody>
+</concept>

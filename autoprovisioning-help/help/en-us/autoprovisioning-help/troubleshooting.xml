@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<concept id="AP-Troubleshooting">
+    <title>Troubleshooting</title>
+    <conbody>
+        <section>
+            <p>
+                AP Troubleshooting information is available from the ENM Configuration Troubleshooting Guide; 1/15901-AOM 901 151-1 (<b>ENM Application Launcher -> Documentation -> Elex</b>).
+            </p>
+        </section>
+    </conbody>
+</concept>

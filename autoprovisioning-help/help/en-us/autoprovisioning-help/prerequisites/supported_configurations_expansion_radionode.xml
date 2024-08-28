@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<concept id="AP-SupportedNodeConfiguration-BasebandRadioNode-Expansion">
+    <title>Supported Configurations for Expansion of type Baseband Radio Node</title>
+    <conbody>
+        <section>
+            <p>The following lists the configurations supported for expansion of a Baseband Radio Node.</p>
+        </section>
+        <section id="BasebandRadioNode">
+            <title>Baseband Radio Node</title>
+            <simpletable frame="all" relcolwidth="1* 1* 1* 1* 1* 1*">
+                <sthead>
+                    <stentry>
+                        <b>Configuration Files</b>
+                    </stentry>
+                    <stentry>
+                        <b>Tag</b>
+                    </stentry>
+                    <stentry>
+                        <b>Mandatory</b>
+                    </stentry>
+                    <stentry>
+                        <b>FileType</b>
+                    </stentry>
+                    <stentry>
+                      <b>Supported Format(s)</b>
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>Node Configuration</stentry>
+                    <stentry>nodeConfiguration</stentry>
+                    <stentry>No</stentry>
+                    <stentry>XML</stentry>
+                    <stentry>NETCONF,Bulk3gpp</stentry>
+                </strow>
+                <strow>
+                    <stentry>Optional Features</stentry>
+                    <stentry>optionalFeature</stentry>
+                    <stentry>No</stentry>
+                    <stentry>XML</stentry>
+                    <stentry>NETCONF,Bulk3gpp</stentry>
+                </strow>
+                <strow>
+                    <stentry>Baseline</stentry>
+                    <stentry>baseline</stentry>
+                    <stentry>No</stentry>
+                    <stentry>MOS</stentry>
+                    <stentry>MOSHELL</stentry>
+                </strow>
+                <strow>
+                    <stentry>Remote Node Configuration</stentry>
+                    <stentry>remoteNodeConfiguration</stentry>
+                    <stentry>No</stentry>
+                    <stentry>XML</stentry>
+                    <stentry>NETCONF,Bulk3gpp</stentry>
+                </strow>
+                <strow>
+                    <stentry>Unlock Cells</stentry>
+                    <stentry>unlockCell</stentry>
+                    <stentry>No</stentry>
+                    <stentry>XML</stentry>
+                    <stentry>NETCONF,Bulk3gpp</stentry>
+                </strow>
+            </simpletable>
+            <p>
+               When building NETCONF configurations, it is recommended to use ECT.
+               See Manage Equipment Configuration Tool in Ericsson Radio System Software <i>CPI LZN 793 1020</i>.
+            </p>
+            <p><b>Warning:</b> If NETCONF format is applied, AP only supports sending <b>edit-config</b> RPC operation to configure target node(s). Other configuration operations supplied are ignored.</p>
+            <p>If a file name starts with <b>preconfiguration_</b>, it is system reserved and cannot be used for configuration files included in the project zip file.</p>
+            <p>For samples files refer to <i>Baseband Radio Node: LZN 793 1020 Initial Configuration / Configuration Files</i>.</p>
+        </section>
+    </conbody>
+</concept>

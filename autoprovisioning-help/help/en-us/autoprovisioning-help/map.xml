@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<map>
+    <topicref href="overview.xml" navtitle="Overview" outputclass="landingpage">
+        <topicref href="/overview/autoprovisioningflow.xml"/>
+        <topicref href="/overview/vnfautoprovisioningflow.xml"/>
+        <topicref href="/overview/expansion_flow.xml"/>
+        <topicref href="/overview/hardwarereplaceflow.xml"/>
+        <topicref href="/overview/migration_flow.xml"/>
+        <topicref href="/overview/supportednodetypes.xml"/>
+        <topicref href="/overview/apoperations.xml"/>
+        <topicref href="/overview/apconcepts.xml"/>
+    </topicref>
+    <topicref href="prerequisites.xml" navtitle="Prerequisites" outputclass="landingpage">
+        <topicref href="prerequisites/standard_project_file_tutorial.xml"/>
+        <topicref href="prerequisites/batch_project_file_tutorial.xml"/>
+        <!-- Project Information -->
+        <topicref href="/prerequisites/projectinfo.xml"/>
+        <!-- Node Information -->
+        <topicref href="/prerequisites/supported_nodeinfo.xml"/>
+        <topicref href="/prerequisites/duradionodeinfo.xml"/>
+        <topicref href="/prerequisites/basebandnodeinfo.xml"/>
+        <topicref href="/prerequisites/routernodeinfo.xml"/>
+        <topicref href="/prerequisites/msrbsv1_nodeinfo.xml"/>
+        <topicref href="/prerequisites/VNF_nodeinfo.xml"/>
+        <topicref href="/prerequisites/baseband_replace_nodeinfo.xml"/>
+        <topicref href="/prerequisites/msrbsv1_replace_nodeinfo.xml"/>
+        <topicref href="/prerequisites/expansion_nodeinfo.xml"/>
+        <topicref href="/prerequisites/controller6610_nodeinfo.xml"/>
+        <topicref href="/prerequisites/controller6610_expansion_nodeinfo.xml"/>
+        <topicref href="/prerequisites/controller6610_replace_nodeinfo.xml"/>
+        <topicref href="/prerequisites/migrate_nodeinfo.xml"/>
+        <!-- Supported Configuration -->
+        <topicref href="/prerequisites/supported_configurations.xml"/>
+        <topicref href="/prerequisites/supported_configurations_integrate_node_erbs.xml"/>
+        <topicref href="/prerequisites/supported_configurations_integrate_node_msrbsv1.xml"/>
+        <topicref href="/prerequisites/supported_configurations_integrate_node_radionode.xml"/>
+        <topicref href="/prerequisites/supported_configurations_integrate_node_router.xml"/>
+        <topicref href="/prerequisites/supported_configurations_integrate_node_vnf.xml"/>
+        <topicref href="/prerequisites/supported_configurations_expansion_radionode.xml"/>
+        <topicref href="/prerequisites/supported_configurations_integrate_node_controller6610.xml"/>
+        <topicref href="/prerequisites/supported_configurations_expansion_controller6610.xml"/>
+        <topicref href="/prerequisites/supported_configurations_hardware_replace_radionode.xml"/>
+        <topicref href="/prerequisites/supported_configurations_hardware_replace_controller6610.xml"/>
+        <topicref href="/prerequisites/supported_configurations_Migration_radionode.xml"/>
+        <topicref href="prerequisites/definesnmpsecurityconfigurationoption.xml"/>
+    </topicref>
+    <topicref href="commands.xml" navtitle="CLI Commands" outputclass="landingpage">
+        <topicref href="commands/bind.xml"/>
+        <topicref href="commands/cancel.xml"/>
+        <topicref href="commands/delete.xml"/>
+        <topicref href="commands/download.xml"/>
+        <topicref href="commands/order.xml"/>
+        <topicref href="commands/resume.xml"/>
+        <topicref href="commands/skip.xml"/>
+        <topicref href="commands/status.xml"/>
+        <topicref href="commands/upload.xml"/>
+        <topicref href="commands/view.xml"/>
+    </topicref>
+    <topicref href="userinterface.xml" navtitle="User Interface" outputclass="landingpage">
+        <topicref href="user_interface/autoprovisioning.xml" navtitle="Auto Provisioning" />
+        <topicref href="user_interface/add_node.xml" navtitle="Add Node" />
+        <topicref href="user_interface/expand_node.xml" navtitle="Expand Node" />
+    </topicref>
+    <topicref href="tutorials.xml" navtitle="Tutorials" outputclass="landingpage">
+        <topicref href="tutorials/addnode_radionode_node_centric.xml"/>
+        <topicref href="tutorials/addnode_radionode_cell_centric.xml"/>
+        <topicref href="tutorials/addnode_controller6610_node_centric.xml"/>
+        <topicref href="tutorials/expandnode_radionode.xml"/>
+        <topicref href="tutorials/autointegratenodeGUI.xml"/>
+        <topicref href="tutorials/expansionGUI.xml"/>
+        <topicref href="tutorials/hardwarereplaceGUI.xml"/>
+        <topicref href="tutorials/migrationGUI.xml"/>
+        <topicref href="tutorials/autointegratenodeCLI.xml"/>
+        <topicref href="tutorials/expansionCLI.xml"/>
+        <topicref href="tutorials/hardwarereplaceCLI.xml"/>
+        <topicref href="tutorials/migrationCLI.xml"/>
+    </topicref>
+    <topicref href="troubleshooting.xml" navtitle="Troubleshooting"/>
+    <topicref href="about.xml" navtitle="About"/>
+</map>

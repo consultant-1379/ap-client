@@ -1,0 +1,44 @@
+{
+  "protocol": "https",
+  "host": "enmapache.athtem.eei.ericsson.se",
+  "port": 443,
+  "headers": {
+    "X-Tor-UserID":"administrator",
+    "X-Proxy-Password":"TestPassw0rd"
+  },
+  "mappings": [{
+      "source": "/help/en-us/configuration-generator"
+  },{
+      "source": "/help-search"
+  },{
+      "source": "/web-push"
+  },{
+      "source": "/UserProfileMenu"
+  },{
+      "source": "/locales/en-us/UserProfileMenu/"
+  },{
+      "source": "/enmcontainerhelper"
+  },{
+      "source": "/locales/en-us/enmcontainerhelper/"
+  },{
+      "source": "/helpbutton"
+  },{
+      "source": "/locales/en-us/helpbutton/"
+  },{
+      "source": "/systemtime"
+  },{
+      "source": "/locales/en-us/systemtime/"
+  },{
+      "source": "/flyout"
+  },{
+      "source": "/locales/en-us/flyout/"
+  },{
+      "source": "/contextmenu"
+  },{
+      "source": "/locales/en-us/contextmenu/"
+  },{
+      "source": "/systemidentifier"
+  },{
+      "source": "/locales/en-us/systemidentifier/"
+  }]
+}

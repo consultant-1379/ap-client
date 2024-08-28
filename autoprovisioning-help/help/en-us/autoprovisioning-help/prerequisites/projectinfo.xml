@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<concept id="AP-ProjectInfo">
+    <title>Project Information File</title>
+    <conbody>
+        <section>
+        <title>Description</title>
+            <p>
+                The AP <b>projectInfo.xml</b> file contains the project information used in an Auto Provisioning project.
+            </p>
+            <p>
+                A sample project information file can be downloaded using the <xref href="/commands/download.xml" type="concept"><i>ap download -x</i></xref> command
+                and is contained in the relevant node type, samples directory.
+            </p>
+            <p>
+                The following table defines the contents of a project information file.
+            </p>
+        </section>
+
+        <section id="project_info_attributes">
+            <title>Project Information</title>
+            <simpletable frame="all" relcolwidth="1* 1* 5*">
+                <sthead>
+                    <stentry>
+                        <b>Tag</b>
+                    </stentry>
+                    <stentry>
+                        <b>Mandatory</b>
+                    </stentry>
+                    <stentry>
+                        <b>Description</b>
+                    </stentry>
+                </sthead>
+                <strow>
+                    <stentry>&lt;name&gt;</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>The name of the project. Only alphanumeric characters and special characters dot (.), dash (-) and underscore (_) can be used. Name must be greater than 3 characters and less than 200 characters.</stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;description&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>A description of the project.
+                    </stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;generatedBy&gt;</stentry>
+                    <stentry>No</stentry>
+                    <stentry>The name of Node Provisioning Tool used to generate the node configurations in this project. For example: ECT and PCI.</stentry>
+                </strow>
+                <strow>
+                    <stentry>&lt;creator&gt;</stentry>
+                    <stentry>Yes</stentry>
+                    <stentry>The creator of the project.</stentry>
+                </strow>
+            </simpletable>
+        </section>
+    </conbody>
+</concept>

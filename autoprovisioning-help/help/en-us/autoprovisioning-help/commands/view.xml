@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<concept id="AP-CLI-Command-View">
+    <title>ap view</title>
+    <conbody>
+       <section>
+            <title>Syntax</title>
+           <p><image href="/resources/images/commands/cli.png" /> <b>Syntax to view properties for all projects</b></p>
+           <codeblock>
+               ap view
+           </codeblock>
+           <p><image href="/resources/images/commands/cli.png" /> <b>Syntax to view properties for a project</b></p>
+           <codeblock>
+               ap view -p &lt;projectName&gt;
+           </codeblock>
+            <p><image href="/resources/images/commands/cli.png" /> <b>Syntax to view properties for a node</b></p> 
+            <codeblock>
+                ap view -n &lt;nodeName&gt;
+            </codeblock>
+        </section>
+        <section>
+            <title>Description</title>
+            <p>The <i>ap view</i> command is used to view the properties for all projects, individual projects, or individual nodes.</p>
+            <p>
+            The following options are available:
+            <ul>
+               <li>View properties can be requested for all projects using the <i>ap view</i> command with no parameters.</li>
+               <li>View properties can be requested for a project using the <i>ap view</i> command with the <i>-p</i> parameter.</li>
+               <li>View properties can be requested for an individual node using the <i>ap view</i> command with the <i>-n</i> parameter.</li>
+            </ul>
+            </p>
+            <p>For more information on view see <xref href="/overview/apoperations.xml#View" type="concept">Operations, View</xref></p>
+            <p><b>Supported Node Types</b></p>
+            <p>All AP supported node types. See <xref href="/overview/supportednodetypes.xml">Supported Node Types</xref>.</p>
+
+        </section>
+        <section>
+        <title>Examples</title>
+            <sectiondiv>
+                <p><image href="/resources/images/commands/cli.png" /> <b>View properties for a project</b></p>
+                <codeblock>
+                    ap view -p Project01
+                </codeblock>
+                <p><b>Response</b></p>
+                <p>This command displays all the property information for the specified project.</p>
+            </sectiondiv>
+            <image href="/resources/images/commands/hr.png" />
+            <sectiondiv>
+                <p><image href="/resources/images/commands/cli.png" /> <b>View properties for a node</b></p>
+                <codeblock>
+                    ap view -n Node01
+                </codeblock>
+                <p><b>Response</b></p>
+                <p>This command displays all the property information for the specified node.</p>
+            </sectiondiv>
+       </section>
+    </conbody>
+</concept>

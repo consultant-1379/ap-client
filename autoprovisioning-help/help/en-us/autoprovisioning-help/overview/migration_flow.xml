@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<concept id="AP-Overview-Migration">
+    <title>Migrate a Node Overview</title>
+    <conbody>
+        <section>
+            <p>Auto Provisioning (AP) provides an automated task based workflow that allows a user to migrate to different hardware. Migration is to be used when migrating between Baseband units with different Baseband architectures.</p>
+            <p>This diagram gives a high level overview of the roles involved and some of the tasks that are automated by AP when migrating a node.</p>
+            <p><image href="/resources/images/common/AP_Migration_Overview.png" alt="Migration Overview" height="100px" width="100px"/></p>
+        </section>
+        <section>
+            <p>AP Node Migration is executed by adding a pre-created Auto Provisioning project file to ENM through ENM CLI or the Auto Provisioning GUI.</p>
+            <p>The process of migration involves disconnecting the existing node from ENM and re-integrating it once the new hardware is installed.</p>
+            <p>A backup of the original node configuration is created to allow a user to revert the node back to it's original configuration if the migration is cancelled.</p>
+            <p><b>Warning: </b>
+            <ol>
+            <li>Before selecting cancel a user must ensure the  original node is connected. Once the original node is connected a user can execute cancel which will automatically trigger the rollback.</li>
+            <li>If the user wants to stop the migration before it is completed it is recommended to cancel the migration activity before deletion. Failure to cancel migration before deletion may result in the node being left in an inconsistent state.</li>
+            </ol>
+            </p>
+            <p>Additional manual tasks may be required in certain rollback scenarios see <xref href="/overview/apconcepts.xml#MigrationRollback">Migration Rollback</xref>.</p>
+            <p>
+                The following tutorial describe how to prepare an AP project file:
+                    <ul>
+                        <li><xref href="/prerequisites/standard_project_file_tutorial.xml">Prepare a Standard Project File</xref></li>
+                    </ul>
+                    </p>
+                    <p>To automatically generate a Migration project it is recommended to follow the procedure outline in Migrate Baseband Unit Using NETCONF-Based Procedure. See <i>Migrate Baseband Unit Using NETCONF-Based Procedure in Ericsson Radio System Software CPI LZN 793 1020(21.Q4 onwards)</i>.
+                    </p>
+                The following tutorial describe how to migrate a node to ENM using AP:
+                <ul>
+                    <li><xref href="/tutorials/migrationGUI.xml"> Perform Node Migration using Auto Provisioning GUI</xref>.</li>
+                    <li><xref href="/tutorials/migrationCLI.xml"> Perform Node Migration using Auto Provisioning CLI</xref>.</li>
+                </ul>
+        </section>
+       <section>
+        <title>AP Migrate Node Flow</title>
+        <p>The following are some of the main tasks that are executed by an Auto Provisioning workflow when migrating a node in ENM:
+            <ol>
+                <li>Validation of supplied configuration files.</li>
+                <li>Sets the node Management State to Maintenance.</li>
+                <li>Creates a node backup see <xref href="/overview/apconcepts.xml#BackupHandling">Backup Handling</xref></li>
+                <li>Import Pre Migration configuration files.</li>
+                <li>Disables cm, fm and pm supervision.</li>
+                <li>Configures node security certificates.</li>
+                <li>Generates node configurations and stores them on a staging area (SMRS/AIWS).</li>
+                <li>Configures the node security credentials in ENM.</li>
+                <li>Waits for the node to retrieve configurations* and send a Node Up Notification.</li>
+                <li>Initiates synchronization between the node and ENM.</li>
+                <li>Waits for the node synchronization notification.</li>
+                <li>Configure SNMP settings.</li>
+                <li>Imports additional node configuration files included in AP project.</li>
+                <li>Enables ENM node supervision.</li>
+                <li>Creates a node backup see <xref href="/overview/apconcepts.xml#BackupHandling">Backup Handling</xref></li>
+                <li>Sets the node Management state to Normal.</li>
+                <li>The node is migrated and email with node status output is sent.</li>
+            </ol>
+        </p>
+        <p>*Additional node status tasks are shown for certain node types, see <xref href="/overview/apconcepts.xml#NodeStatusEntries">Node Status Entries</xref>.</p>
+        <p>FM,PM and CM disabling is shown as single task in the AP status output.</p>
+        <p>Additional tasks are supported or some of the above tasks may not be applicable, dependent on <xref href="/prerequisites/supported_nodeinfo.xml">Node Information File</xref> configuration.</p>
+        </section>
+    </conbody>
+</concept>

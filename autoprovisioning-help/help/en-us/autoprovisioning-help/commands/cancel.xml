@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<concept id="AP-CLI-Command-Cancel">
+    <title>ap cancel</title>
+    <conbody>
+        <section>
+            <title>Syntax</title><p><image href="/resources/images/commands/cli.png" /> <b>Syntax to cancel a node integration</b></p>
+            <codeblock>
+                ap cancel -n &lt;nodeName&gt;
+            </codeblock>
+        </section>
+
+        <section>
+            <title>Description</title>
+            <p>The <i>ap cancel</i> command allows a user to cancel an Auto Provisioning activity.</p>
+            <p><b>Warning: </b>Executing cancel during expansion will result in the node being restored to a backup if expansion configurations have been applied to the node.</p>
+            <p><b>Warning: </b>Executing cancel during migration will result in the node being restored to a backup of the original node and should only be executed once the hardware is reverted to it's original configuration.</p>
+            <p>For more information on cancel see <xref href="/overview/apoperations.xml#Cancel" type="concept">Operations, Cancel</xref></p>
+        </section>
+
+        <section>
+        <title>Examples</title>
+        <sectiondiv>
+                <p><image href="/resources/images/commands/cli.png" /> <b>Cancel a node integration</b></p>
+                <codeblock>
+                    ap cancel -n Node01
+                </codeblock>
+                <p><b>Response</b></p>
+                <p><pre>Initiated. Run command 'ap status -n Node01' for details</pre></p>
+         </sectiondiv>
+        </section>
+    </conbody>
+</concept>
